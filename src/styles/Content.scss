@@ -1,0 +1,22 @@
+.content {
+	width: 100%;
+    height: calc(100vh - 60px);
+	display: grid;
+	grid-template-columns: 60% 1fr;
+	grid-template-rows: repeat(2, 1fr);
+	grid-column-gap: 30px;
+	grid-row-gap: 30px;
+    grid-template-areas: 'tasks dealsGraphic'
+    'tasks tasksChart';
+    padding: 36px;
+    background: #F5F6F8;
+    .tasks{
+        grid-area: tasks;
+    }
+    .tasks-chart{
+        grid-area: tasksChart;
+    }
+    .deals-graphic{
+        grid-area: dealsGraphic;
+    }
+}

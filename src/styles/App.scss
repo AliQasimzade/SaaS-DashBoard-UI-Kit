@@ -1,7 +1,10 @@
-// @import "~bootstrap/scss/bootstrap";
+@import '~bootstrap/scss/bootstrap';
+
 .App{
   max-width: 1440px;
   margin: 0 auto;
   display: flex;
-  align-items: flex-start;
+  p{
+    margin: 0;
+  }
 }

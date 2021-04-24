@@ -3,9 +3,8 @@ import { useDispatch } from 'react-redux';
 import data from './data';
 import './styles/App.scss';
 import { addData } from './redux/actions/actions.js';
-import Navigation from "./components/Navigation";
 import Sidebar from "./components/SideBar";
-
+import Dashboard from "./components/Dashboard";
 const App = () => {
 	const dispatch = useDispatch();
 	useEffect(() => {
@@ -14,7 +13,7 @@ const App = () => {
 	return (
 		<div className="App">
 			<Sidebar />
-			<Navigation />
+			<Dashboard />
 		</div>
 	);
 };

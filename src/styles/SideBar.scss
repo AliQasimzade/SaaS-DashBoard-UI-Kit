@@ -1,0 +1,151 @@
+@import url(../styles/fonts.css);
+.side-bar {
+	box-shadow: 0 0 10px -5px #00000070;
+	height: 100vh;
+	position: relative;
+	width: 256px;
+	.heading {
+		align-items: center;
+		border-bottom: 1px solid #ebeff2;
+		display: flex;
+		height: 60px;
+		justify-content: flex-start;
+		padding: 0 24px;
+		p {
+			color: #109cf1;
+			font-family: Open-Sans-SemiBold;
+			font-size: 18px;
+		}
+	}
+	.profile {
+		align-items: center;
+		display: flex;
+		padding: 24px 24px 0;
+		.profile-image {
+			border-radius: 50%;
+			height: 46px;
+			margin-right: 16px;
+			overflow: hidden;
+			width: 46px;
+			img {
+				height: 100%;
+				width: 100%;
+			}
+		}
+		.profile-info {
+			display: flex;
+			flex-direction: column;
+			.name {
+				color: #192a3e;
+				font-family: Poppins-Medium;
+				font-size: 14px;
+			}
+			.gmail {
+				color: #90a0b7;
+				font-family: Poppins-Medium;
+				font-size: 11px;
+				letter-spacing: 0.01em;
+			}
+		}
+	}
+	.side-lists {
+		margin-top: 40px;
+		li {
+			align-items: center;
+			cursor: pointer;
+			display: flex;
+			justify-content: flex-start;
+			margin-bottom: 20px;
+			padding: 0 24px;
+			svg {
+				margin-right: 14px;
+			}
+			p {
+				color: #334d6e;
+				font-family: Poppins-Medium;
+				font-size: 13px;
+				letter-spacing: 0.01em;
+				line-height: 19px;
+				transition: color 0.2s ease-in-out;
+			}
+			&:hover {
+				p {
+					color: #109cf1;
+				}
+				svg {
+					path {
+						stroke: #109cf1;
+					}
+				}
+			}
+		}
+		.settings {
+			border-top: 1px solid #ebeff2;
+			padding-top: 24px;
+		}
+	}
+
+	.toggle-side-bar {
+		bottom: 30px;
+		color: #90a0b7;
+		cursor: pointer;
+		display: flex;
+		font-family: Poppins-Medium;
+		font-size: 11px;
+		letter-spacing: 0.01em;
+		padding: 0 24px;
+		position: absolute;
+		transition: all 0.2s ease-in-out;
+		svg {
+			margin-right: 14px;
+		}
+		&:hover {
+			color: #109cf1;
+			svg {
+				path {
+					fill: #109cf1;
+				}
+			}
+		}
+	}
+}
+
+.side-bar.active {
+	width: 68px;
+	.heading {
+		justify-content: center;
+		padding: 0;
+	}
+	.kit {
+		display: none;
+	}
+	.profile {
+		justify-content: center;
+		padding-left: 0;
+		padding-right: 0;
+		.profile-image {
+			margin-right: 0px;
+		}
+		.profile-info {
+			display: none;
+		}
+	}
+
+	.toggle-side-bar {
+		p {
+			display: none;
+		}
+	}
+	.side-lists {
+		li {
+			justify-content: center;
+			padding: 0;
+			p {
+				display: none;
+			}
+			svg {
+				margin-right: 0;
+			}
+		}
+	}
+}

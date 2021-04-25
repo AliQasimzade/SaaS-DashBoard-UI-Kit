@@ -148,7 +148,7 @@ const SideBar = () => {
       </div>
       <div className="profile">
         <div className="profile-image">
-          <img src={Profile} alt="" />
+          <img src={Profile} alt="profile_image" />
         </div>
         <div className="profile-info">
           <p className="name">Sierra Ferguson</p>
@@ -159,7 +159,7 @@ const SideBar = () => {
         {allList.map((item, key) => (
           <li key={key} className={key === 6 ? 'settings':''}>
             {item.image}
-			<p>{item.list}</p>
+			      <p>{item.list}</p>
           </li>
 		))}
       </ul>

@@ -3,7 +3,8 @@
 .side-bar {
 	box-shadow: 6px 0px 18px rgba(0, 0, 0, 0.06);
 	height: 100vh;
-	position: relative;
+	position: sticky;
+	top:0;
 	width: 256px;
 	.heading {
 		align-items: center;

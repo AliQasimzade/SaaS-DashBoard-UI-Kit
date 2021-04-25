@@ -1,7 +1,9 @@
 .content {
 	width: 100%;
-    height: calc(100vh - 60px);
+    height: 100%;
+    overflow-y: auto;
 	display: grid;
+    overflow-y: auto;
 	grid-template-columns: 60% 1fr;
 	grid-template-rows: repeat(2, 1fr);
 	grid-column-gap: 30px;

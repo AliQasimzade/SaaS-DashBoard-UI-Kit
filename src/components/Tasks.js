@@ -1,86 +1,158 @@
-import React from "react";
-import "../styles/Tasks.scss";
-import { Form } from "react-bootstrap";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
-import LinearProgress from "@material-ui/core/LinearProgress";
+import React from 'react';
+import '../styles/Tasks.scss';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import associatedImage from '../images/associated_photo.png';
+import associatedImage1 from '../images/associated_photo (1).png';
+import associatedImage2 from '../images/associated_photo (2).png';
+import Ellipse from "../images/Ellipse.png";
+import Ellipse1 from '../images/Ellipse (1).png';
+import Edit from '../images/edit.png';
+import Delete from '../images/delete.png';
+
 const BorderLinearProgress = withStyles((theme) => ({
-  root: {
-    height: 4,
-    borderRadius: 10,
-  },
-  colorPrimary: {
-    backgroundColor:
-      theme.palette.grey[theme.palette.type === "light" ? 200 : 700],
-  },
-  bar: {
-    borderRadius: 10,
-    backgroundColor: "#2ED47A",
-  },
+	root: {
+		height: 4,
+		borderRadius: 10,
+	},
+	colorPrimary: {
+		backgroundColor:
+			theme.palette.grey[theme.palette.type === 'light' ? 200 : 700],
+	},
+	bar: {
+		borderRadius: 10,
+		backgroundColor: '#2ED47A',
+	},
 }))(LinearProgress);
 
 const useStyles = makeStyles({
-  root: {
-    flexGrow: 1,
-  },
+	root: {
+		flexGrow: 1,
+	},
 });
+
 const Tasks = () => {
-  const classes = useStyles();
-  return (
-    <main className="tasks">
-      <section className="section-1">
-        <div className="section-one">
-          <div className="section-one-header">
-            <p className="remaining-tasks">8 task completed out of 10</p>
-            <div className="show-tasks">
-              <span>Show:</span>
-              <Form.Control size="sm" as="select" style={{ border: "none" }}>
-                <option>This week</option>
-                <option>This month</option>
-                <option>This year</option>
-              </Form.Control>
-            </div>
-          </div>
-          <div className={classes.root}>
-            <BorderLinearProgress variant="determinate" value={74} />
-          </div>
-          <div className="date">23 December, Sunday</div>
-          <div className="week-days">
-            <div className="sunday">
-              <p className="short-day-name">Sun</p>
-              <p className="day day-1">23</p>
-            </div>
-            <div className="monday">
-              <p className="short-day-name">Mon</p>
-              <p className="day">24</p>
-            </div>
-            <div className="tuesday">
-              <p className="short-day-name">Tue</p>
-              <p className="day">25</p>
-            </div>
-            <div className="wednesday">
-              <p className="short-day-name">Wed</p>
-              <p className="day">26</p>
-            </div>
-            <div className="thursday">
-              <p className="short-day-name">Thu</p>
-              <p className="day">27</p>
-            </div>
-            <div className="friday">
-              <p className="short-day-name">Fri</p>
-              <p className="day">28</p>
-            </div>
-            <div className="saturday">
-              <p className="short-day-name">Sat</p>
-              <p className="day">29</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section></section>
-      <section></section>
-      <section></section>
-    </main>
-  );
+	const classes = useStyles();
+
+	return (
+		<main className="tasks">
+			<section className="section-1">
+				<div className="section-one">
+					<div className="section-one-header">
+						<p className="remaining-tasks">8 task completed out of 10</p>
+						<div className="show-tasks">
+							<span>Show:</span>
+							<select>
+								<option value="1">This week</option>
+								<option value="2">This month</option>
+								<option value="3">This year</option>
+							</select>
+						</div>
+					</div>
+					<div className={classes.root}>
+						<BorderLinearProgress variant="determinate" value={74} />
+					</div>
+					<div className="date">23 December, Sunday</div>
+					<div className="week-days">
+						<div className="sunday">
+							<p className="short-day-name">Sun</p>
+							<p className="day day-1">23</p>
+						</div>
+						<div className="monday">
+							<p className="short-day-name">Mon</p>
+							<p className="day">24</p>
+						</div>
+						<div className="tuesday">
+							<p className="short-day-name">Tue</p>
+							<p className="day">25</p>
+						</div>
+						<div className="wednesday">
+							<p className="short-day-name">Wed</p>
+							<p className="day">26</p>
+						</div>
+						<div className="thursday">
+							<p className="short-day-name">Thu</p>
+							<p className="day">27</p>
+						</div>
+						<div className="friday">
+							<p className="short-day-name">Fri</p>
+							<p className="day">28</p>
+						</div>
+						<div className="saturday">
+							<p className="short-day-name">Sat</p>
+							<p className="day">29</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div className="section-two">
+					<div className="section-two-header">
+						<p>Send benefit review by Sunday</p>
+						<span>Reminder</span>
+					</div>
+					<div className="due-date">
+						<span>Due date:</span>
+						<p>December 23, 2018</p>
+					</div>
+					<div className="completed">
+						<div className="person">
+							<img src={associatedImage} alt="associated_image" />
+							<p>George Fields</p>
+						</div>
+						<button>Completed</button>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div className="section-three">
+					<div className="section-three-header">
+						<p>Invite to office meet-up</p>
+						<span>Call</span>
+					</div>
+					<div className="due-date">
+						<span>Due date : </span>
+						<p>December 23, 2018</p>
+					</div>
+					<div className="ended">
+						<div className="person">
+							<img src={associatedImage1} alt="" />
+							<p>Rebecca Moore</p>
+						</div>
+						<div className="edit-delete-person">
+							<div className="edit-delete-icons">
+								<img src={Ellipse} alt="ellipse" />
+								<img src={Ellipse1} alt="ellipse1" />
+								<img src={Edit} alt="edit" title="edit" />
+								<img src={Delete} alt="delete" title="delete" />
+							</div>
+							<button>Ended</button>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div className="section-four">
+					<div className="section-four-header">
+						<p>Office meet-up</p>
+						<span>Event</span>
+					</div>
+					<div className="due-date">
+						<span>Due date : </span>
+						<p>December 23, 2018</p>
+					</div>
+					<div className="completed">
+						<div className="person">
+							<img src={associatedImage2} alt="" />
+							<p>Lindsey Stroud</p>
+						</div>
+						<button>Completed</button>
+					</div>
+				</div>
+			</section>
+      <a href="/">Show more</a>
+		</main>
+	);
 };
 
 export default Tasks;

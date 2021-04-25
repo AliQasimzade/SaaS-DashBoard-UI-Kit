@@ -136,7 +136,6 @@ const SideBar = () => {
   ];
 
   const handleToggleSideBar = () => {
-    console.log("...");
     myRef.current.classList.toggle("active");
   };
   return (

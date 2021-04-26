@@ -9,14 +9,14 @@ import emailImage from '../images/email.svg';
 import contactsImage from '../images/contacts.svg';
 import chatImage from '../images/chat.svg';
 import dealsImage from '../images/deals.svg';
-import settingsImage from '../images/settings.svg';
-import dashboardImage1 from "../images/dashboard.png";
-import taskImage from "../images/tasks.png";
-import emailActive from "../images/email-active.png";
+import settingsImage from '../images/setting-image.png';
+import dashboardImage1 from '../images/dashboard.png';
+import taskImage from '../images/tasks.png';
+import emailActive from '../images/email-active.png';
 import chats from '../images/chats.png';
 import deals from '../images/deals-active.png';
-import contacts from "../images/contact.png";
-import settings from "../images/settings.png"
+import contacts from '../images/contact.png';
+import settings from '../images/settings.png';
 
 const SideBar = () => {
 	const dispatch = useDispatch();
@@ -88,12 +88,13 @@ const SideBar = () => {
 				{allList.map((item, key) => (
 					<li key={key} className={key === 6 ? 'settings' : ''}>
 						<div className="list-images">
-							<img src={item.image} alt="" className="able-image" />
+							<img src={item.image} alt="" className="able-image" key={key} style={key === listKey.key? {opacity:'0'} : {}} />
 							<img
 								src={item.img}
 								alt=""
 								className="disable-image"
-								style={{width:'20px', height:'20px'}}
+								key={key + 1}
+								style={key === listKey.key ? {opacity:'1'} : {}}
 							/>
 						</div>
 						<a

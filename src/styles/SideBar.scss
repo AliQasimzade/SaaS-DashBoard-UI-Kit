@@ -63,9 +63,14 @@
 				height: 25px;
 				position: relative;
 				width: 30px;
+				margin-right: 7px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
 				img {
 					position: absolute;
 					object-fit: contain;
+					
 				}
 				.able-image {
 					z-index: 9;

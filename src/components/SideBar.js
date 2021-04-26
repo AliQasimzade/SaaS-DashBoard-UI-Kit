@@ -10,7 +10,13 @@ import contactsImage from '../images/contacts.svg';
 import chatImage from '../images/chat.svg';
 import dealsImage from '../images/deals.svg';
 import settingsImage from '../images/settings.svg';
-import profileImage from '../images/profile.png';
+import dashboardImage1 from "../images/dashboard.png";
+import taskImage from "../images/tasks.png";
+import emailActive from "../images/email-active.png";
+import chats from '../images/chats.png';
+import deals from '../images/deals-active.png';
+import contacts from "../images/contact.png";
+import settings from "../images/settings.png"
 
 const SideBar = () => {
 	const dispatch = useDispatch();
@@ -20,46 +26,43 @@ const SideBar = () => {
 	const allList = [
 		{
 			image: dashboardImage,
-			img: profileImage,
+			img: dashboardImage1,
 			list: 'Dashboard',
 		},
 		{
 			image: tasksImage,
-			img: profileImage,
+			img: taskImage,
 			list: 'Tasks',
 		},
 		{
 			image: emailImage,
-			img: profileImage,
+			img: emailActive,
 			list: 'Email',
 		},
 		{
 			image: contactsImage,
-			img: profileImage,
+			img: contacts,
 			list: 'Contacts',
 		},
 		{
 			image: chatImage,
-			img: profileImage,
+			img: chats,
 			list: 'Chat',
 		},
 		{
 			image: dealsImage,
-			img: profileImage,
+			img: deals,
 			list: 'Deals',
 		},
 		{
 			image: settingsImage,
-			img: profileImage,
+			img: settings,
 			list: 'Settings',
 		},
 	];
 
 	const handleClickList = (key) => {
 		dispatch(changeList(key));
-		document.getElementsByClassName('disable-image')[key].style.display =
-			'block';
-		document.getElementsByClassName('able-image')[key].style.display = 'none';
 	};
 	const handleToggleSideBar = () => {
 		myRef.current.classList.toggle('active');
@@ -84,21 +87,20 @@ const SideBar = () => {
 			<ul className="side-lists">
 				{allList.map((item, key) => (
 					<li key={key} className={key === 6 ? 'settings' : ''}>
-						<div className="list-images" key={key}>
-							<img src={item.image} alt="" key={key} className="able-image" />
+						<div className="list-images">
+							<img src={item.image} alt="" className="able-image" />
 							<img
 								src={item.img}
 								alt=""
-								key={key}
-								style={{ display: 'none' }}
 								className="disable-image"
+								style={{width:'20px', height:'20px'}}
 							/>
 						</div>
 						<a
 							key={key}
 							href={key === 0 ? '/dashboard' : '/'}
 							style={key === listKey.key ? { color: '#109CF1' } : {}}
-							onClick={(e) => handleClickList(e, key)}
+							onClick={() => handleClickList(key)}
 						>
 							{item.list}
 						</a>

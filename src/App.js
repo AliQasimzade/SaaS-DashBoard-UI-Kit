@@ -5,6 +5,7 @@ import './styles/App.scss';
 import { addData } from './redux/actions/actions.js';
 import Sidebar from "./components/SideBar";
 import Dashboard from "./components/Dashboard";
+
 const App = () => {
 	const dispatch = useDispatch();
 	useEffect(() => {

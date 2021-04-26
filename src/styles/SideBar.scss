@@ -62,16 +62,17 @@
 			svg {
 				margin-right: 14px;
 			}
-			p {
+			a {
 				color: #334d6e;
 				font-family: Poppins-Medium;
 				font-size: 13px;
 				letter-spacing: 0.01em;
 				line-height: 19px;
 				transition: color 0.2s ease-in-out;
+				
 			}
 			&:hover {
-				p {
+				a {
 					color: #109cf1;
 				}
 				svg {
@@ -149,7 +150,7 @@
 		li {
 			justify-content: center;
 			padding: 0;
-			p {
+			a {
 				display: none;
 			}
 			svg {

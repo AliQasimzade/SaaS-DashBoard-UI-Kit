@@ -1,7 +1,12 @@
 import React, { useRef } from "react";
 import "../styles/SideBar.scss";
 import Profile from "../images/profile.png";
+// import {NavLink} from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { changeList } from "../redux/actions/actions";
 const SideBar = () => {
+  const dispatch = useDispatch();
+  const listKey = useSelector((state) => state.changeListReducer);
   const myRef = useRef(null);
 
   const allList = [
@@ -135,6 +140,9 @@ const SideBar = () => {
     },
   ];
 
+  const handleClickList = (key) => {
+    dispatch(changeList(key));
+  };
   const handleToggleSideBar = () => {
     myRef.current.classList.toggle("active");
   };
@@ -156,11 +164,18 @@ const SideBar = () => {
       </div>
       <ul className="side-lists">
         {allList.map((item, key) => (
-          <li key={key} className={key === 6 ? 'settings':''}>
+          <li key={key} className={key === 6 ? "settings" : ""}>
             {item.image}
-			      <p>{item.list}</p>
+            <a
+              href="/dashboard"
+              key={key}
+              style={key === listKey.key ? { color: "#109CF1" } : {}}
+              onClick={() => handleClickList(key)}
+            >
+              {item.list}
+            </a>
           </li>
-		))}
+        ))}
       </ul>
       <div className="toggle-side-bar" onClick={handleToggleSideBar}>
         <svg

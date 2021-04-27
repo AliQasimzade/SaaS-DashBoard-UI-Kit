@@ -1,7 +1,7 @@
 import { CHANGE_LIST } from "../actions/actionTypes";
 
 const initialState = {
-  key: -1,
+  key: 0,
 };
 
 const changeListReducer = (state = initialState, action) => {

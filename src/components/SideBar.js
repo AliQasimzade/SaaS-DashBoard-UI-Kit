@@ -17,6 +17,7 @@ import chats from '../images/chats.png';
 import deals from '../images/deals-active.png';
 import contacts from '../images/contact.png';
 import settings from '../images/settings.png';
+import {NavLink} from "react-router-dom";
 
 const SideBar = () => {
 	const dispatch = useDispatch();
@@ -97,14 +98,14 @@ const SideBar = () => {
 								style={key === listKey.key ? {opacity:'1'} : {}}
 							/>
 						</div>
-						<a
+						<NavLink
 							key={key}
-							href={key === 0 ? '/dashboard' : '/'}
+							to={key === 0 ? '/dashboard': '/'}
 							style={key === listKey.key ? { color: '#109CF1' } : {}}
 							onClick={() => handleClickList(key)}
 						>
 							{item.list}
-						</a>
+						</NavLink>
 					</li>
 				))}
 			</ul>

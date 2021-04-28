@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import '../styles/TasksChart.scss';
 
+
 const TasksChart = () => {
 	const [options] = useState({
 		series: [20, 60, 10],
-		labels: ['Active', 'Completed', 'Ended'],
+		labels: [ 'Active', 'Completed', 'Ended'],
 		plotOptions: {
 			pie: {
 				donut: {
@@ -56,7 +57,7 @@ const TasksChart = () => {
 		legend: {
 			position: 'right',
 			offsetY: 60,
-			fontFamily: 'sans-serif'
+			fontFamily: 'sans-serif',
 		},
 	});
 	return (
@@ -72,6 +73,7 @@ const TasksChart = () => {
 				series={options.series}
 				type="donut"
 				style={{width:'370px'}}
+				className="donut"
 			/>
 		</div>
 	);

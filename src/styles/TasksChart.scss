@@ -7,8 +7,35 @@
 	box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06);
 	display: flex;
 	flex-direction: column;
-	height: 100%;
+	height: fit-content;
 	justify-content: flex-start;
+	.donut {
+		.apexcharts-canvas {
+			svg {
+				foreignObject {
+					.apexcharts-legend {
+						.apexcharts-legend-series {
+							.apexcharts-legend-marker {
+								height: 10px !important;
+								position: relative;
+								width: 10px !important;
+							}
+							.apexcharts-legend-marker::after {
+								background-color: #fff !important;
+								border-radius: 50%;
+								content: '';
+								height: 6px !important;
+								position: absolute !important;
+								right: 20%;
+								top: 2px;
+								width: 6px !important;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 	.donut-chart-tasks {
 		align-items: center;
 		border-bottom: 1px solid #ebeff2;
@@ -25,22 +52,21 @@
 			letter-spacing: 0.01em;
 		}
 		.show-chart {
-            display: flex;
-            align-items: center;
-            
+			align-items: center;
+			display: flex;
+
 			p {
 				color: #6a707e;
+				font-family: Poppins-Regular;
 				font-size: 12px;
 				letter-spacing: 0.01em;
-                font-family: Poppins-Regular;
-
 			}
-            span{
-                font-size: 12px;
+			span {
+				color: #109cf1;
+				font-family: Poppins-Regular;
+				font-size: 12px;
 				letter-spacing: 0.01em;
-                font-family: Poppins-Regular;
-                color: #109CF1;
-            }
+			}
 		}
 	}
 }

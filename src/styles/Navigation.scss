@@ -1,13 +1,12 @@
-@import "fonts.scss";
+@import 'fonts.scss';
 
 .navigation {
 	align-items: center;
+	border-bottom: 1px solid #ebeff2;
 	display: flex;
-	height: 60px;
+	height: 64px;
 	justify-content: space-between;
 	width: 100%;
-	
-    
 	button {
 		background: none;
 		border: none;
@@ -16,8 +15,8 @@
 	.search {
 		align-items: center;
 		display: flex;
-		padding-left: 36px;
 		height: 100%;
+		padding-left: 36px;
 		.search-button {
 			cursor: pointer;
 			margin-right: 12px;

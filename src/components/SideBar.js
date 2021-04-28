@@ -94,13 +94,13 @@ const SideBar = () => {
 								src={item.img}
 								alt=""
 								className="disable-image"
-								key={key + 1}
+								key={key - 1}
 								style={key === listKey.key ? {opacity:'1'} : {}}
 							/>
 						</div>
 						<NavLink
 							key={key}
-							to={key === 0 ? '/dashboard': '/'}
+							to={key === 0 ? '/dashboard': '/contacts'}
 							style={key === listKey.key ? { color: '#109CF1' } : {}}
 							onClick={() => handleClickList(key)}
 						>

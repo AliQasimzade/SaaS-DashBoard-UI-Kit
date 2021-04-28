@@ -1,0 +1,46 @@
+@import 'fonts.scss';
+
+.tasks-chart {
+	align-items: center;
+	background-color: #fff;
+	border-radius: 4px;
+	box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06);
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	justify-content: flex-start;
+	.donut-chart-tasks {
+		align-items: center;
+		border-bottom: 1px solid #ebeff2;
+		display: flex;
+		height: 50px;
+		justify-content: space-between;
+		margin-bottom: 33px;
+		padding: 0 24px;
+		width: 100%;
+		p {
+			color: #192a3e;
+			font-family: Poppins-Medium;
+			font-size: 15px;
+			letter-spacing: 0.01em;
+		}
+		.show-chart {
+            display: flex;
+            align-items: center;
+            
+			p {
+				color: #6a707e;
+				font-size: 12px;
+				letter-spacing: 0.01em;
+                font-family: Poppins-Regular;
+
+			}
+            span{
+                font-size: 12px;
+				letter-spacing: 0.01em;
+                font-family: Poppins-Regular;
+                color: #109CF1;
+            }
+		}
+	}
+}

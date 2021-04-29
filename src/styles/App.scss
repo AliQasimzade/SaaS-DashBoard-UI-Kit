@@ -1,7 +1,8 @@
-.App{
-  max-width: 1440px;
-  margin: 0 auto;
-  display: flex;
- position: relative;
-     background: #F5F6F8;
+@import 'colors.scss';
+.App {
+	background: $appBackgroundColor;
+	display: flex;
+	margin: 0 auto;
+	max-width: 1500px;
+	position: relative;
 }

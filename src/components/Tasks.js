@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/Tasks.scss';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import associatedImage from '../images/associated_photo.png';
 import associatedImage1 from '../images/associated_photo (1).png';
 import associatedImage2 from '../images/associated_photo (2).png';
-import Ellipse from "../images/Ellipse.png";
+import Ellipse from '../images/Ellipse.png';
 import Ellipse1 from '../images/Ellipse (1).png';
 import Edit from '../images/edit.png';
 import Delete from '../images/delete.png';
-
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 const BorderLinearProgress = withStyles((theme) => ({
 	root: {
 		height: 4,
@@ -25,15 +27,23 @@ const BorderLinearProgress = withStyles((theme) => ({
 	},
 }))(LinearProgress);
 
-const useStyles = makeStyles({
-	root: {
-		flexGrow: 1,
+const useStyle = makeStyles((theme) => ({
+	formControl: {
+		margin: theme.spacing(1),
+		minWidth: 120,
 	},
-});
+	selectEmpty: {
+		marginTop: theme.spacing(2),
+	},
+}));
 
 const Tasks = () => {
-	const classes = useStyles();
+	const classe = useStyle();
+	const [age, setAge] = useState('');
 
+	const handleChange = (event) => {
+		setAge(event.target.value);
+	};
 	return (
 		<main className="tasks">
 			<section className="section-1">
@@ -41,15 +51,29 @@ const Tasks = () => {
 					<div className="section-one-header">
 						<p className="remaining-tasks">8 task completed out of 10</p>
 						<div className="show-tasks">
-							<span>Show:</span>
-							<select>
-								<option value="1">This week</option>
-								<option value="2">This month</option>
-								<option value="3">This year</option>
-							</select>
+							<span className="show">Show:</span>
+							<FormControl className={classe.formControl} style={{paddingLeft:'3px'}}>
+								<Select
+									value={age}
+									onChange={handleChange}
+									displayEmpty
+									className={classe.selectEmpty}
+									inputProps={{ 'aria-label': 'Without label' }}
+								>
+									<MenuItem value="">
+										<span>This week</span>
+									</MenuItem>
+									<MenuItem value={10}>
+										<span> This month</span>
+									</MenuItem>
+									<MenuItem value={20}>
+										<span>This year</span>
+									</MenuItem>
+								</Select>
+							</FormControl>
 						</div>
 					</div>
-					<div className={classes.root}>
+					<div className={classe.root}>
 						<BorderLinearProgress variant="determinate" value={74} />
 					</div>
 					<div className="date">23 December, Sunday</div>
@@ -150,7 +174,7 @@ const Tasks = () => {
 					</div>
 				</div>
 			</section>
-      <a href="/">Show more</a>
+			<a href="/">Show more</a>
 		</main>
 	);
 };

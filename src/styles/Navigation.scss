@@ -1,5 +1,5 @@
 @import 'fonts.scss';
-
+@import 'colors.scss';
 .navigation {
 	align-items: center;
 	border-bottom: 1px solid #ebeff2;
@@ -7,7 +7,7 @@
 	height: 60px;
 	justify-content: space-between;
 	width: 100%;
-	background-color: #fff;
+	background-color: $whiteColor;
 	button {
 		background: none;
 		border: none;

@@ -1,4 +1,5 @@
 @import 'fonts.scss';
+@import 'colors.scss';
 
 .side-bar {
 	box-shadow: 6px 0px 18px rgba(0, 0, 0, 0.06);
@@ -6,7 +7,7 @@
 	position: sticky;
 	top: 0;
 	width: 256px;
-	background-color: #fff;
+	background-color: $whiteColor;
 	.heading {
 		align-items: center;
 		border-bottom: 1px solid #ebeff2;
@@ -15,7 +16,7 @@
 		justify-content: flex-start;
 		padding: 0 24px;
 		p {
-			color: #109cf1;
+			color: $primaryColor;
 			font-family: Open-Sans-SemiBold;
 			font-size: 18px;
 		}
@@ -90,7 +91,7 @@
 			}
 			&:hover {
 				a {
-					color: #109cf1;
+					color: $primaryColor;
 				}
 				.able-image {
 					opacity: 0;
@@ -121,10 +122,10 @@
 			margin-right: 14px;
 		}
 		&:hover {
-			color: #109cf1;
+			color: $primaryColor;
 			svg {
 				path {
-					fill: #109cf1;
+					fill: $primaryColor;
 				}
 			}
 		}

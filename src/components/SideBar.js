@@ -87,22 +87,31 @@ const SideBar = () => {
 			</div>
 			<ul className="side-lists">
 				{allList.map((item, key) => (
-					<li key={key} className={key === 6 ? 'settings' : ''}>
+					<li
+						key={key}
+						className={key === 6 ? 'settings' : ''}
+						onClick={() => handleClickList(key)}
+					>
 						<div className="list-images">
-							<img src={item.image} alt="" className="able-image" key={key} style={key === listKey.key? {opacity:'0'} : {}} />
+							<img
+								src={item.image}
+								alt=""
+								className="able-image"
+								key={key}
+								style={key === listKey.key ? { opacity: '0' } : {}}
+							/>
 							<img
 								src={item.img}
 								alt=""
 								className="disable-image"
 								key={key - 1}
-								style={key === listKey.key ? {opacity:'1'} : {}}
+								style={key === listKey.key ? { opacity: '1' } : {}}
 							/>
 						</div>
 						<NavLink
 							key={key}
-							to={key === 0 ? '/dashboard': '/contacts'}
+							to={key === 0 ? '/dashboard' : '/contacts'}
 							style={key === listKey.key ? { color: '#109CF1' } : {}}
-							onClick={() => handleClickList(key)}
 						>
 							{item.list}
 						</NavLink>

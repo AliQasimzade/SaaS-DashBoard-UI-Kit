@@ -1,10 +1,93 @@
-.deals-graphic{
-    align-items: center;
-	background-color: #fff;
+@import 'fonts.scss';
+@import 'colors.scss';
+
+.deals-graphic {
+	align-items: center;
+	background-color: $whiteColor;
 	border-radius: 4px;
 	box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06);
 	display: flex;
 	flex-direction: column;
 	height: 100%;
 	justify-content: flex-start;
+	title {
+		display: none !important;
+	}
+	#SvgjsLine1008{
+		stroke-dasharray: 0 !important;
+	}
+	#SvgjsLine1048{
+		stroke-dasharray: 7;
+	}
+	.apexcharts-xaxistooltip{
+		display: none !important;
+	}
+	.apexcharts-tooltip.apexcharts-active {
+		background: $blackColor !important;
+		border-radius: 15px !important;
+		height: 24px !important;
+		opacity: 0.6 !important;
+		width: 46px !important;
+		.apexcharts-tooltip-y-group {
+			align-items: center;
+			display: flex;
+			height: 100%;
+			justify-content: center;
+			padding: 0 !important;
+			width: 100%;
+		}
+		.apexcharts-tooltip-text {
+			height: 100% !important;
+			width: 100% !important;
+		}
+		.apexcharts-tooltip-series-group {
+			height: 100% !important;
+			justify-content: center !important;
+			padding: 0 !important;
+			width: 100% !important;
+			.apexcharts-tooltip-text-value {
+				color: $whiteColor;
+				font-family: Poppins-Medium;
+				font-size: 11px !important;
+				letter-spacing: 0.01em !important;
+				margin: 0 !important;
+			}
+			.apexcharts-tooltip-marker {
+				display: none !important;
+			}
+		}
+	}
+	.area-chart-tasks{
+		align-items: center;
+		border-bottom: 1px solid #ebeff2;
+		display: flex;
+		height: 50px;
+		justify-content: space-between;
+		margin-bottom: 33px;
+		padding: 0 24px;
+		width: 100%;
+		p {
+			color: $blackColor;
+			font-family: Poppins-Medium;
+			font-size: 15px;
+			letter-spacing: 0.01em;
+		}
+		.show-chart {
+			align-items: center;
+			display: flex;
+
+			p {
+				color: #6a707e;
+				font-family: Poppins-Regular;
+				font-size: 12px;
+				letter-spacing: 0.01em;
+			}
+			span {
+				color: $primaryColor;
+				font-family: Poppins-Regular;
+				font-size: 12px;
+				letter-spacing: 0.01em;
+			}
+		}
+	}
 }

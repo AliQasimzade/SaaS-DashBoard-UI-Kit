@@ -2,20 +2,19 @@ import React, { useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import '../styles/TasksChart.scss';
 
-
 const TasksChart = () => {
 	const [options] = useState({
 		series: [20, 60, 10],
-		labels: [ 'Active', 'Completed', 'Ended'],
+		labels: ['Active', 'Completed', 'Ended'],
 		plotOptions: {
 			pie: {
 				donut: {
 					size: 95,
+					rotate: -45,
 					labels: {
 						show: true,
 						name: {
 							show: false,
-							offsetY: -5,
 						},
 						value: {
 							show: true,
@@ -28,10 +27,9 @@ const TasksChart = () => {
 						},
 						total: {
 							show: true,
-							label: 'Total',
 							color: 'blue',
-							formatter: function () {
-								return 60 + '%';
+							formatter: (val) => {
+								return val.config.series.filter((item) => item === 60) + '%';
 							},
 						},
 					},
@@ -42,6 +40,7 @@ const TasksChart = () => {
 		stroke: {
 			colors: ['#FFB946', '#2ED47A', '#F7685B'],
 			width: 1,
+			lineCap: 'round',
 		},
 		chart: {
 			type: 'donut',
@@ -72,7 +71,7 @@ const TasksChart = () => {
 				options={options}
 				series={options.series}
 				type="donut"
-				style={{width:'370px'}}
+				style={{ width: '370px' }}
 				className="donut"
 			/>
 		</div>

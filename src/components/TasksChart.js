@@ -10,7 +10,6 @@ const TasksChart = () => {
 			pie: {
 				donut: {
 					size: 95,
-					rotate: -45,
 					labels: {
 						show: true,
 						name: {

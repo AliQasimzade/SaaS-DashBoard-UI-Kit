@@ -8,8 +8,11 @@ const Content = () => {
 	return (
 		<div className="content">
 			<Tasks />
+			<div className="charts">
 			<DealsGraphic />
 			<TasksChart />
+			</div>
+		
 		</div>
 	);
 };

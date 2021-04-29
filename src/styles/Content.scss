@@ -2,22 +2,9 @@
 	width: 100%;
     height: fit-content;
     overflow-y: auto;
-	display: grid;
+	display: flex;
     overflow: auto;
-	grid-template-columns: 60% 1fr;
-	grid-template-rows: repeat(2, 344px);
-	grid-column-gap: 30px;
-	grid-row-gap: 30px;
-    grid-template-areas: 'tasks dealsGraphic'
-    'tasks tasksChart';
+	
     padding: 36px;
-    .tasks{
-        grid-area: tasks;
-    }
-    .tasks-chart{
-        grid-area: tasksChart;
-    }
-    .deals-graphic{
-        grid-area: dealsGraphic;
-    }
+    
 }

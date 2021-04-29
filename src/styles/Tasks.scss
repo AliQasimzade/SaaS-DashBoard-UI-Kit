@@ -31,7 +31,7 @@
 					letter-spacing: 0.01em;
 				}
 				.show-tasks {
-					align-items: center;
+					align-items: flex-end;
 					display: flex;
 					justify-content: center;
 					.show {
@@ -397,6 +397,9 @@
 		}
 	}
 	.makeStyles-formControl-1 {
+		margin: 0;
+	}
+	.MuiInputBase-root{
 		margin: 0;
 	}
 	.MuiInput-underline::after {

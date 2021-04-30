@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import '../styles/DealsGraphic.scss';
 import ReactApexChart from 'react-apexcharts';
 import { makeStyles } from '@material-ui/core/styles';
-
 import MenuItem from '@material-ui/core/MenuItem';
-
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+
 
 const useStyles = makeStyles((theme) => ({
 	formControl: {
@@ -50,10 +49,7 @@ const DealsGraphic = () => {
 			},
 			tooltip: {
 				enabled: true,
-				style: {
-					fontSize: '16px',
-					fontFamily: 'Lato',
-				},
+				
 				x: {
 					show: false,
 				},
@@ -66,7 +62,6 @@ const DealsGraphic = () => {
 
 			chart: {
 				stacked: true,
-				height: 350,
 				zoom: {
 					enabled: false,
 				},
@@ -105,6 +100,13 @@ const DealsGraphic = () => {
 				axisBorder: {
 					show: false,
 				},
+				labels: {
+					style: {
+						colors: '#4C5862',
+						fontSize: 12,
+						fontFamily: 'Poppins-Regular',
+					},
+				},
 			},
 			yaxis: {
 				tickAmount: 4,
@@ -112,7 +114,9 @@ const DealsGraphic = () => {
 				max: 200,
 				labels: {
 					style: {
-						colors: '#8e8da4',
+						colors: '#4C5862',
+						fontSize: 12,
+						fontFamily: 'Poppins-Regular',
 					},
 				},
 				axisBorder: {
@@ -140,9 +144,9 @@ const DealsGraphic = () => {
 	return (
 		<div className="deals-graphic">
 			<div className="area-chart-tasks">
-				<p>Tasks</p>
+				<p>Deals</p>
 				<div className="show-chart">
-					<p>Show</p>:
+					<span className="show">Show:</span>
 					<FormControl
 						className={classes.formControl}
 						style={{ paddingLeft: '3px' }}

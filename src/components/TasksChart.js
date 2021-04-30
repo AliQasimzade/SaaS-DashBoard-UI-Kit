@@ -83,7 +83,7 @@ const TasksChart = () => {
 			<div className="donut-chart-tasks">
 				<p>Tasks</p>
 				<div className="show-chart">
-					<p>Show</p>:
+					<span className="show">Show:</span>
 					<FormControl
 						className={classe.formControl}
 						style={{ paddingLeft: '3px' }}
@@ -112,7 +112,8 @@ const TasksChart = () => {
 				options={options}
 				series={options.series}
 				type="donut"
-				style={{ width: '370px' }}
+				style={{ width: '390px',height:'224px',marginLeft:'-25px' }}
+			
 				className="donut"
 			/>
 		</div>

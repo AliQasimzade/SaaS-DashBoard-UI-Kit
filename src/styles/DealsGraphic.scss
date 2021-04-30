@@ -9,16 +9,17 @@
 	display: flex;
 	flex-direction: column;
 	height: 344px;
+	width: 445px;
 	justify-content: flex-start;
-	#SvgjsLine1008{
+	#SvgjsLine1008 {
 		stroke-dasharray: 0 !important;
-		stroke-width: 1  !important;
-		stroke:#C2CFE0;
+		stroke-width: 1 !important;
+		stroke: #c2cfe0;
 	}
-	#SvgjsLine1048{
+	#SvgjsLine1048 {
 		stroke-dasharray: 7;
 	}
-	.apexcharts-xaxistooltip{
+	.apexcharts-xaxistooltip {
 		display: none !important;
 	}
 	.apexcharts-tooltip.apexcharts-active {
@@ -27,6 +28,7 @@
 		height: 24px !important;
 		opacity: 0.6 !important;
 		width: 46px !important;
+		
 		.apexcharts-tooltip-y-group {
 			align-items: center;
 			display: flex;
@@ -35,7 +37,7 @@
 			padding: 0 !important;
 			width: 100%;
 		}
-		
+
 		.apexcharts-tooltip-series-group {
 			height: 100% !important;
 			justify-content: center !important;
@@ -53,14 +55,14 @@
 			}
 		}
 	}
-	.area-chart-tasks{
+	.area-chart-tasks {
 		align-items: center;
 		border-bottom: 1px solid #ebeff2;
 		display: flex;
 		height: 50px;
 		justify-content: space-between;
 		margin-bottom: 33px;
-		padding: 0 24px;
+		padding: 0 22px;
 		width: 100%;
 		p {
 			color: $blackColor;
@@ -69,15 +71,15 @@
 			letter-spacing: 0.01em;
 		}
 		.show-chart {
-			align-items: center;
+			align-items: flex-end;
 			display: flex;
-
-			p {
+			.show {
 				color: #6a707e;
 				font-family: Poppins-Regular;
 				font-size: 12px;
 				letter-spacing: 0.01em;
 			}
+			
 			span {
 				color: $primaryColor;
 				font-family: Poppins-Regular;
@@ -86,21 +88,23 @@
 			}
 		}
 	}
-	.MuiSelect-root{
+	.MuiSelect-root {
 		padding: 0 !important;
-	
-		span{
-			color:$primaryColor;
+
+		span {
+			color: $primaryColor;
 			font-size: 12px;
 			font-family: Poppins-Regular;
 			letter-spacing: 0.01em;
 		}
 	}
-	.makeStyles-formControl-1 {
+	.makeStyles-formControl-6 {
 		margin: 0;
+		width: 90px !important;
+		min-width: 0 !important;
 	}
-	.MuiFormControl-root{
-	   margin: 0 !important;
+	.MuiFormControl-root {
+		margin: 0 !important;
 	}
 	.MuiInput-underline::after {
 		display: none;
@@ -108,13 +112,16 @@
 	.MuiInput-underline::before {
 		display: none;
 	}
+	.jss7 {
+		margin: 0 !important;
+	}
 	.makeStyles-selectEmpty-7 {
 		margin: 0;
 	}
 	.MuiSvgIcon-root {
 		width: 12px;
 		height: 12px;
-		top:5px;
+		top: 5px;
 		left: 65px;
 	}
 }

@@ -86,4 +86,35 @@
 			}
 		}
 	}
+	.MuiSelect-root{
+		padding: 0 !important;
+	
+		span{
+			color:$primaryColor;
+			font-size: 12px;
+			font-family: Poppins-Regular;
+			letter-spacing: 0.01em;
+		}
+	}
+	.makeStyles-formControl-1 {
+		margin: 0;
+	}
+	.MuiFormControl-root{
+	   margin: 0 !important;
+	}
+	.MuiInput-underline::after {
+		display: none;
+	}
+	.MuiInput-underline::before {
+		display: none;
+	}
+	.makeStyles-selectEmpty-7 {
+		margin: 0;
+	}
+	.MuiSvgIcon-root {
+		width: 12px;
+		height: 12px;
+		top:5px;
+		left: 65px;
+	}
 }

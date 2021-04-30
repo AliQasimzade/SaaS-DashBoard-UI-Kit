@@ -389,7 +389,6 @@
 	}
 	.MuiSelect-root{
 		padding: 0 !important;
-		width: fit-content;
 		span{
 			color:$primaryColor;
 			font-size: 12px;
@@ -415,7 +414,7 @@
 	.MuiSvgIcon-root {
 		width: 12px;
 		height: 12px;
-		position: static;
-		margin-left: 5px;
+		top:5px;
+		left: 65px;
 	}
 }

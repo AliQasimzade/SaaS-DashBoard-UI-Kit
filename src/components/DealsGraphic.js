@@ -143,7 +143,10 @@ const DealsGraphic = () => {
 				<p>Tasks</p>
 				<div className="show-chart">
 					<p>Show</p>:
-					<FormControl className={classes.formControl}>
+					<FormControl
+						className={classes.formControl}
+						style={{ paddingLeft: '3px' }}
+					>
 						<Select
 							value={age}
 							onChange={handleChange}

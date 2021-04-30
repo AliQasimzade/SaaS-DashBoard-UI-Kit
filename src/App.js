@@ -17,7 +17,7 @@ const App = () => {
   useEffect(() => {
     axios
       .get("https://herokuhosting2.herokuapp.com/getData")
-      .then((res) => console.log(res))
+      .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
   }, []);
   return (

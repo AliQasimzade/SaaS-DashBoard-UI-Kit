@@ -19,13 +19,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 const DealsGraphic = () => {
 	const [options] = useState({
-		series: [
-			{
+		series: [{
+			    name:"Closed deals",
 				type: 'area',
 				data: [50, 100, 95, 170, 60, 160, 150],
-			},
+			}
 		],
-
 		options: {
 			grid: {
 				show: true,

@@ -38,8 +38,7 @@ const TasksChart = () => {
 
 		stroke: {
 			colors: ['#FFB946', '#2ED47A', '#F7685B'],
-			width: 1,
-			lineCap: 'round',
+			width: 1
 		},
 		chart: {
 			type: 'donut',

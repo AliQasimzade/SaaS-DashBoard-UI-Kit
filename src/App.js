@@ -1,31 +1,37 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import data from "./data";
+
 import "./styles/App.scss";
-import { addData } from "./redux/actions/actions.js";
+import axios from "axios";
+
 import Sidebar from "./components/SideBar";
 import Dashboard from "./components/Dashboard";
-import { BrowserRouter as Router,Route,Switch,Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 
 const App = () => {
-  const dispatch = useDispatch();
-  const loggedIn = true
+  const loggedIn = true;
   useEffect(() => {
-    dispatch(addData(data));
-    
-  });
+    axios
+      .get("https://herokuhosting2.herokuapp.com/getData")
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <Router>
-    <div className="App">
-    <Sidebar />
-      <Switch>
-        <Route excat path="/">
-        {loggedIn ? <Redirect to="/dashboard" /> : ''}
-        
-        <Dashboard />
-        </Route>
-      </Switch>
-    </div>
+      <div className="App">
+        <Sidebar />
+        <Switch>
+          <Route excat path="/">
+            {loggedIn ? <Redirect to="/dashboard" /> : ""}
+
+            <Dashboard />
+          </Route>
+        </Switch>
+      </div>
     </Router>
   );
 };

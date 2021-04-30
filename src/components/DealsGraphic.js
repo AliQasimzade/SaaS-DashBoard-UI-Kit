@@ -19,11 +19,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 const DealsGraphic = () => {
 	const [options] = useState({
-		series: [{
-			    name:"Closed deals",
-				type: 'area',
-				data: [50, 100, 95, 170, 60, 160, 150],
-			}
+		series: [
+			{
+				data: [47, 100, 95, 170, 60, 160, 150],
+			},
 		],
 		options: {
 			grid: {
@@ -66,8 +65,7 @@ const DealsGraphic = () => {
 			},
 
 			chart: {
-				type: 'area',
-				stacked: false,
+				stacked: true,
 				height: 350,
 				zoom: {
 					enabled: false,
@@ -92,6 +90,22 @@ const DealsGraphic = () => {
 					stops: [20, 100, 100, 100],
 				},
 			},
+			xaxis: {
+				type: 'category',
+				categories: ['1 Dec', '', '8 Dec', '', '16 Dec', '', '31 Dec'],
+				axisBorder: {
+					show: false,
+				},
+				tooltip: {
+					enabled: false,
+				},
+				axisTicks: {
+					show: false,
+				},
+				axisBorder: {
+					show: false,
+				},
+			},
 			yaxis: {
 				tickAmount: 4,
 				min: 0,
@@ -108,15 +122,9 @@ const DealsGraphic = () => {
 					show: false,
 				},
 			},
-			xaxis: {
-				type: 'category',
-				categories: ['1 Dec', '', '8 Dec', '', '16 Dec', '', '31 Dec'],
-				axisBorder: {
-					show: false,
-				},
-			},
 
 			legend: {
+				show: true,
 				position: 'top',
 				horizontalAlign: 'right',
 				offsetX: -10,

@@ -10,11 +10,10 @@
 	flex-direction: column;
 	height: 344px;
 	justify-content: flex-start;
-	title {
-		display: none !important;
-	}
 	#SvgjsLine1008{
 		stroke-dasharray: 0 !important;
+		stroke-width: 1  !important;
+		stroke:#C2CFE0;
 	}
 	#SvgjsLine1048{
 		stroke-dasharray: 7;
@@ -36,10 +35,7 @@
 			padding: 0 !important;
 			width: 100%;
 		}
-		.apexcharts-tooltip-text {
-			height: 100% !important;
-			width: 100% !important;
-		}
+		
 		.apexcharts-tooltip-series-group {
 			height: 100% !important;
 			justify-content: center !important;

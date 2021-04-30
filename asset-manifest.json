@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/SaaS-DashBoard-UI-Kit/static/css/main.4507980d.chunk.css",
+    "main.css": "/SaaS-DashBoard-UI-Kit/static/css/main.bf3fb376.chunk.css",
     "main.js": "/SaaS-DashBoard-UI-Kit/static/js/main.efa06abb.chunk.js",
     "main.js.map": "/SaaS-DashBoard-UI-Kit/static/js/main.efa06abb.chunk.js.map",
     "runtime-main.js": "/SaaS-DashBoard-UI-Kit/static/js/runtime-main.190be5d4.js",
@@ -8,7 +8,7 @@
     "static/js/2.bbe0cf04.chunk.js": "/SaaS-DashBoard-UI-Kit/static/js/2.bbe0cf04.chunk.js",
     "static/js/2.bbe0cf04.chunk.js.map": "/SaaS-DashBoard-UI-Kit/static/js/2.bbe0cf04.chunk.js.map",
     "index.html": "/SaaS-DashBoard-UI-Kit/index.html",
-    "static/css/main.4507980d.chunk.css.map": "/SaaS-DashBoard-UI-Kit/static/css/main.4507980d.chunk.css.map",
+    "static/css/main.bf3fb376.chunk.css.map": "/SaaS-DashBoard-UI-Kit/static/css/main.bf3fb376.chunk.css.map",
     "static/js/2.bbe0cf04.chunk.js.LICENSE.txt": "/SaaS-DashBoard-UI-Kit/static/js/2.bbe0cf04.chunk.js.LICENSE.txt",
     "static/media/Navigation.scss": "/SaaS-DashBoard-UI-Kit/static/media/Poppins-SemiBold.cce5625b.ttf",
     "static/media/chat.6b67ee50.svg": "/SaaS-DashBoard-UI-Kit/static/media/chat.6b67ee50.svg",
@@ -21,7 +21,7 @@
   "entrypoints": [
     "static/js/runtime-main.190be5d4.js",
     "static/js/2.bbe0cf04.chunk.js",
-    "static/css/main.4507980d.chunk.css",
+    "static/css/main.bf3fb376.chunk.css",
     "static/js/main.efa06abb.chunk.js"
   ]
 }

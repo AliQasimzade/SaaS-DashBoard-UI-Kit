@@ -111,6 +111,11 @@
 		margin-top: 24px;
 		padding: 16px 0;
 		width: 95%;
+		transition: all 0.3s ease-in-out;
+		&:hover{
+			box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.14);
+			cursor: pointer;
+		}
 		.section-two-header {
 			align-items: flex-start;
 			display: flex;
@@ -199,6 +204,11 @@
 		margin-top: 24px;
 		padding: 16px 0;
 		width: 95%;
+		transition: all 0.3s ease-in-out;
+		&:hover{
+			box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.14);
+			cursor: pointer;
+		}
 		.section-three-header {
 			align-items: flex-start;
 			display: flex;
@@ -298,6 +308,11 @@
 		margin-top: 24px;
 		padding: 16px 0;
 		width: 95%;
+		transition: all 0.3s ease-in-out;
+		&:hover{
+			box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.14);
+			cursor: pointer;
+		}
 		.section-four-header {
 			align-items: flex-start;
 			display: flex;

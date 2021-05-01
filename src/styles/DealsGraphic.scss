@@ -1,22 +1,28 @@
 @import 'fonts.scss';
 @import 'colors.scss';
-
+@mixin flex($alignItems, $justify, $direction) {
+	align-items: $alignItems;
+	display: flex;
+	flex-direction: $direction;
+	justify-content: $justify;
+}
+@mixin stylesFont($color, $fontFamily, $fontSize, $letterSpace) {
+	color: $color;
+	font-family: $fontFamily;
+	font-size: $fontSize;
+	letter-spacing: $letterSpace;
+}
 .deals-graphic {
-	align-items: flex-start;
 	background-color: $whiteColor;
 	border-radius: 4px;
 	box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06);
-	display: flex;
-	flex-direction: column;
 	height: 344px;
 	width: 445px;
-	
-	justify-content: flex-start;
-
+	@include flex(flex-start, flex-start, column);
 	#SvgjsLine1048 {
 		stroke-dasharray: 7;
 	}
-	svg{
+	svg {
 		cursor: pointer !important;
 	}
 	.apexcharts-xaxistooltip {
@@ -28,27 +34,25 @@
 		height: 24px !important;
 		opacity: 0.6 !important;
 		width: 46px !important;
-
 		.apexcharts-tooltip-y-group {
-			align-items: center;
-			display: flex;
 			height: 100%;
-			justify-content: center;
 			padding: 0 !important;
 			width: 100%;
+			@include flex(center, center, row);
 		}
-
 		.apexcharts-tooltip-series-group {
 			height: 100% !important;
 			justify-content: center !important;
 			padding: 0 !important;
 			width: 100% !important;
 			.apexcharts-tooltip-text-value {
-				color: $whiteColor;
-				font-family: Poppins-Medium;
-				font-size: 11px !important;
-				letter-spacing: 0.01em !important;
 				margin: 0 !important;
+				@include stylesFont(
+					$whiteColor,
+					Poppins-Medium,
+					11px !important,
+					0.01em !important
+				);
 			}
 			.apexcharts-tooltip-marker {
 				display: none !important;
@@ -56,54 +60,37 @@
 		}
 	}
 	.area-chart-tasks {
-		align-items: center;
 		border-bottom: 1px solid #ebeff2;
-		display: flex;
 		height: 50px;
-		justify-content: space-between;
 		margin-bottom: 16px;
 		padding: 0 22px;
 		width: 100%;
+		@include flex(center, space-between, row);
 		p {
-			color: $blackColor;
-			font-family: Poppins-Medium;
-			font-size: 15px;
-			letter-spacing: 0.01em;
+			@include stylesFont($blackColor, Poppins-Medium, 15px, 0.01em);
 		}
 		.show-chart {
-			align-items: flex-end;
-			display: flex;
+			@include flex(flex-end, none, row);
 			.show {
-				color: #6a707e;
-				font-family: Poppins-Regular;
-				font-size: 12px;
-				letter-spacing: 0.01em;
+				@include stylesFont(#6a707e, Poppins-Regular, 12px, 0.01em);
 			}
-			
 			span {
-				color: $primaryColor;
-				font-family: Poppins-Regular;
-				font-size: 12px;
-				letter-spacing: 0.01em;
+				@include stylesFont($primaryColor, Poppins-Regular, 12px, 0.01em);
 			}
 		}
 	}
 	.MuiSelect-root {
 		padding: 0 !important;
-
 		span {
-			color: $primaryColor;
-			font-size: 12px;
-			font-family: Poppins-Regular;
-			letter-spacing: 0.01em;
+			@include stylesFont($primaryColor, Poppins-Regular, 12px, 0.01em);
 		}
 	}
 	.makeStyles-formControl-6 {
 		margin: 0;
-		width: 90px !important;
 		min-width: 0 !important;
+		width: 90px !important;
 	}
-	.jss6{
+	.jss6 {
 		min-width: 0 !important;
 		width: 90px !important;
 	}
@@ -123,9 +110,9 @@
 		margin: 0 !important;
 	}
 	.MuiSvgIcon-root {
-		width: 12px;
 		height: 12px;
-		top: 5px;
 		left: 65px;
+		top: 5px;
+		width: 12px;
 	}
 }

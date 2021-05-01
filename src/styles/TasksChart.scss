@@ -1,95 +1,77 @@
 @import 'fonts.scss';
 @import 'colors.scss';
-
+@mixin displayFlex($alignItems, $justify, $direction) {
+	align-items: $alignItems;
+	display: flex;
+	flex-direction: $direction;
+	justify-content: $justify;
+}
+@mixin fontStyles($color, $fontFamily, $fontSize, $letterSpace) {
+	color: $color;
+	font-family: $fontFamily;
+	font-size: $fontSize;
+	letter-spacing: $letterSpace;
+}
 .tasks-chart {
-	align-items: center;
 	background-color: #fff;
 	border-radius: 4px;
 	box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06);
-	display: flex;
-	flex-direction: column;
 	height: 344px;
-	justify-content: flex-start;
 	margin-top: 30px;
+	@include displayFlex(center, flex-start, column);
 	.donut {
-		.apexcharts-canvas {
-			svg {
-				foreignObject {
-					.apexcharts-legend {
-						.apexcharts-legend-series {
-							margin-bottom: 10px !important;
-							.apexcharts-legend-marker {
-								height: 10px !important;
-								position: relative;
-								width: 10px !important;
-							}
-							.apexcharts-legend-marker::after {
-								background-color: #fff !important;
-								border-radius: 50%;
-								content: '';
-								height: 6px !important;
-								position: absolute !important;
-								right: 20%;
-								top: 2px;
-								width: 6px !important;
-							}
-						}
-					}
-				}
+		.apexcharts-legend-series {
+			margin-bottom: 10px !important;
+			.apexcharts-legend-marker {
+				height: 10px !important;
+				position: relative;
+				width: 10px !important;
+			}
+			.apexcharts-legend-marker::after {
+				background-color: #fff !important;
+				border-radius: 50%;
+				content: '';
+				height: 6px !important;
+				position: absolute !important;
+				right: 20%;
+				top: 2px;
+				width: 6px !important;
 			}
 		}
 	}
 	.donut-chart-tasks {
-		align-items: center;
 		border-bottom: 1px solid #ebeff2;
-		display: flex;
 		height: 50px;
-		justify-content: space-between;
 		margin-bottom: 33px;
 		padding: 0 22px;
 		width: 100%;
+		@include displayFlex(center, space-between, row);
 		p {
-			color: #192a3e;
-			font-family: Poppins-Medium;
-			font-size: 15px;
-			letter-spacing: 0.01em;
+			@include fontStyles(#192a3e, Poppins-Medium, 15px, 0.01em);
 		}
 		.show-chart {
-			align-items: flex-end;
-			display: flex;
+			@include displayFlex(flex-end, none, row);
 			.show {
-				color: #6a707e;
-				font-family: Poppins-Regular;
-				font-size: 12px;
-				letter-spacing: 0.01em;
+				@include fontStyles(#6a707e, Poppins-Regular, 12px, 0.01em);
 			}
-
 			span {
-				color: $primaryColor;
-				font-family: Poppins-Regular;
-				font-size: 12px;
-				letter-spacing: 0.01em;
+				@include fontStyles($primaryColor, Poppins-Regular, 12px, 0.01em);
 			}
 		}
 	}
 	.MuiSelect-root {
 		padding: 0 !important;
-
 		span {
-			color: $primaryColor;
-			font-family: Poppins-Regular;
-			font-size: 12px;
-			letter-spacing: 0.01em;
+			@include fontStyles($primaryColor, Poppins-Regular, 12px, 0.01em);
 		}
 	}
 	.makeStyles-formControl-8 {
 		margin: 0;
-		width: 90px !important;
 		min-width: 0 !important;
+		width: 90px !important;
 	}
 	.MuiFormControl-root {
 		margin: 0 !important;
-		
 	}
 	.MuiInput-underline::after {
 		display: none;
@@ -98,11 +80,11 @@
 		display: none;
 	}
 	.makeStyles-selectEmpty-9 {
-		margin: 0  !important;
+		margin: 0 !important;
 	}
-	.jss8{
+	.jss8 {
 		min-width: 0 !important;
-		width:90px !important;
+		width: 90px !important;
 	}
 	.jss9 {
 		margin: 0 !important;

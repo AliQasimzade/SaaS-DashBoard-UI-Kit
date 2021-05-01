@@ -1,30 +1,38 @@
 @import 'fonts.scss';
 @import 'colors.scss';
 
+@mixin flex-layout($alignItems, $justify, $direction) {
+	align-items: $alignItems;
+	display: flex;
+	flex-direction: $direction;
+	justify-content: $justify;
+}
+
+@mixin fontStyle($color, $fontFamily, $fontSize, $letterSpace) {
+	color: $color;
+	font-family: $fontFamily;
+	font-size: $fontSize;
+	letter-spacing: $letterSpace;
+}
 .side-bar {
+	background-color: $whiteColor;
 	box-shadow: 6px 0px 18px rgba(0, 0, 0, 0.06);
 	height: 100vh;
 	position: sticky;
 	top: 0;
 	width: 256px;
-	background-color: $whiteColor;
 	.heading {
-		align-items: center;
 		border-bottom: 1px solid #ebeff2;
-		display: flex;
 		height: 60px;
-		justify-content: flex-start;
 		padding: 0 24px;
+		@include flex-layout(center, flex-start, row);
 		p {
-			color: $primaryColor;
-			font-family: Open-Sans-SemiBold;
-			font-size: 18px;
+			@include fontStyle($primaryColor, Open-Sans-SemiBold, 18px, none);
 		}
 	}
 	.profile {
-		align-items: center;
-		display: flex;
 		padding: 24px 24px 0;
+		@include flex-layout(center, none, row);
 		.profile-image {
 			border-radius: 50%;
 			height: 46px;
@@ -37,42 +45,31 @@
 			}
 		}
 		.profile-info {
-			display: flex;
-			flex-direction: column;
+			@include flex-layout(none, none, column);
 			.name {
-				color: #192a3e;
-				font-family: Poppins-Medium;
-				font-size: 14px;
+				@include fontStyle(#192a3e, Poppins-Medium, 14px, none);
 			}
 			.gmail {
-				color: #90a0b7;
-				font-family: Poppins-Medium;
-				font-size: 11px;
-				letter-spacing: 0.01em;
+				@include fontStyle(#90a0b7, Poppins-Medium, 11px, 0.01em);
 			}
 		}
 	}
 	.side-lists {
 		margin-top: 40px;
 		li {
-			align-items: center;
 			cursor: pointer;
-			display: flex;
-			justify-content: flex-start;
 			margin-bottom: 20px;
 			padding: 0 24px;
+			@include flex-layout(center, flex-start, row);
 			.list-images {
 				height: 25px;
+				margin-right: 7px;
 				position: relative;
 				width: 30px;
-				margin-right: 7px;
-				display: flex;
-				align-items: center;
-				justify-content: center;
+				@include flex-layout(center, center, row);
 				img {
-					position: absolute;
 					object-fit: contain;
-					
+					position: absolute;
 				}
 				.able-image {
 					z-index: 9;
@@ -82,12 +79,9 @@
 				}
 			}
 			a {
-				color: #334d6e;
-				font-family: Poppins-Medium;
-				font-size: 13px;
-				letter-spacing: 0.01em;
 				line-height: 19px;
 				transition: color 0.2s ease-in-out;
+				@include fontStyle(#334d6e, Poppins-Medium, 13px, 0.01em);
 			}
 			&:hover {
 				a {
@@ -109,15 +103,12 @@
 
 	.toggle-side-bar {
 		bottom: 30px;
-		color: #90a0b7;
 		cursor: pointer;
 		display: flex;
-		font-family: Poppins-Medium;
-		font-size: 11px;
-		letter-spacing: 0.01em;
 		padding: 0 24px;
 		position: absolute;
 		transition: all 0.2s ease-in-out;
+		@include fontStyle(#90a0b7, Poppins-Medium, 11px, 0.01em);
 		svg {
 			margin-right: 14px;
 		}
@@ -156,6 +147,9 @@
 	.toggle-side-bar {
 		p {
 			display: none;
+		}
+		svg {
+			margin-right: 0;
 		}
 	}
 	.side-lists {

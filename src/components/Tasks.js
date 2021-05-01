@@ -74,7 +74,7 @@ const Tasks = () => {
 						</div>
 					</div>
 					<div className={classe.root}>
-						<BorderLinearProgress variant="determinate" value={74} />
+						<BorderLinearProgress variant="determinate" value={86} />
 					</div>
 					<div className="date">23 December, Sunday</div>
 					<div className="week-days">

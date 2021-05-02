@@ -5,6 +5,8 @@ import "./styles/App.scss";
 import axios from "axios";
 import Sidebar from "./components/SideBar";
 import Dashboard from "./components/Dashboard";
+import Contacts from './components/Contacts';
+
 import {
   BrowserRouter as Router,
   Route,
@@ -13,7 +15,7 @@ import {
 } from "react-router-dom";
 
 const App = () => {
-  const loggedIn = true;
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,18 +27,21 @@ const App = () => {
 
   
   return (
-    <Router>
-      <div className="App">
-        <Sidebar />
-        <Switch>
-          <Route excat path="/">
-            {loggedIn ? <Redirect to="/dashboard" /> : "/"}
-            <Dashboard />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
-  );
+		<Router>
+			<div className="App">
+				<Sidebar />
+				<Switch>
+					<Redirect exact from="/" to="/dashboard" />
+					<Route path="/dashboard">
+						<Dashboard />
+					</Route>
+					<Route path="/contacts">
+						<Contacts />
+					</Route>
+				</Switch>
+			</div>
+		</Router>
+	);
 };
 
 export default App;

@@ -1,0 +1,120 @@
+@import 'fonts.scss';
+@import 'colors.scss';
+
+@mixin layout-flex($alignItems, $justify, $direction) {
+	align-items: $alignItems;
+	display: flex;
+	flex-direction: $direction;
+	justify-content: $justify;
+}
+
+@mixin styleFont($color, $fontFamily, $fontSize, $letterSpace) {
+	color: $color;
+	font-family: $fontFamily;
+	font-size: $fontSize;
+	letter-spacing: $letterSpace;
+}
+.contacts-content {
+	display: flex;
+	flex-direction: column;
+	height: fit-content;
+	padding: 36px;
+	width: 100%;
+	.add-contact {
+		width: 100%;
+		@include layout-flex(flex-end, space-between, row);
+		margin: 35px 0 24px 0;
+		.company-select {
+			@include layout-flex(flex-end, center, row);
+
+			span {
+				@include styleFont(#6a707e, Poppins-Regular, 12px, 0.01em);
+			}
+			.MuiSelect-root {
+				padding: 0 !important;
+				span {
+					@include styleFont($primaryColor, Poppins-Regular, 12px, 0.01em);
+				}
+			}
+			.MuiFormControl-root {
+				margin: 0 !important;
+				width: 40px !important;
+			}
+			.MuiInput-underline::after {
+				display: none;
+			}
+			.MuiInput-underline::before {
+				display: none;
+			}
+			.MuiSvgIcon-root {
+				height: 12px;
+				left: 15px;
+				top: 5px;
+				width: 12px;
+			}
+		}
+		button {
+			@include styleFont($whiteColor, Poppins-SemiBold, 13px, 0.01em);
+			background-color: $primaryColor;
+			box-shadow: 0px 4px 10px rgba(16, 156, 241, 0.24);
+			border-radius: 4px;
+			width: 160px;
+			height: 42px;
+			text-transform: capitalize;
+			border: none;
+			outline: none;
+			cursor: pointer;
+			transition: all 0.3s ease-in-out;
+			&:hover {
+				background-color: $filled-button-hover-background;
+				box-shadow: $filled-button-hover-box-shadow;
+			}
+			&:active {
+				background-color: $filled-button-active-background;
+				box-shadow: $filled-button-active-box-shadow;
+			}
+		}
+	}
+	.table {
+		box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06);
+		tr {
+			border-bottom: 1px solid #ebeff2;
+			width: 100%;
+			height: 64px;
+		}
+		td {
+			border-bottom: none;
+			padding: 0;
+			text-align: left;
+		}
+		th {
+			border-bottom: none;
+			padding: 0;
+		}
+		input {
+			padding: 0 0 0 4px;
+		}
+		.MuiToolbar-regular {
+			height: fit-content;
+			min-height: 0;
+			padding: 0 !important;
+		}
+		.Mui-checked {
+			color: $primaryColor;
+		}
+		.MuiTableRow-hover:hover {
+			box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+			background: none;
+			cursor: pointer;
+		}
+        .MuiTableCell-body{
+			text-align: left;
+		}
+		.MuiSvgIcon-root {
+			width: 16px;
+			height: 16px;
+			box-sizing: border-box;
+			stroke: #D5D5D5;
+		}
+	}
+}

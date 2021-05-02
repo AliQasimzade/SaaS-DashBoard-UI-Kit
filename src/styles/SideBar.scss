@@ -1,167 +1,172 @@
-@import 'fonts.scss';
-@import 'colors.scss';
+@import "fonts.scss";
+@import "colors.scss";
 
 @mixin flex-layout($alignItems, $justify, $direction) {
-	align-items: $alignItems;
-	display: flex;
-	flex-direction: $direction;
-	justify-content: $justify;
+  align-items: $alignItems;
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
 }
 
 @mixin fontStyle($color, $fontFamily, $fontSize, $letterSpace) {
-	color: $color;
-	font-family: $fontFamily;
-	font-size: $fontSize;
-	letter-spacing: $letterSpace;
+  color: $color;
+  font-family: $fontFamily;
+  font-size: $fontSize;
+  letter-spacing: $letterSpace;
 }
 .side-bar {
-	background-color: $whiteColor;
-	box-shadow: 6px 0px 18px rgba(0, 0, 0, 0.06);
-	height: 100vh;
-	position: sticky;
-	top: 0;
-	width: 256px;
-	.heading {
-		border-bottom: 1px solid #ebeff2;
-		height: 60px;
-		padding: 0 24px;
-		@include flex-layout(center, flex-start, row);
-		p {
-			@include fontStyle($primaryColor, Open-Sans-SemiBold, 18px, none);
-		}
-	}
-	.profile {
-		padding: 24px 24px 0;
-		@include flex-layout(center, none, row);
-		.profile-image {
-			border-radius: 50%;
-			height: 46px;
-			margin-right: 16px;
-			overflow: hidden;
-			width: 46px;
-			img {
-				height: 100%;
-				width: 100%;
-			}
-		}
-		.profile-info {
-			@include flex-layout(none, none, column);
-			.name {
-				@include fontStyle(#192a3e, Poppins-Medium, 14px, none);
-			}
-			.gmail {
-				@include fontStyle(#90a0b7, Poppins-Medium, 11px, 0.01em);
-			}
-		}
-	}
-	.side-lists {
-		margin-top: 40px;
-		li {
-			cursor: pointer;
-			margin-bottom: 20px;
-			padding: 0 24px;
-			@include flex-layout(center, flex-start, row);
-			.list-images {
-				height: 25px;
-				margin-right: 7px;
-				position: relative;
-				width: 30px;
-				@include flex-layout(center, center, row);
-				img {
-					object-fit: contain;
-					position: absolute;
-				}
-				.able-image {
-					z-index: 9;
-				}
-				.disable-image {
-					opacity: 0;
-				}
-			}
-			a {
-				line-height: 19px;
-				transition: color 0.2s ease-in-out;
-				@include fontStyle(#334d6e, Poppins-Medium, 13px, 0.01em);
-			}
-			&:hover {
-				a {
-					color: $primaryColor;
-				}
-				.able-image {
-					opacity: 0;
-				}
-				.disable-image {
-					opacity: 1;
-				}
-			}
-		}
-		.settings {
-			border-top: 1px solid #ebeff2;
-			padding-top: 24px;
-		}
-	}
+  background-color: $whiteColor;
+  box-shadow: 6px 0px 18px rgba(0, 0, 0, 0.06);
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  width: 256px;
+  .nav-link {
+    @include flex-layout(center, center, row);
+  }
+  .heading {
+    border-bottom: 1px solid #ebeff2;
+    height: 60px;
+    padding: 0 24px;
+    @include flex-layout(center, flex-start, row);
+    p {
+      @include fontStyle($primaryColor, Open-Sans-SemiBold, 18px, none);
+    }
+  }
+  .profile {
+    padding: 24px 24px 0;
+    @include flex-layout(center, none, row);
+    .profile-image {
+      border-radius: 50%;
+      height: 46px;
+      margin-right: 16px;
+      overflow: hidden;
+      width: 46px;
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+    .profile-info {
+      @include flex-layout(none, none, column);
+      .name {
+        @include fontStyle(#192a3e, Poppins-Medium, 14px, none);
+      }
+      .gmail {
+        @include fontStyle(#90a0b7, Poppins-Medium, 11px, 0.01em);
+      }
+    }
+  }
+  .side-lists {
+    margin-top: 40px;
+    li {
+      cursor: pointer;
+      margin-bottom: 20px;
+      padding: 0 24px;
+      @include flex-layout(center, flex-start, row);
+      .list-images {
+        height: 25px;
+        margin-right: 7px;
+        position: relative;
+        width: 30px;
+        @include flex-layout(center, center, row);
+        img {
+          object-fit: contain;
+          position: absolute;
+        }
+        .able-image {
+          z-index: 9;
+        }
+        .disable-image {
+          opacity: 0;
+        }
+      }
+      a {
+        line-height: 19px;
+        transition: color 0.2s ease-in-out;
+        @include fontStyle(#334d6e, Poppins-Medium, 13px, 0.01em);
+      }
+      &:hover {
+        a {
+          color: $primaryColor;
+        }
+        .able-image {
+          opacity: 0;
+        }
+        .disable-image {
+          opacity: 1;
+        }
+      }
+    }
+    .settings {
+      border-top: 1px solid #ebeff2;
+      padding-top: 24px;
+    }
+  }
 
-	.toggle-side-bar {
-		bottom: 30px;
-		cursor: pointer;
-		display: flex;
-		padding: 0 24px;
-		position: absolute;
-		transition: all 0.2s ease-in-out;
-		@include fontStyle(#90a0b7, Poppins-Medium, 11px, 0.01em);
-		svg {
-			margin-right: 14px;
-		}
-		&:hover {
-			color: $primaryColor;
-			svg {
-				path {
-					fill: $primaryColor;
-				}
-			}
-		}
-	}
+  .toggle-side-bar {
+    bottom: 30px;
+    cursor: pointer;
+    display: flex;
+    padding: 0 24px;
+    position: absolute;
+    transition: all 0.2s ease-in-out;
+    @include fontStyle(#90a0b7, Poppins-Medium, 11px, 0.01em);
+    svg {
+      margin-right: 14px;
+    }
+    &:hover {
+      color: $primaryColor;
+      svg {
+        path {
+          fill: $primaryColor;
+        }
+      }
+    }
+  }
 }
 
 .side-bar.active {
-	width: 68px;
-	.heading {
-		justify-content: center;
-		padding: 0;
-	}
-	.kit {
-		display: none;
-	}
-	.profile {
-		justify-content: center;
-		padding-left: 0;
-		padding-right: 0;
-		.profile-image {
-			margin-right: 0px;
-		}
-		.profile-info {
-			display: none;
-		}
-	}
+  width: 68px;
+  .heading {
+    justify-content: center;
+    padding: 0;
+  }
+  .kit {
+    display: none;
+  }
+  .profile {
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+    .profile-image {
+      margin-right: 0px;
+    }
+    .profile-info {
+      display: none;
+    }
+  }
 
-	.toggle-side-bar {
-		p {
-			display: none;
-		}
-		svg {
-			margin-right: 0;
-		}
-	}
-	.side-lists {
-		li {
-			justify-content: center;
-			padding: 0;
-			a {
-				display: none;
-			}
-			.list-images {
-				margin-right: 0;
-			}
-		}
-	}
+  .toggle-side-bar {
+    p {
+      display: none;
+    }
+    svg {
+      margin-right: 0;
+    }
+  }
+  .side-lists {
+    li {
+      justify-content: center;
+      padding: 0;
+      a {
+        p {
+          display: none;
+        }
+      }
+      .list-images {
+        margin-right: 0;
+      }
+    }
+  }
 }

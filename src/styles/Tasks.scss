@@ -411,11 +411,6 @@
 			letter-spacing: 0.01em;
 		}
 	}
-	.makeStyles-formControl-1 {
-		margin: 0;
-		width: 80px !important;
-		min-width: 0 !important;
-	}
 	.jss1{
 		width: 80px !important;
 		min-width: 0 !important;
@@ -426,6 +421,8 @@
 	}
 	.MuiFormControl-root {
 		margin: 0 !important;
+		width: 80px !important;
+		min-width: 0 !important;
 	}
 	.MuiInput-underline::after {
 		display: none;
@@ -433,8 +430,8 @@
 	.MuiInput-underline::before {
 		display: none;
 	}
-	.makeStyles-selectEmpty-2 {
-		margin: 0;
+	.MuiInputBase-root{
+		margin: 0 !important;
 	}
 	.MuiSvgIcon-root {
 		height: 12px;

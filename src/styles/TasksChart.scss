@@ -59,19 +59,18 @@
 			}
 		}
 	}
+
 	.MuiSelect-root {
 		padding: 0 !important;
 		span {
 			@include fontStyles($primaryColor, Poppins-Regular, 12px, 0.01em);
 		}
 	}
-	.makeStyles-formControl-8 {
-		margin: 0;
-		min-width: 0 !important;
-		width: 90px !important;
-	}
+
 	.MuiFormControl-root {
 		margin: 0 !important;
+		min-width: 0 !important;
+		width: 90px !important;
 	}
 	.MuiInput-underline::after {
 		display: none;
@@ -79,7 +78,7 @@
 	.MuiInput-underline::before {
 		display: none;
 	}
-	.makeStyles-selectEmpty-9 {
+	.MuiInput-root{
 		margin: 0 !important;
 	}
 	.jss8 {

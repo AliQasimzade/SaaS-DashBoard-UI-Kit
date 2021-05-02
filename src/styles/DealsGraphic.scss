@@ -85,10 +85,8 @@
 			@include stylesFont($primaryColor, Poppins-Regular, 12px, 0.01em);
 		}
 	}
-	.makeStyles-formControl-6 {
-		margin: 0;
-		min-width: 0 !important;
-		width: 90px !important;
+    .MuiInputBase-root{
+		margin: 0 !important;
 	}
 	.jss6 {
 		min-width: 0 !important;
@@ -96,6 +94,8 @@
 	}
 	.MuiFormControl-root {
 		margin: 0 !important;
+		min-width: 0 !important;
+		width: 90px !important;
 	}
 	.MuiInput-underline::after {
 		display: none;
@@ -104,9 +104,6 @@
 		display: none;
 	}
 	.jss7 {
-		margin: 0 !important;
-	}
-	.makeStyles-selectEmpty-7 {
 		margin: 0 !important;
 	}
 	.MuiSvgIcon-root {

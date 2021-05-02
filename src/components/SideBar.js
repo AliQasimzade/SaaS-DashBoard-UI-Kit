@@ -91,8 +91,14 @@ const SideBar = () => {
 						key={key}
 						className={key === 6 ? 'settings' : ''}
 						onClick={() => handleClickList(key)}
-					>
-						<div className="list-images">
+					>		
+						<NavLink
+							key={key}
+							to={key === 0 ? '/dashboard' : '/contacts'}
+							style={key === listKey.key ? { color: '#109CF1' } : {}}
+							className="nav-link"
+						>
+							<div className="list-images">
 							<img
 								src={item.image}
 								alt=""
@@ -108,12 +114,7 @@ const SideBar = () => {
 								style={key === listKey.key ? { opacity: '1' } : {}}
 							/>
 						</div>
-						<NavLink
-							key={key}
-							to={key === 0 ? '/dashboard' : '/contacts'}
-							style={key === listKey.key ? { color: '#109CF1' } : {}}
-						>
-							{item.list}
+						<p>{item.list}</p>
 						</NavLink>
 					</li>
 				))}

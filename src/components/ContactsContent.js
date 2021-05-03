@@ -79,11 +79,15 @@ const headCells = [
 ];
 
 function EnhancedTableHead(props) {
+	const handleAllSelectedList = (e) => {
+     e.target.checked = true
+	};
 	return (
+		
 		<TableHead>
 			<TableRow>
 				<TableCell padding="checkbox">
-					<Checkbox />
+					<Checkbox onClick={(e) =>handleAllSelectedList(e)}/>
 				</TableCell>
 				{headCells.map((headCell) => (
 					<TableCell key={headCell.id}>{headCell.label}</TableCell>
@@ -107,7 +111,15 @@ const useStyle = makeStyles((theme) => ({
 
 const ContactsContent = () => {
 	const data = useSelector((state) => state.productReducer);
-	
+	let [numSelected, setNumselected] = useState(-1);
+	const handleSelectedList = (e, key) => {
+		console.log(key);
+		if (e.target.checked === true) {
+			setNumselected(numSelected + 1);
+		}else{
+			setNumselected(numSelected - 1)
+		}
+	};
 	const rows = [
 		createData(
 			[<img src={Lindsey} alt="" />, data.items.List1[0]],
@@ -230,7 +242,7 @@ const ContactsContent = () => {
 			<div className="table">
 				<div className={table.root}>
 					<Paper className={table.paper}>
-						<EnhancedTableToolbar />
+						<EnhancedTableToolbar numSelected={numSelected} />
 						<TableContainer>
 							<Table
 								className={table.table}
@@ -239,26 +251,16 @@ const ContactsContent = () => {
 							>
 								<EnhancedTableHead classes={table} rowCount={rows.length} />
 								<TableBody>
-									{stableSort(rows, getComparator()).map((row, index) => {
-										const labelId = `enhanced-table-checkbox-${index}`;
+									{stableSort(rows, getComparator()).map((row, key) => {
 										return (
-											<TableRow
-												hover
-												role="checkbox"
-												tabIndex={-1}
-												key={row.name}
-											>
+											<TableRow hover role="checkbox" tabIndex={-1} key={key}>
 												<TableCell padding="checkbox">
 													<Checkbox
-														inputProps={{ 'aria-labelledby': labelId }}
+													
+														onClick={(e) => handleSelectedList(e)}
 													/>
 												</TableCell>
-												<TableCell
-													component="th"
-													id={labelId}
-													scope="row"
-													padding="none"
-												>
+												<TableCell component="th" scope="row" padding="none">
 													<div className="td">{row.name}</div>
 												</TableCell>
 												<TableCell>

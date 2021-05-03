@@ -8,7 +8,7 @@ const EnhancedTableToolbar = (props) => {
 
 	return (
 		<Toolbar>
-			{numSelected > 0 ? (
+			{numSelected >= 0 ? (
 				<Typography
 					style={{
 						display: 'flex',
@@ -30,15 +30,15 @@ const EnhancedTableToolbar = (props) => {
 							margin: '0 24px 0 14px',
 						}}
 					>
-						{numSelected}
+						{numSelected +  1}
 					</div>
-					<p style={{ marginRight: '16px' }}>{numSelected} selected</p>
+					<p style={{ marginRight: '16px' }}>{numSelected + 1} selected</p>
 				</Typography>
 			) : (
 				''
 			)}
 
-			{numSelected > 0 ? (
+			{numSelected >= 0 ? (
 				<Tooltip title="Delete">
 					<IconButton aria-label="delete">
 						<img src={deleteIcon} alt="deleteIcon" />

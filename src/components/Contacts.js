@@ -4,6 +4,7 @@ import ContactsContent from "./ContactsContent";
 import "../styles/Contacts.scss";
 
 const Contacts = () => {
+ 
     return (
 			<div className="contacts">
 				<Navigation />

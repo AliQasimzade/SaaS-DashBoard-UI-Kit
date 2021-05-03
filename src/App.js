@@ -15,8 +15,8 @@ import {
 } from "react-router-dom";
 
 const App = () => {
-
   const dispatch = useDispatch();
+//   const loggedIn = true;
 
   useEffect(() => {
     axios

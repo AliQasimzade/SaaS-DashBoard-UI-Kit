@@ -23,7 +23,7 @@
 	.add-contact {
 		width: 100%;
 		@include layout-flex(flex-end, space-between, row);
-		margin: 35px 0 24px 0;
+		margin-bottom: 24px;
 		.company-select {
 			@include layout-flex(flex-end, center, row);
 
@@ -94,6 +94,12 @@
 		input {
 			padding: 0 0 0 4px;
 		}
+		.td{
+			@include layout-flex(center,flex-start,row );
+			img{
+				margin-right: 12px;
+			}
+		}
 		.MuiToolbar-regular {
 			height: fit-content;
 			min-height: 0;
@@ -115,6 +121,11 @@
 			height: 16px;
 			box-sizing: border-box;
 			stroke: #D5D5D5;
+		}
+		.MuiIconButton-root{
+			&:hover{
+				background-color:$appBackgroundColor !important;
+			}
 		}
 	}
 }

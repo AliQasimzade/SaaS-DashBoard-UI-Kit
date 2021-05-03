@@ -4,20 +4,27 @@ import '../styles/ContactsContent.scss';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import PropTypes from 'prop-types';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
-import IconButton from '@material-ui/core/IconButton';
-import Tooltip from '@material-ui/core/Tooltip';
-import deleteIcon from "../images/delete-icon.png";
+import { useSelector } from 'react-redux';
+import EnhancedTableToolbar from './EnhancedTableToolbar';
+import Lindsey from '../images/associated_photo (2).png';
+import Rebecca from '../images/associated_photo (1).png';
+import George from '../images/associated_photo.png';
+import Nicci from '../images/Nicci.png';
+import Jane from '../images/Jane.png';
+import Franz from '../images/Franz.png';
+import Martin from '../images/Martin.png';
+import Jones from '../images/Jones.png';
+import Judith from '../images/Judith.png';
+import John from '../images/John.png';
+
 const useStyles = makeStyles((theme) => ({
 	root: {
 		'& > *': {
@@ -35,19 +42,6 @@ const createData = (
 ) => {
 	return { name, email, companyName, role, forecast, recentActivity };
 };
-
-const rows = [
-	createData([<img src={deleteIcon} alt="" />,'Ali'], 305, 3.7, 67, 4.3, 2),
-	createData('Donut', 452, 25.0, 51, 4.9, 2),
-	createData('Eclair', 262, 16.0, 24, 6.0, 2),
-	createData('Frozen yoghurt', 159, 6.0, 24, 4.0, 2),
-	createData('Gingerbread', 356, 16.0, 49, 3.9, 2),
-	createData('Honeycomb', 408, 3.2, 87, 6.5, 2),
-	createData('Ice cream sandwich', 237, 9.0, 37, 4.3, 2),
-	createData('Jelly Bean', 375, 0.0, 94, 0.0, 2),
-	createData('KitKat', 518, 26.0, 65, 7.0, 2),
-	createData('Lollipop', 392, 0.2, 98, 0.0, 2),
-];
 
 function descendingComparator(a, b, orderBy) {
 	if (b[orderBy] < a[orderBy]) {
@@ -85,14 +79,11 @@ const headCells = [
 ];
 
 function EnhancedTableHead(props) {
-	const { onSelectAllClick } = props;
 	return (
 		<TableHead>
 			<TableRow>
 				<TableCell padding="checkbox">
-					<Checkbox
-						onChange={onSelectAllClick}
-					/>
+					<Checkbox />
 				</TableCell>
 				{headCells.map((headCell) => (
 					<TableCell key={headCell.id}>{headCell.label}</TableCell>
@@ -101,69 +92,6 @@ function EnhancedTableHead(props) {
 		</TableHead>
 	);
 }
-
-EnhancedTableHead.propTypes = {
-	classes: PropTypes.object.isRequired,
-	numSelected: PropTypes.number.isRequired,
-	onRequestSort: PropTypes.func.isRequired,
-	onSelectAllClick: PropTypes.func.isRequired,
-	order: PropTypes.oneOf(['asc', 'desc']).isRequired,
-	orderBy: PropTypes.string.isRequired,
-	rowCount: PropTypes.number.isRequired,
-};
-
-
-const EnhancedTableToolbar = (props) => {
-	const { numSelected } = props;
-
-	return (
-		<Toolbar>
-			{numSelected > 0 ? (
-				<Typography
-					style={{
-						display: 'flex',
-						alignItems: 'center',
-						justifyContent: 'center',
-					}}
-				>
-					<div
-						style={{
-							width: '16px',
-							height: '16px',
-							borderRadius: '4px',
-							background: '#109CF1',
-							color: '#fff',
-							fontSize: '10px',
-							display: 'flex',
-							alignItems: 'center',
-							justifyContent: 'center',
-							margin: '0 24px 0 14px',
-						}}
-					>
-						{numSelected}
-					</div>
-					<p style={{ marginRight: '16px' }}>{numSelected} selected</p>
-				</Typography>
-			) : (
-				''
-			)}
-
-			{numSelected > 0 ? (
-				<Tooltip title="Delete">
-					<IconButton aria-label="delete">
-						<img src={deleteIcon} alt="deleteIcon" />
-					</IconButton>
-				</Tooltip>
-			) : (
-				''
-			)}
-		</Toolbar>
-	);
-};
-
-EnhancedTableToolbar.propTypes = {
-	numSelected: PropTypes.number.isRequired,
-};
 
 const useStyle = makeStyles((theme) => ({
 	root: {
@@ -178,13 +106,97 @@ const useStyle = makeStyles((theme) => ({
 }));
 
 const ContactsContent = () => {
+	const data = useSelector((state) => state.productReducer);
+	
+	const rows = [
+		createData(
+			[<img src={Lindsey} alt="" />, data.items.List1[0]],
+			data.items.List1[1],
+			data.items.List1[2],
+			data.items.List1[3],
+			data.items.List1[4],
+			data.items.List1[5]
+		),
+		createData(
+			[<img src={Nicci} alt="" />, data.items.List2[0]],
+			data.items.List2[1],
+			data.items.List2[2],
+			data.items.List2[3],
+			data.items.List2[4],
+			data.items.List2[5]
+		),
+		createData(
+			[<img src={George} alt="" />, data.items.List3[0]],
+			data.items.List3[1],
+			data.items.List3[2],
+			data.items.List3[3],
+			data.items.List3[4],
+			data.items.List3[5]
+		),
+		createData(
+			[<img src={Rebecca} alt="" />, data.items.List4[0]],
+			data.items.List4[1],
+			data.items.List4[2],
+			data.items.List4[3],
+			data.items.List4[4],
+			data.items.List4[5]
+		),
+		createData(
+			[<img src={Jane} alt="" />, data.items.List5[0]],
+			data.items.List5[1],
+			data.items.List5[2],
+			data.items.List5[3],
+			data.items.List5[4],
+			data.items.List5[5]
+		),
+		createData(
+			[<img src={Jones} alt="" />, data.items.List6[0]],
+			data.items.List6[1],
+			data.items.List6[2],
+			data.items.List6[3],
+			data.items.List6[4],
+			data.items.List6[5]
+		),
+		createData(
+			[<img src={Martin} alt="" />, data.items.List7[0]],
+			data.items.List7[1],
+			data.items.List7[2],
+			data.items.List7[3],
+			data.items.List7[4],
+			data.items.List7[5]
+		),
+		createData(
+			[<img src={Franz} alt="" />, data.items.List8[0]],
+			data.items.List8[1],
+			data.items.List8[2],
+			data.items.List8[3],
+			data.items.List8[4],
+			data.items.List8[5]
+		),
+		createData(
+			[<img src={John} alt="" />, data.items.List9[0]],
+			data.items.List9[1],
+			data.items.List9[2],
+			data.items.List9[3],
+			data.items.List9[4],
+			data.items.List9[5]
+		),
+		createData(
+			[<img src={Judith} alt="" />, data.items.List10[0]],
+			data.items.List10[1],
+			data.items.List10[2],
+			data.items.List10[3],
+			data.items.List10[4],
+			data.items.List10[5]
+		),
+	];
 	const classes = useStyles();
 	const table = useStyle();
 	const handleChange = (event) => {
 		setAge(event.target.value);
 	};
 	const [age, setAge] = useState('');
-	
+
 	return (
 		<div className="contacts-content">
 			<div className="add-contact">
@@ -218,53 +230,55 @@ const ContactsContent = () => {
 			<div className="table">
 				<div className={table.root}>
 					<Paper className={table.paper}>
-						<EnhancedTableToolbar  />
+						<EnhancedTableToolbar />
 						<TableContainer>
 							<Table
 								className={table.table}
 								aria-labelledby="tableTitle"
 								aria-label="enhanced table"
 							>
-								<EnhancedTableHead
-									classes={table}	
-									rowCount={rows.length}
-								/>
+								<EnhancedTableHead classes={table} rowCount={rows.length} />
 								<TableBody>
-									{stableSort(rows, getComparator()).map(
-										(row, index) => {
-											
-											const labelId = `enhanced-table-checkbox-${index}`;
-											return (
-												<TableRow
-													hover
-													role="checkbox"
-													tabIndex={-1}
-													key={row.name}
-													
+									{stableSort(rows, getComparator()).map((row, index) => {
+										const labelId = `enhanced-table-checkbox-${index}`;
+										return (
+											<TableRow
+												hover
+												role="checkbox"
+												tabIndex={-1}
+												key={row.name}
+											>
+												<TableCell padding="checkbox">
+													<Checkbox
+														inputProps={{ 'aria-labelledby': labelId }}
+													/>
+												</TableCell>
+												<TableCell
+													component="th"
+													id={labelId}
+													scope="row"
+													padding="none"
 												>
-													<TableCell padding="checkbox">
-														<Checkbox
-															
-															inputProps={{ 'aria-labelledby': labelId }}
-														/>
-													</TableCell>
-													<TableCell
-														component="th"
-														id={labelId}
-														scope="row"
-														padding="none"
-													>
-														{row.name}
-													</TableCell>
-													<TableCell>{row.email}</TableCell>
-													<TableCell>{row.companyName}</TableCell>
-													<TableCell>{row.role}</TableCell>
-													<TableCell>{row.forecast}</TableCell>
-													<TableCell>{row.recentActivity}</TableCell>
-												</TableRow>
-											);
-										}
-									)}
+													<div className="td">{row.name}</div>
+												</TableCell>
+												<TableCell>
+													<div className="td">{row.email}</div>
+												</TableCell>
+												<TableCell>
+													<div className="td">{row.companyName}</div>
+												</TableCell>
+												<TableCell>
+													<div className="td">{row.role}</div>
+												</TableCell>
+												<TableCell>
+													<div className="td">{row.forecast}</div>
+												</TableCell>
+												<TableCell>
+													<div className="td">{row.recentActivity}</div>
+												</TableCell>
+											</TableRow>
+										);
+									})}
 								</TableBody>
 							</Table>
 						</TableContainer>

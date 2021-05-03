@@ -146,8 +146,8 @@ const DealsGraphic = () => {
 					colors: '#192A3E',
 				},
 				markers: {
-					width: [10, 0],
-					height: [10, 0],
+					width: [11, 0],
+					height: [11, 0],
 					strokeColor: '#109CF1',
 					strokeWidth: [0.5, 0],
 					fillColors: ['#fff', '#fff'],

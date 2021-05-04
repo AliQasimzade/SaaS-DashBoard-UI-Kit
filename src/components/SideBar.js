@@ -17,7 +17,7 @@ import chats from '../images/chats.png';
 import deals from '../images/deals-active.png';
 import contacts from '../images/contact.png';
 import settings from '../images/settings.png';
-import {NavLink} from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
 const SideBar = () => {
 	const dispatch = useDispatch();
@@ -91,7 +91,7 @@ const SideBar = () => {
 						key={key}
 						className={key === 6 ? 'settings' : ''}
 						onClick={() => handleClickList(key)}
-					>		
+					>
 						<NavLink
 							key={key}
 							to={key === 0 ? '/dashboard' : '/contacts'}
@@ -99,23 +99,22 @@ const SideBar = () => {
 							className="nav-link"
 						>
 							<div className="list-images">
-							<img
-								src={item.image}
-								alt=""
-								className="able-image"
-								key={key}
-								style={key === listKey.key ? { opacity: '0' } : {}}
-							/>
-							<img
-								src={item.img}
-								alt=""
-								className="disable-image"
-								key={key - 1}
-								style={key === listKey.key ? { opacity: '1' } : {}}
-							/>
-						</div>
-						<p>{item.list}</p>
+								<img
+									src={item.image}
+									alt=""
+									className="able-image"
+									style={key === listKey.key ? { opacity: '0' } : {}}
+								/>
+								<img
+									src={item.img}
+									alt=""
+									className="disable-image"
+									style={key === listKey.key ? { opacity: '1' } : {}}
+								/>
+							</div>
+							<p>{item.list}</p>
 						</NavLink>
+						
 					</li>
 				))}
 			</ul>

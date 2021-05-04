@@ -16,8 +16,6 @@ import {
 
 const App = () => {
   const dispatch = useDispatch();
-  //   const loggedIn = true;
-
   useEffect(() => {
     axios
       .get("https://herokuhosting2.herokuapp.com/getData")

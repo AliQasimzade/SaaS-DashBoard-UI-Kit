@@ -4,11 +4,13 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import deleteIcon from '../images/delete-icon.png';
 const EnhancedTableToolbar = (props) => {
-	const { numSelected } = props;
-
+	let { numSelected } = props;
+	const handleDeleteList = () => {
+	
+	};
 	return (
 		<Toolbar>
-			{numSelected >= 0 ? (
+			{numSelected > 0 ? (
 				<Typography
 					style={{
 						display: 'flex',
@@ -30,17 +32,17 @@ const EnhancedTableToolbar = (props) => {
 							margin: '0 24px 0 14px',
 						}}
 					>
-						{numSelected +  1}
+						{numSelected}
 					</div>
-					<p style={{ marginRight: '16px' }}>{numSelected + 1} selected</p>
+					<p style={{ marginRight: '16px' }}>{numSelected} selected</p>
 				</Typography>
 			) : (
 				''
 			)}
 
-			{numSelected >= 0 ? (
+			{numSelected > 0 ? (
 				<Tooltip title="Delete">
-					<IconButton aria-label="delete">
+					<IconButton aria-label="delete" onClick={handleDeleteList}>
 						<img src={deleteIcon} alt="deleteIcon" />
 					</IconButton>
 				</Tooltip>

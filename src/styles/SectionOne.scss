@@ -1,0 +1,85 @@
+@import 'fonts.scss';
+@import 'colors.scss';
+.section-1 {
+	border-bottom: 1px solid #ebeff2;
+	padding-bottom: 27px;
+	padding-top: 16px;
+}
+.section-one {
+	display: flex;
+	flex-direction: column;
+	width: 95%;
+	.section-one-header {
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
+		padding-bottom: 16px;
+		.remaining-tasks {
+			color: #334d6e;
+			font-family: Poppins-Medium;
+			font-size: 13px;
+			letter-spacing: 0.01em;
+		}
+		.show-tasks {
+			align-items: flex-end;
+			display: flex;
+			justify-content: center;
+			.show {
+				color: #6a707e;
+				font-family: Poppins-Regular;
+				font-size: 12px;
+				letter-spacing: 0.01em;
+			}
+		}
+	}
+	.progress-bar {
+		background-color: #ebeff2;
+		height: 4px;
+	}
+	.date {
+		color: #192a3e;
+		font-family: Poppins-Medium;
+		font-size: 15px;
+		letter-spacing: 0.01em;
+		padding-bottom: 47px;
+		padding-top: 20px;
+	}
+	.week-days {
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
+		div {
+			align-items: center;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			.short-day-name {
+				color: #334d6e;
+				font-family: Poppins-Medium;
+				font-size: 13px;
+				letter-spacing: 0.01em;
+			}
+			.day {
+				align-items: center;
+				border-radius: 50%;
+				color: #4c5862;
+				display: flex;
+				font-family: Poppins-Regular;
+				font-size: 12px;
+				height: 24px;
+				justify-content: center;
+				letter-spacing: 0.01em;
+				width: 24px;
+			}
+			.day-1 {
+				background-color: $primaryColor;
+				color: $whiteColor;
+			}
+		}
+		.monday {
+			p {
+				color: $primaryColor;
+			}
+		}
+	}
+}

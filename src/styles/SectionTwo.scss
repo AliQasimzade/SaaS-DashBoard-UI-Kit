@@ -1,93 +1,76 @@
 @import 'fonts.scss';
 @import 'colors.scss';
+@mixin flex($alignItems, $justify, $direction) {
+	align-items: $alignItems;
+	display: flex;
+	flex-direction: $direction;
+	justify-content: $justify;
+}
 
+@mixin styleTag($color, $fontFamily, $fontSize, $letterSpace) {
+	color: $color;
+	font-family: $fontFamily;
+	font-size: $fontSize;
+	letter-spacing: $letterSpace;
+}
 .section-two {
-	align-items: center;
 	border-radius: 4px;
 	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.08);
 	cursor: pointer;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
 	margin-top: 24px;
 	padding: 16px 0;
 	transition: all 0.3s ease-in-out;
 	width: 95%;
+	@include flex(center, center, column);
 	&:hover {
 		box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.14);
 		cursor: pointer;
 	}
 	.section-two-header {
-		align-items: flex-start;
-		display: flex;
-		justify-content: space-between;
 		margin-bottom: 7px;
 		width: 95%;
+		@include flex(flex-start, space-between, row);
 		p {
-			color: #323c47;
-			font-family: Poppins-Medium;
-			font-size: 15px;
-			letter-spacing: 0.01em;
+			@include styleTag(#323c47, Poppins-Medium, 15px, 0.01em);
 		}
 		span {
-			color: #90a0b7;
-			font-family: Poppins-Medium;
-			font-size: 12px;
-			letter-spacing: 0.01em;
+			@include styleTag(#90a0b7, Poppins-Medium, 12px, 0.01em);
 		}
 	}
 	.due-date {
-		align-items: center;
-		display: flex;
-		justify-content: flex-start;
 		margin-bottom: 20px;
 		width: 95%;
+		@include flex(center, flex-start, row);
 		span {
-			color: #4c5862;
-			font-family: Poppins-Regular;
-			font-size: 13px;
-			letter-spacing: 0.01em;
 			opacity: 0.5;
+			@include styleTag(#4c5862, Poppins-Regular, 13px, 0.01em);
 		}
 		p {
-			color: #4c5862;
-			font-family: Poppins-Regular;
-			font-size: 13px;
-			letter-spacing: 0.01em;
 			padding-left: 5px;
+			@include styleTag(#4c5862, Poppins-Regular, 13px, 0.01em);
 		}
 	}
 	.completed {
-		align-items: center;
-		display: flex;
-		justify-content: space-between;
 		width: 95%;
+		@include flex(center, space-between, row);
 		.person {
-			align-items: center;
-			display: flex;
-			justify-content: center;
+			@include flex(center, center, row);
 			p {
-				color: #707683;
-				font-family: Poppins-Regular;
-				font-size: 13px;
-				letter-spacing: 0.01em;
 				padding-left: 12px;
+				@include styleTag(#707683, Poppins-Regular, 13px, 0.01em);
 			}
 		}
 		button {
 			background: #2ed47a;
 			border: none;
 			border-radius: 4px;
-			color: $whiteColor;
 			cursor: pointer;
-			font-family: Poppins-Medium;
-			font-size: 11px;
 			height: 22px;
-			letter-spacing: 0.02em;
 			outline: none;
 			text-align: center;
 			transition: background 0.3s ease-in-out;
 			width: 84px;
+			@include styleTag($whiteColor, Poppins-Medium, 11px, 0.02em);
 			&:hover {
 				background-color: #69f0a5;
 			}

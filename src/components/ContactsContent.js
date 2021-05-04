@@ -111,6 +111,7 @@ const useStyle = makeStyles((theme) => ({
 
 const ContactsContent = () => {
 	const data = useSelector((state) => state.productReducer);
+	
 	let [numSelected, setNumselected] = useState(-1);
 	const handleSelectedList = (e, key) => {
 		console.log(key);

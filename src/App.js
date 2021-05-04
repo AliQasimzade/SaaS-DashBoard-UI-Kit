@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import {useDispatch} from 'react-redux';
-import {addData} from './redux/actions/actions';
+import { useDispatch } from "react-redux";
+import { addData } from "./redux/actions/actions";
 import "./styles/App.scss";
 import axios from "axios";
 import Sidebar from "./components/SideBar";
 import Dashboard from "./components/Dashboard";
-import Contacts from './components/Contacts';
+import Contacts from "./components/Contacts";
 
 import {
   BrowserRouter as Router,
@@ -16,7 +16,7 @@ import {
 
 const App = () => {
   const dispatch = useDispatch();
-//   const loggedIn = true;
+  //   const loggedIn = true;
 
   useEffect(() => {
     axios
@@ -25,23 +25,22 @@ const App = () => {
       .catch((err) => console.log(err));
   }, [dispatch]);
 
-  
   return (
-		<Router>
-			<div className="App">
-				<Sidebar />
-				<Switch>
-					<Redirect exact from="/" to="/dashboard" />
-					<Route path="/dashboard">
-						<Dashboard />
-					</Route>
-					<Route path="/contacts">
-						<Contacts />
-					</Route>
-				</Switch>
-			</div>
-		</Router>
-	);
+    <Router>
+      <div className="App">
+        <Sidebar />
+        <Switch>
+          <Route path="/dashboard">
+            <Dashboard />
+          </Route>
+          <Route path="/contacts">
+            <Contacts />
+          </Route>
+          <Redirect push to="/dashboard" />
+        </Switch>
+      </div>
+    </Router>
+  );
 };
 
 export default App;

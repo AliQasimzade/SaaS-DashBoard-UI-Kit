@@ -1,14 +1,22 @@
 @import 'fonts.scss';
 @import 'colors.scss';
-
+@mixin flexLayOut($alignItems,$justify,$direction){
+	display: flex;
+	align-items: $alignItems;
+	justify-content: $justify;
+	flex-direction: $direction;
+}
+@mixin fontStyled($color,$fontFamily,$fontSize,$letterSpace){
+	color: $color;
+	font-family: $fontFamily;
+	font-size: $fontSize;
+	letter-spacing: $letterSpace;
+}
 .section-three {
-	align-items: center;
+	@include flexLayOut(center,center ,column);
 	border-radius: 4px;
 	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.08);
 	cursor: pointer;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
 	margin-top: 24px;
 	padding: 16px 0;
 	transition: all 0.3s ease-in-out;
@@ -18,66 +26,41 @@
 		cursor: pointer;
 	}
 	.section-three-header {
-		align-items: flex-start;
-		display: flex;
-		justify-content: space-between;
+		@include flexLayOut(flex-start,space-between ,row);
 		margin-bottom: 7px;
 		width: 95%;
 		p {
-			color: #323c47;
-			font-family: Poppins-Medium;
-			font-size: 15px;
-			letter-spacing: 0.01em;
+			@include fontStyled(#323c47,Poppins-Medium ,15px ,0.01em);
 		}
 		span {
-			color: #90a0b7;
-			font-family: Poppins-Medium;
-			font-size: 12px;
-			letter-spacing: 0.01em;
+			@include fontStyled(#90a0b7,Poppins-Medium ,12px ,0.01em);
 		}
 	}
 	.due-date {
-		align-items: center;
-		display: flex;
-		justify-content: flex-start;
+		@include flexLayOut(center,flex-start ,row);
 		margin-bottom: 20px;
 		width: 95%;
 		span {
-			color: #4c5862;
-			font-family: Poppins-Regular;
-			font-size: 13px;
-			letter-spacing: 0.01em;
+			@include fontStyled(#4c5862,Poppins-Regular ,13px ,0.01em);
 			opacity: 0.5;
 		}
 		p {
-			color: #4c5862;
-			font-family: Poppins-Regular;
-			font-size: 13px;
-			letter-spacing: 0.01em;
+			@include fontStyled(#4c5862,Poppins-Regular ,13px ,0.01em);
 			padding-left: 5px;
 		}
 	}
 	.ended {
-		align-items: center;
-		display: flex;
-		justify-content: space-between;
+		@include flexLayOut(center,space-between ,row );
 		width: 95%;
 		.person {
-			align-items: center;
-			display: flex;
-			justify-content: center;
+			@include flexLayOut(center,center ,row);
 			p {
-				color: #707683;
-				font-family: Poppins-Regular;
-				font-size: 13px;
-				letter-spacing: 0.01em;
+				@include fontStyled(#707683,Poppins-Regular ,13px ,0.01em);
 				padding-left: 12px;
 			}
 		}
 		.edit-delete-person {
-			align-items: center;
-			display: flex;
-			justify-content: center;
+			@include flexLayOut(center,center ,row);
 			.edit-delete-icons {
 				margin-right: 10px;
 				img {
@@ -89,11 +72,7 @@
 				background: #f7685b;
 				border: none;
 				border-radius: 4px;
-				color: $whiteColor;
-				cursor: pointer;
-				cursor: pointer;
-				font-family: Poppins-Medium;
-				font-size: 11px;
+				@include fontStyled($whiteColor,Poppins-Medium ,11px ,none);
 				height: 22px;
 				outline: none;
 				transition: background 0.3s ease-in-out;

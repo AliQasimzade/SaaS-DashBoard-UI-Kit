@@ -1,5 +1,5 @@
 import React from 'react';
-import associatedImage1 from '../images/associated_photo (1).png';
+import associatedImage1 from '../images/Rebecca.png';
 import Ellipse from '../images/Ellipse.png';
 import Ellipse1 from '../images/Ellipse (1).png';
 import Edit from '../images/edit.png';

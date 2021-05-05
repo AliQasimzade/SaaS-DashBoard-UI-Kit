@@ -1,5 +1,5 @@
 import React from 'react';
-import associatedImage2 from '../images/associated_photo (2).png';
+import associatedImage2 from '../images/Rebecca.png';
 import '../styles/SectionFour.scss';
 
 const SectionFour = () => {

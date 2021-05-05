@@ -12,7 +12,6 @@ const Content = () => {
 			<DealsGraphic />
 			<TasksChart />
 			</div>
-		
 		</div>
 	);
 };

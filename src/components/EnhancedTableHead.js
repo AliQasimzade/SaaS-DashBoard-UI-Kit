@@ -12,11 +12,14 @@ const headCells = [
 	{ id: 'Recent activity', label: 'Recent activity' },
 ];
 const EnhancedTableHead = () => {
+	const handleAllSelected = () =>{
+		
+	}
 	return (
 		<TableHead>
 			<TableRow>
 				<TableCell padding="checkbox">
-					<Checkbox />
+					<Checkbox onClick={handleAllSelected}/>
 				</TableCell>
 				{headCells.map((headCell) => (
 					<TableCell key={headCell.id}>{headCell.label}</TableCell>

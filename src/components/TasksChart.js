@@ -118,7 +118,7 @@ const TasksChart = () => {
         options={options}
         series={options.series}
         type="donut"
-        style={{ width: "390px", height: "224px", marginLeft: "-25px" }}
+        style={{ width: "90%", height: "224px", marginLeft: "-25px" }}
         className="donut"
       />
     </div>

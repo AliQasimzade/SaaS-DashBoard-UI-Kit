@@ -195,7 +195,7 @@ const DealsGraphic = () => {
         options={options.options}
         series={options.series}
         type="area"
-        style={{ width: "435px", height: "222px", paddingLeft: "12px" }}
+        style={{ width: "100%", height: "222px", paddingLeft: "12px" }}
       />
     </div>
   );

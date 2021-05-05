@@ -1,6 +1,5 @@
-import productReducer from "./productReducer";
-import changeListReducer from "./changeListReducer";
-import adminTableReducer from "./adminTableReducer";
-
+import productReducer from './productReducer';
+import changeListReducer from './changeListReducer';
 import { combineReducers } from 'redux';
-export default combineReducers({ productReducer, changeListReducer,adminTableReducer });
+
+export default combineReducers({ productReducer, changeListReducer });

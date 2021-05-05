@@ -1,13 +1,9 @@
-import { FETCH_ITEMS,CHANGE_LIST, ADMIN_TABLE } from './actionTypes';
+import { ADD_DATA, CHANGE_LIST } from './actionTypes';
 
 export const addData = (data) => {
-	return { type: FETCH_ITEMS, data };
+	return { type: ADD_DATA, data };
 };
 
-export const changeList = (key) =>{
-	return { type:CHANGE_LIST, key};
-}
-
-export const adminTable = (table) =>{
-	return {type:ADMIN_TABLE, table}
-}
+export const changeList = (key) => {
+	return { type: CHANGE_LIST, key };
+};

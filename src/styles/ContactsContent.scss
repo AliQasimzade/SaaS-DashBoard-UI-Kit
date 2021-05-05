@@ -76,6 +76,9 @@
 		}
 	}
 	.table {
+		thead.active{
+			display:none
+		}
 		box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06);
 		tr {
 			border-bottom: 1px solid #ebeff2;
@@ -111,9 +114,12 @@
 		.Mui-checked {
 			color: $primaryColor;
 		}
+		.Mui-selected{
+			background-color: #F2F9FF;
+		}
 		.MuiTableRow-hover:hover {
 			box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-			background: none;
+			background-color: #F2F9FF;
 			cursor: pointer;
 		}
         .MuiTableCell-body{
@@ -123,7 +129,6 @@
 			width: 16px;
 			height: 16px;
 			box-sizing: border-box;
-			stroke: #D5D5D5;
 		}
 		.MuiIconButton-root{
 			&:hover{

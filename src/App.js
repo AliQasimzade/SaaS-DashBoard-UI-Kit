@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { addData } from "./redux/actions/actions";
 import "./styles/App.scss";
 import axios from "axios";
@@ -22,7 +22,7 @@ const App = () => {
       .then((res) => dispatch(addData(res.data)))
       .catch((err) => console.log(err));
   }, [dispatch]);
-
+  const route = useSelector((state => state.changeListReducer))
   return (
     <Router>
       <div className="App">
@@ -34,7 +34,7 @@ const App = () => {
           <Route path="/contacts">
             <Contacts />
           </Route>
-          <Redirect push to="/dashboard" />
+          <Redirect push to={route.key === 0 ? "/dashboard" : "/contacts"} />
         </Switch>
       </div>
     </Router>

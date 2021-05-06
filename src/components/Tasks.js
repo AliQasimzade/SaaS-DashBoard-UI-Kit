@@ -5,6 +5,7 @@ import SectionTwo from './SectionTwo';
 import SectionThree from './SectionThree';
 import SectionFour from './SectionFour';
 import {NavLink} from "react-router-dom";
+import "../styles/media-queries/Tasks-Media.scss";
 
 const Tasks = () => {
 	return (

@@ -18,6 +18,7 @@ import deals from '../images/deals-active.png';
 import contacts from '../images/contact.png';
 import settings from '../images/settings.png';
 import { NavLink } from 'react-router-dom';
+import "../styles/media-queries/SideBar-Media.scss";
 
 const SideBar = () => {
 	const dispatch = useDispatch();

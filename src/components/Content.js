@@ -3,6 +3,7 @@ import Tasks from './Tasks';
 import TasksChart from './TasksChart';
 import DealsGraphic from './DealsGraphic';
 import '../styles/Content.scss';
+import "../styles/media-queries/Content-Media.scss";
 
 const Content = () => {
 	return (

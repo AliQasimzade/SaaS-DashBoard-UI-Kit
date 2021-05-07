@@ -8,7 +8,7 @@ import Dashboard from "./components/Dashboard";
 import Contacts from "./components/Contacts";
 
 import {
-  HasRouter as Router,
+  HashRouter as Router,
   Route,
   Switch,
   Redirect,

@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/SaaS-DashBoard-UI-Kit/static/css/main.6f7e2aa5.chunk.css",
-    "main.js": "/SaaS-DashBoard-UI-Kit/static/js/main.e01f53fa.chunk.js",
-    "main.js.map": "/SaaS-DashBoard-UI-Kit/static/js/main.e01f53fa.chunk.js.map",
+    "main.css": "/SaaS-DashBoard-UI-Kit/static/css/main.6410194e.chunk.css",
+    "main.js": "/SaaS-DashBoard-UI-Kit/static/js/main.b4bbc479.chunk.js",
+    "main.js.map": "/SaaS-DashBoard-UI-Kit/static/js/main.b4bbc479.chunk.js.map",
     "runtime-main.js": "/SaaS-DashBoard-UI-Kit/static/js/runtime-main.190be5d4.js",
     "runtime-main.js.map": "/SaaS-DashBoard-UI-Kit/static/js/runtime-main.190be5d4.js.map",
-    "static/js/2.8d12e997.chunk.js": "/SaaS-DashBoard-UI-Kit/static/js/2.8d12e997.chunk.js",
-    "static/js/2.8d12e997.chunk.js.map": "/SaaS-DashBoard-UI-Kit/static/js/2.8d12e997.chunk.js.map",
+    "static/js/2.a56b4d36.chunk.js": "/SaaS-DashBoard-UI-Kit/static/js/2.a56b4d36.chunk.js",
+    "static/js/2.a56b4d36.chunk.js.map": "/SaaS-DashBoard-UI-Kit/static/js/2.a56b4d36.chunk.js.map",
     "index.html": "/SaaS-DashBoard-UI-Kit/index.html",
-    "static/css/main.6f7e2aa5.chunk.css.map": "/SaaS-DashBoard-UI-Kit/static/css/main.6f7e2aa5.chunk.css.map",
-    "static/js/2.8d12e997.chunk.js.LICENSE.txt": "/SaaS-DashBoard-UI-Kit/static/js/2.8d12e997.chunk.js.LICENSE.txt",
+    "static/css/main.6410194e.chunk.css.map": "/SaaS-DashBoard-UI-Kit/static/css/main.6410194e.chunk.css.map",
+    "static/js/2.a56b4d36.chunk.js.LICENSE.txt": "/SaaS-DashBoard-UI-Kit/static/js/2.a56b4d36.chunk.js.LICENSE.txt",
     "static/media/ContactsContent.scss": "/SaaS-DashBoard-UI-Kit/static/media/Poppins-SemiBold.cce5625b.ttf",
     "static/media/chat.6b67ee50.svg": "/SaaS-DashBoard-UI-Kit/static/media/chat.6b67ee50.svg",
     "static/media/contacts.a7f47b5c.svg": "/SaaS-DashBoard-UI-Kit/static/media/contacts.a7f47b5c.svg",
@@ -20,8 +20,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.190be5d4.js",
-    "static/js/2.8d12e997.chunk.js",
-    "static/css/main.6f7e2aa5.chunk.css",
-    "static/js/main.e01f53fa.chunk.js"
+    "static/js/2.a56b4d36.chunk.js",
+    "static/css/main.6410194e.chunk.css",
+    "static/js/main.b4bbc479.chunk.js"
   ]
 }

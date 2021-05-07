@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import '../styles/ContactsContent.scss';
+import "../styles/media-queries/ContactsContent-Media.scss";
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
@@ -214,7 +215,7 @@ const ContactsContent = () => {
 				<button onClick={handleAddContact}>Add contact</button>
 			</div>
 			<div className="table">
-				<div>
+				<div className="table-wrapper">
 					<Paper>
 						<EnhancedTableToolbar
 							numSelected={selected.length}

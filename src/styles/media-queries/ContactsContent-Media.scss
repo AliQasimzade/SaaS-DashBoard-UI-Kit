@@ -1,0 +1,43 @@
+@media only screen and (max-width:500px){
+    .contacts-content{
+        padding:36px 0 !important;
+        .add-contact{
+            padding: 0 10px;
+            button{
+                width: 100px;
+                height: 30px;
+                font-size: 11px;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 900px) {
+  .contacts-content {
+    .table {
+      overflow: auto;
+      width: 100%;
+      .table-wrapper {
+        width: 850px;
+      }
+      table {
+        td {
+          &:last-child {
+            .td {
+              padding-right: 5px;
+            }
+          }
+        }
+        th {
+          &:last-child {
+            padding-right: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .contacts-content {
+    padding: 36px 12px 36px 12px;
+  }
+}

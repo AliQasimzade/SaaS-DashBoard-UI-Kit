@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/SaaS-DashBoard-UI-Kit/static/css/main.384a6fcf.chunk.css",
-    "main.js": "/SaaS-DashBoard-UI-Kit/static/js/main.557a9b31.chunk.js",
-    "main.js.map": "/SaaS-DashBoard-UI-Kit/static/js/main.557a9b31.chunk.js.map",
+    "main.css": "/SaaS-DashBoard-UI-Kit/static/css/main.f7ec24e5.chunk.css",
+    "main.js": "/SaaS-DashBoard-UI-Kit/static/js/main.01e08acf.chunk.js",
+    "main.js.map": "/SaaS-DashBoard-UI-Kit/static/js/main.01e08acf.chunk.js.map",
     "runtime-main.js": "/SaaS-DashBoard-UI-Kit/static/js/runtime-main.190be5d4.js",
     "runtime-main.js.map": "/SaaS-DashBoard-UI-Kit/static/js/runtime-main.190be5d4.js.map",
     "static/js/2.f2fcadd0.chunk.js": "/SaaS-DashBoard-UI-Kit/static/js/2.f2fcadd0.chunk.js",
     "static/js/2.f2fcadd0.chunk.js.map": "/SaaS-DashBoard-UI-Kit/static/js/2.f2fcadd0.chunk.js.map",
     "index.html": "/SaaS-DashBoard-UI-Kit/index.html",
-    "static/css/main.384a6fcf.chunk.css.map": "/SaaS-DashBoard-UI-Kit/static/css/main.384a6fcf.chunk.css.map",
+    "static/css/main.f7ec24e5.chunk.css.map": "/SaaS-DashBoard-UI-Kit/static/css/main.f7ec24e5.chunk.css.map",
     "static/js/2.f2fcadd0.chunk.js.LICENSE.txt": "/SaaS-DashBoard-UI-Kit/static/js/2.f2fcadd0.chunk.js.LICENSE.txt",
     "static/media/ContactsContent.scss": "/SaaS-DashBoard-UI-Kit/static/media/Poppins-SemiBold.cce5625b.ttf",
     "static/media/chat.6b67ee50.svg": "/SaaS-DashBoard-UI-Kit/static/media/chat.6b67ee50.svg",
@@ -21,7 +21,7 @@
   "entrypoints": [
     "static/js/runtime-main.190be5d4.js",
     "static/js/2.f2fcadd0.chunk.js",
-    "static/css/main.384a6fcf.chunk.css",
-    "static/js/main.557a9b31.chunk.js"
+    "static/css/main.f7ec24e5.chunk.css",
+    "static/js/main.01e08acf.chunk.js"
   ]
 }

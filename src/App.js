@@ -8,7 +8,7 @@ import Dashboard from "./components/Dashboard";
 import Contacts from "./components/Contacts";
 
 import {
-  BrowserRouter as Router,
+  HasRouter as Router,
   Route,
   Switch,
   Redirect,

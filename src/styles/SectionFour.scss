@@ -15,7 +15,7 @@
 .section-four {
 	@include layOutFlex(center, center, column);
 	border-radius: 4px;
-	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.08);
+	box-shadow: $sectionThreeBoxShadow;
 	cursor: pointer;
 	margin-top: 24px;
 	padding: 16px 0;
@@ -30,10 +30,10 @@
 		margin-bottom: 7px;
 		width: 95%;
 		p {
-			@include styledFont(#323c47, Poppins-Medium, 15px, 0.01em);
+			@include styledFont($tableBlack, Poppins-Medium, 15px, 0.01em);
 		}
 		span {
-			@include styledFont(#90a0b7, Poppins-Medium, 12px, 0.01em);
+			@include styledFont($grayColor, Poppins-Medium, 12px, 0.01em);
 		}
 	}
 	.due-date {
@@ -41,11 +41,11 @@
 		margin-bottom: 20px;
 		width: 95%;
 		span {
-			@include styledFont(#4c5862, Poppins-Regular, 13px, 0.01em);
+			@include styledFont($dateColor, Poppins-Regular, 13px, 0.01em);
 			opacity: 0.5;
 		}
 		p {
-			@include styledFont(#4c5862, Poppins-Regular, 13px, 0.01em);
+			@include styledFont($dateColor, Poppins-Regular, 13px, 0.01em);
 			padding-left: 5px;
 		}
 	}
@@ -55,12 +55,12 @@
 		.person {
 			@include layOutFlex(center,center ,row );
 			p {
-				@include styledFont(#707683,Poppins-Regular ,13px ,0.01em);
+				@include styledFont($tableGray,Poppins-Regular ,13px ,0.01em);
 				padding-left: 12px;
 			}
 		}
 		button {
-			background: #2ed47a;
+			background: $greenColor;
 			border: none;
 			border-radius: 4px;
 			@include styledFont($whiteColor, Poppins-Medium,11px ,0.02em);
@@ -71,7 +71,7 @@
 			transition: background 0.3s ease-in-out;
 			width: 84px;
 			&:hover {
-				background-color: #69f0a5;
+				background-color: $greenColor2;
 			}
 		}
 	}

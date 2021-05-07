@@ -8,7 +8,7 @@
 
 .navigation {
 	background-color: $whiteColor;
-	border-bottom: 1px solid #ebeff2;
+	border-bottom: 1px solid $rowColor;
 	height: 60px;
 	position: sticky;
 	top: 0;
@@ -37,7 +37,7 @@
 		}
 		input {
 			border: none;
-			color: #90a0b7;
+			color: $grayColor;
 			font-family: Poppins-Regular;
 			font-size: 12px;
 			letter-spacing: 0.01em;

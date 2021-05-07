@@ -16,7 +16,7 @@
 }
 
 .section-1 {
-	border-bottom: 1px solid #ebeff2;
+	border-bottom: 1px solid $rowColor;
 	padding-bottom: 27px;
 	padding-top: 16px;
 }
@@ -27,36 +27,36 @@
 		padding-bottom: 16px;
 		@include flexlayout(center, space-between, row);
 		.remaining-tasks {
-			@include tagStyle(#334d6e, Poppins-Medium, 13px, 0.01em);
+			@include tagStyle($greyColor2, Poppins-Medium, 13px, 0.01em);
 		}
 		.show-tasks {
 			@include flexlayout(flex-end, center, row);
 			.show {
-				@include tagStyle(#6a707e, Poppins-Regular, 12px, 0.01em);
+				@include tagStyle($selectOptionColor, Poppins-Regular, 12px, 0.01em);
 			}
 		}
 	}
 	.progress-bar {
-		background-color: #ebeff2;
+		background-color: $rowColor;
 		height: 4px;
 	}
 	.date {
 		padding-bottom: 47px;
 		padding-top: 20px;
-		@include tagStyle(#192a3e, Poppins-Medium, 15px, 0.01em);
+		@include tagStyle($blackColor, Poppins-Medium, 15px, 0.01em);
 	}
 	.week-days {
 		@include flexlayout(center, space-between, row);
 		div {
 			@include flexlayout(center, center, column);
 			.short-day-name {
-				@include tagStyle(#334d6e, Poppins-Medium, 13px, 0.01em);
+				@include tagStyle(greyColor2, Poppins-Medium, 13px, 0.01em);
 			}
 			.day {
 				border-radius: 50%;
 				height: 24px;
 				width: 24px;
-				@include tagStyle(#4c5862, Poppins-Regular, 12px, 0.01em);
+				@include tagStyle($dateColor, Poppins-Regular, 12px, 0.01em);
 				@include flexlayout(center, center, row);
 			}
 			.day-1 {

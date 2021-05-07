@@ -15,7 +15,7 @@
 .deals-graphic {
 	background-color: $whiteColor;
 	border-radius: 4px;
-	box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06);
+	box-shadow: $tasksBoxShadow;
 	height: 344px;
 	width: 445px;
 	@include flex(flex-start, flex-start, column);
@@ -60,7 +60,7 @@
 		}
 	}
 	.area-chart-tasks {
-		border-bottom: 1px solid #ebeff2;
+		border-bottom: 1px solid $rowColor;
 		height: 50px;
 		margin-bottom: 16px;
 		padding: 0 13px;
@@ -72,7 +72,7 @@
 		.show-chart {
 			@include flex(flex-end, none, row);
 			.show {
-				@include stylesFont(#6a707e, Poppins-Regular, 12px, 0.01em);
+				@include stylesFont($selectOptionColor, Poppins-Regular, 12px, 0.01em);
 			}
 			span {
 				@include stylesFont($primaryColor, Poppins-Regular, 12px, 0.01em);

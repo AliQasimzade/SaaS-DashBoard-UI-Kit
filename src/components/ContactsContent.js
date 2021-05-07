@@ -232,7 +232,7 @@ const ContactsContent = () => {
 												hover
 												role="checkbox"
 												aria-checked={isItemSelected}
-												key={row.email}
+												key={key}
 												selected={isItemSelected}
 												onClick={(event) => handleClick(event, row.email)}
 											>
@@ -243,22 +243,22 @@ const ContactsContent = () => {
 													/>
 												</TableCell>
 												<TableCell component="th" scope="row" padding="none">
-													<div className="td">{row.name}</div>
+													<span className="td">{row.name}</span>
 												</TableCell>
 												<TableCell>
-													<div className="td">{row.email}</div>
+													<span className="td">{row.email}</span>
 												</TableCell>
 												<TableCell>
-													<div className="td">{row.companyName}</div>
+													<span className="td">{row.companyName}</span>
 												</TableCell>
 												<TableCell>
-													<div className="td">{row.role}</div>
+													<span className="td">{row.role}</span>
 												</TableCell>
 												<TableCell>
-													<div className="td">{row.forecast}</div>
+													<span className="td">{row.forecast}</span>
 												</TableCell>
 												<TableCell>
-													<div className="td">{row.recentActivity}</div>
+													<span className="td">{row.recentActivity}</span>
 												</TableCell>
 											</TableRow>
 										);

@@ -1,39 +1,26 @@
 @import "fonts.scss";
 @import "colors.scss";
+@import "mixins.scss";
 
-@mixin layout-flex($alignItems, $justify, $direction) {
-  align-items: $alignItems;
-  display: flex;
-  flex-direction: $direction;
-  justify-content: $justify;
-}
-
-@mixin styleFont($color, $fontFamily, $fontSize, $letterSpace) {
-  color: $color;
-  font-family: $fontFamily;
-  font-size: $fontSize;
-  letter-spacing: $letterSpace;
-}
 .contacts-content {
-  display: flex;
-  flex-direction: column;
+  @include flexLayout(initial, initial, column);
   height: fit-content;
   padding: 36px;
   width: 100%;
   .add-contact {
     width: 100%;
-    @include layout-flex(flex-end, space-between, row);
+    @include flexLayout(flex-end, space-between, row);
     margin-bottom: 24px;
     .company-select {
-      @include layout-flex(flex-end, center, row);
+      @include flexLayout(flex-end, center, row);
 
       span {
-        @include styleFont($selectOptionColor,Poppins-Regular, 12px, 0.01em);
+        @include styleTag($selectOptionColor, Poppins-Regular, 0.75rem, 0.01em);
       }
       .MuiSelect-root {
         padding: 0 !important;
         span {
-          @include styleFont($primaryColor, Poppins-Regular, 12px, 0.01em);
+          @include styleTag($primaryColor, Poppins-Regular, 0.75rem, 0.01em);
         }
       }
       .MuiFormControl-root {
@@ -54,7 +41,7 @@
       }
     }
     button {
-      @include styleFont($whiteColor, Poppins-SemiBold, 13px, 0.01em);
+      @include styleTag($whiteColor, Poppins-SemiBold, 0.8125rem, 0.01em);
       background-color: $primaryColor;
       box-shadow: $contactsButtonBoxShadow;
       border-radius: 4px;
@@ -76,8 +63,8 @@
     }
   }
   .table {
-	 overflow: auto;
-	 
+    overflow: auto;
+
     thead.active {
       display: none;
     }
@@ -91,36 +78,34 @@
       border-bottom: none;
       padding: 0;
       text-align: left;
-	  &:last-child{
-		  .td{
-			  @include layout-flex(center,flex-end ,row );
-			  padding-right: 24px;
-		  }
-	  }
-	  .td{
-		  @include styleFont($tableGray,Poppins-Regular ,13px ,0.01em );
-	  }
+      &:last-child {
+        .td {
+          @include flexLayout(center, flex-end, row);
+          padding-right: 24px;
+        }
+      }
+      .td {
+        @include styleTag($tableGray, Poppins-Regular, 0.8125rem, 0.01em);
+      }
     }
     th {
       border-bottom: none;
       padding: 0;
-	  @include styleFont($darkBlueText, Poppins-Medium,13px ,0.01em );
-	  text-align:left;
-	  &:last-child{
-		 text-align: right;
-		 padding-right: 24px;
-	  }
-	  .td {
-		@include styleFont($tableBlack, Poppins-Medium, 15px, 0.01em);
-	  }
-	
-  
+      @include styleTag($darkBlueText, Poppins-Medium, 0.8125rem, 0.01em);
+      text-align: left;
+      &:last-child {
+        text-align: right;
+        padding-right: 24px;
+      }
+      .td {
+        @include styleTag($tableBlack, Poppins-Medium, 0.9375rem, 0.01em);
+      }
     }
     input {
       padding: 0 0 0 4px;
     }
     .td {
-		@include layout-flex(center, flex-start, row);
+      @include flexLayout(center, flex-start, row);
       img {
         margin-right: 12px;
       }
@@ -131,7 +116,7 @@
       padding: 0 !important;
     }
     .MuiCheckbox-root {
-      color: $checkBoxColor
+      color: $checkBoxColor;
     }
     .Mui-checked {
       color: $primaryColor;
@@ -141,7 +126,7 @@
     }
     .MuiTableRow-hover:hover {
       box-shadow: $hoverRowColor;
-      background-color:$selectedRowColor;
+      background-color: $selectedRowColor;
       cursor: pointer;
     }
     .MuiTableCell-body {

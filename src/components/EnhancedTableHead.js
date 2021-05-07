@@ -19,8 +19,8 @@ const EnhancedTableHead = (props) => {
 				<TableCell padding="checkbox">
 					<Checkbox onChange={onSelectAllClick} />
 				</TableCell>
-				{headCells.map((headCell) => (
-					<TableCell key={headCell.id}>{headCell.label}</TableCell>
+				{headCells.map((headCell,key) => (
+					<TableCell key={key}>{headCell.label}</TableCell>
 				))}
 			</TableRow>
 		</TableHead>

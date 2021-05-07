@@ -1,73 +1,60 @@
-@import 'fonts.scss';
-@import 'colors.scss';
-
-@mixin flexlayout($alignItems, $justify, $direction) {
-	align-items: $alignItems;
-	display: flex;
-	flex-direction: $direction;
-	justify-content: $justify;
-}
-
-@mixin tagStyle($color, $fontFamily, $fontSize, $letterSpace) {
-	color: $color;
-	font-family: $fontFamily;
-	font-size: $fontSize;
-	letter-spacing: $letterSpace;
-}
+@import "fonts.scss";
+@import "colors.scss";
+@import "mixins.scss";
 
 .section-1 {
-	border-bottom: 1px solid $rowColor;
-	padding-bottom: 27px;
-	padding-top: 16px;
+  border-bottom: 1px solid $rowColor;
+  padding-bottom: 27px;
+  padding-top: 16px;
 }
 .section-one {
-	width: 95%;
-	@include flexlayout(none, none, column);
-	.section-one-header {
-		padding-bottom: 16px;
-		@include flexlayout(center, space-between, row);
-		.remaining-tasks {
-			@include tagStyle($greyColor2, Poppins-Medium, 13px, 0.01em);
-		}
-		.show-tasks {
-			@include flexlayout(flex-end, center, row);
-			.show {
-				@include tagStyle($selectOptionColor, Poppins-Regular, 12px, 0.01em);
-			}
-		}
-	}
-	.progress-bar {
-		background-color: $rowColor;
-		height: 4px;
-	}
-	.date {
-		padding-bottom: 47px;
-		padding-top: 20px;
-		@include tagStyle($blackColor, Poppins-Medium, 15px, 0.01em);
-	}
-	.week-days {
-		@include flexlayout(center, space-between, row);
-		div {
-			@include flexlayout(center, center, column);
-			.short-day-name {
-				@include tagStyle(greyColor2, Poppins-Medium, 13px, 0.01em);
-			}
-			.day {
-				border-radius: 50%;
-				height: 24px;
-				width: 24px;
-				@include tagStyle($dateColor, Poppins-Regular, 12px, 0.01em);
-				@include flexlayout(center, center, row);
-			}
-			.day-1 {
-				background-color: $primaryColor;
-				color: $whiteColor;
-			}
-		}
-		.monday {
-			p {
-				color: $primaryColor;
-			}
-		}
-	}
+  width: 95%;
+  @include flexLayout(initial, initial, column);
+  .section-one-header {
+    padding-bottom: 16px;
+    @include flexLayout(center, space-between, row);
+    .remaining-tasks {
+      @include styleTag($greyColor2, Poppins-Medium, 0.8125rem, 0.01em);
+    }
+    .show-tasks {
+      @include flexLayout(flex-end, center, row);
+      .show {
+        @include styleTag($selectOptionColor, Poppins-Regular, 0.75rem, 0.01em);
+      }
+    }
+  }
+  .progress-bar {
+    background-color: $rowColor;
+    height: 4px;
+  }
+  .date {
+    padding-bottom: 47px;
+    padding-top: 20px;
+    @include styleTag($blackColor, Poppins-Medium, 0.9375rem, 0.01em);
+  }
+  .week-days {
+    @include flexLayout(center, space-between, row);
+    div {
+      @include flexLayout(center, center, column);
+      .short-day-name {
+        @include styleTag(greyColor2, Poppins-Medium, 0.8125rem, 0.01em);
+      }
+      .day {
+        border-radius: 50%;
+        height: 24px;
+        width: 24px;
+        @include styleTag($dateColor, Poppins-Regular, 0.75rem, 0.01em);
+        @include flexLayout(center, center, row);
+      }
+      .day-1 {
+        background-color: $primaryColor;
+        color: $whiteColor;
+      }
+    }
+    .monday {
+      p {
+        color: $primaryColor;
+      }
+    }
+  }
 }

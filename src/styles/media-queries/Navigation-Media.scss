@@ -2,6 +2,9 @@
 
 @media only screen and (max-width: 500px) {
 	.navigation {
+		.search{
+			padding: 0 !important;
+		}
 		.hamburger-button {
 			display: block;
 			padding-left: 10px;

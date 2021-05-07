@@ -16,7 +16,7 @@ const EnhancedTableToolbar = (props) => {
 						justifyContent: 'center',
 					}}
 				>
-					<div
+					<span
 						style={{
 							width: '16px',
 							height: '16px',
@@ -31,8 +31,8 @@ const EnhancedTableToolbar = (props) => {
 						}}
 					>
 						{numSelected}
-					</div>
-					<p style={{ marginRight: '16px' }}>{numSelected} selected</p>
+					</span>
+					<span style={{ marginRight: '16px' }}>{numSelected} selected</span>
 				</Typography>
 			) : (
 				''

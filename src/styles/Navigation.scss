@@ -1,47 +1,40 @@
-@import 'fonts.scss';
-@import 'colors.scss';
-@mixin flexLayout($justify) {
-	align-items: center;
-	display: flex;
-	justify-content: $justify;
-}
+@import "fonts.scss";
+@import "colors.scss";
+@import "mixins.scss";
 
 .navigation {
-	background-color: $whiteColor;
-	border-bottom: 1px solid $rowColor;
-	height: 60px;
-	position: sticky;
-	top: 0;
-	width: 100%;
-	z-index: 9;
-	@include flexLayout(space-between);
-	.hamburger-button {
-		display: none;
-	}
-	.MuiIconButton-root {
-		margin-right: 24px;
-	}
-	button {
-		background: none;
-		border: none;
-		cursor: pointer;
-		outline: none;
-	}
-	.search {
-		height: 100%;
-		padding-left: 36px;
-		@include flexLayout(none);
-		.search-button {
-			cursor: pointer;
-			margin-right: 12px;
-		}
-		input {
-			border: none;
-			color: $grayColor;
-			font-family: Poppins-Regular;
-			font-size: 12px;
-			letter-spacing: 0.01em;
-			outline: none;
-		}
-	}
+  background-color: $whiteColor;
+  border-bottom: 1px solid $rowColor;
+  height: 60px;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 9;
+  @include flexLayout(center, space-between, row);
+  .hamburger-button {
+    display: none;
+  }
+  .MuiIconButton-root {
+    margin-right: 24px;
+  }
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+  .search {
+    height: 100%;
+    padding-left: 36px;
+    @include flexLayout(initial, initial, row);
+    .search-button {
+      cursor: pointer;
+      margin-right: 12px;
+    }
+    input {
+      border: none;
+      @include styleTag($grayColor, Poppins-Regular, 0.75rem, 0.01em);
+      outline: none;
+    }
+  }
 }

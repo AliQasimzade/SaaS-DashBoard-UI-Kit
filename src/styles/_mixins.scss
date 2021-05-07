@@ -1,0 +1,13 @@
+@mixin flexLayout($alignItems,$justify,$direction){
+    display: flex;
+    align-items: $alignItems;
+    justify-content: $justify;
+    flex-direction: $direction;
+}
+
+@mixin styleTag($color,$fontFamily,$fontSize,$letterSpace){
+    color:$color;
+    font-family: $fontFamily;
+    font-size: $fontSize;
+    letter-spacing: $letterSpace;
+}

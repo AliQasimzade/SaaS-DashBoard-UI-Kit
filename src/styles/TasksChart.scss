@@ -1,98 +1,87 @@
-@import 'fonts.scss';
-@import 'colors.scss';
-@mixin displayFlex($alignItems, $justify, $direction) {
-	align-items: $alignItems;
-	display: flex;
-	flex-direction: $direction;
-	justify-content: $justify;
-}
-@mixin fontStyles($color, $fontFamily, $fontSize, $letterSpace) {
-	color: $color;
-	font-family: $fontFamily;
-	font-size: $fontSize;
-	letter-spacing: $letterSpace;
-}
+@import "fonts.scss";
+@import "colors.scss";
+@import "mixins.scss";
+
 .tasks-chart {
-	background-color: #fff;
-	border-radius: 4px;
-	box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06);
-	height: 344px;
-	margin-top: 30px;
-	@include displayFlex(center, flex-start, column);
-	.donut {
+  background-color: $whiteColor;
+  border-radius: 4px;
+  box-shadow: $tasksBoxShadow;
+  height: 344px;
+  margin-top: 30px;
+  @include flexLayout(center, flex-start, column);
+  .donut {
+    .apexcharts-legend-series {
+      margin-bottom: 10px !important;
+      .apexcharts-legend-marker {
+        height: 10px !important;
+        position: relative;
+        width: 10px !important;
+      }
+      .apexcharts-legend-marker::after {
+        background-color: #fff !important;
+        border-radius: 50%;
+        content: "";
+        height: 6px !important;
+        position: absolute !important;
+        right: 20%;
+        top: 2px;
+        width: 6px !important;
+      }
+    }
+  }
+  .donut-chart-tasks {
+    border-bottom: 1px solid $rowColor;
+    height: 50px;
+    margin-bottom: 33px;
+    padding: 0 13px;
+    width: 100%;
+    @include flexLayout(center, space-between, row);
+    p {
+      @include styleTag($blackColor, Poppins-Medium, 0.9375rem, 0.01em);
+    }
+    .show-chart {
+      @include flexLayout(flex-end, initial, row);
+      .show {
+        @include styleTag($selectOptionColor, Poppins-Regular, 0.75rem, 0.01em);
+      }
+      span {
+        @include styleTag($primaryColor, Poppins-Regular, 0.75rem, 0.01em);
+      }
+    }
+  }
 
-		.apexcharts-legend-series {
-			margin-bottom: 10px !important;
-			.apexcharts-legend-marker {
-				height: 10px !important;
-				position: relative;
-				width: 10px !important;
-			}
-			.apexcharts-legend-marker::after {
-				background-color: #fff !important;
-				border-radius: 50%;
-				content: '';
-				height: 6px !important;
-				position: absolute !important;
-				right: 20%;
-				top: 2px;
-				width: 6px !important;
-			}
-		}
-	}
-	.donut-chart-tasks {
-		border-bottom: 1px solid #ebeff2;
-		height: 50px;
-		margin-bottom: 33px;
-		padding: 0 13px;
-		width: 100%;
-		@include displayFlex(center, space-between, row);
-		p {
-			@include fontStyles(#192a3e, Poppins-Medium, 15px, 0.01em);
-		}
-		.show-chart {
-			@include displayFlex(flex-end, none, row);
-			.show {
-				@include fontStyles(#6a707e, Poppins-Regular, 12px, 0.01em);
-			}
-			span {
-				@include fontStyles($primaryColor, Poppins-Regular, 12px, 0.01em);
-			}
-		}
-	}
+  .MuiSelect-root {
+    padding: 0 !important;
+    span {
+      @include styleTag($primaryColor, Poppins-Regular, 0.75rem, 0.01em);
+    }
+  }
 
-	.MuiSelect-root {
-		padding: 0 !important;
-		span {
-			@include fontStyles($primaryColor, Poppins-Regular, 12px, 0.01em);
-		}
-	}
-
-	.MuiFormControl-root {
-		margin: 0 !important;
-		min-width: 0 !important;
-		width: 90px !important;
-	}
-	.MuiInput-underline::after {
-		display: none;
-	}
-	.MuiInput-underline::before {
-		display: none;
-	}
-	.MuiInput-root{
-		margin: 0 !important;
-	}
-	.jss8 {
-		min-width: 0 !important;
-		width: 90px !important;
-	}
-	.jss9 {
-		margin: 0 !important;
-	}
-	.MuiSvgIcon-root {
-		height: 12px;
-		left: 65px;
-		top: 5px;
-		width: 12px;
-	}
+  .MuiFormControl-root {
+    margin: 0 !important;
+    min-width: 0 !important;
+    width: 90px !important;
+  }
+  .MuiInput-underline::after {
+    display: none;
+  }
+  .MuiInput-underline::before {
+    display: none;
+  }
+  .MuiInput-root {
+    margin: 0 !important;
+  }
+  .jss8 {
+    min-width: 0 !important;
+    width: 90px !important;
+  }
+  .jss9 {
+    margin: 0 !important;
+  }
+  .MuiSvgIcon-root {
+    height: 12px;
+    left: 65px;
+    top: 5px;
+    width: 12px;
+  }
 }

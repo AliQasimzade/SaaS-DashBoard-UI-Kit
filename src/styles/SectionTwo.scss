@@ -1,79 +1,68 @@
-@import 'fonts.scss';
-@import 'colors.scss';
-@mixin flex($alignItems, $justify, $direction) {
-	align-items: $alignItems;
-	display: flex;
-	flex-direction: $direction;
-	justify-content: $justify;
-}
+@import "fonts.scss";
+@import "colors.scss";
+@import "mixins.scss";
 
-@mixin styleTag($color, $fontFamily, $fontSize, $letterSpace) {
-	color: $color;
-	font-family: $fontFamily;
-	font-size: $fontSize;
-	letter-spacing: $letterSpace;
-}
 .section-two {
-	border-radius: 4px;
-	box-shadow: $sectionThreeBoxShadow;
-	cursor: pointer;
-	margin-top: 24px;
-	padding: 16px 0;
-	transition: all 0.3s ease-in-out;
-	width: 95%;
-	@include flex(center, center, column);
-	&:hover {
-		box-shadow: $sectionTwoHoverBoxShadow;
-		cursor: pointer;
-	}
-	.section-two-header {
-		margin-bottom: 7px;
-		width: 95%;
-		@include flex(flex-start, space-between, row);
-		p {
-			@include styleTag($tableBlack, Poppins-Medium, 15px, 0.01em);
-		}
-		span {
-			@include styleTag($grayColor, Poppins-Medium, 12px, 0.01em);
-		}
-	}
-	.due-date {
-		margin-bottom: 20px;
-		width: 95%;
-		@include flex(center, flex-start, row);
-		span {
-			opacity: 0.5;
-			@include styleTag($dateColor, Poppins-Regular, 13px, 0.01em);
-		}
-		p {
-			padding-left: 5px;
-			@include styleTag($dateColor, Poppins-Regular, 13px, 0.01em);
-		}
-	}
-	.completed {
-		width: 95%;
-		@include flex(center, space-between, row);
-		.person {
-			@include flex(center, center, row);
-			p {
-				padding-left: 12px;
-				@include styleTag($tableGray, Poppins-Regular, 13px, 0.01em);
-			}
-		}
-		button {
-			background: $greenColor;
-			border: none;
-			border-radius: 4px;
-			cursor: pointer;
-			height: 22px;
-			outline: none;
-			text-align: center;
-			transition: background 0.3s ease-in-out;
-			width: 84px;
-			@include styleTag($whiteColor, Poppins-Medium, 11px, 0.02em);
-			&:hover {
-				background-color: $greenColor2;
-			}
-		}
-	}
+  border-radius: 4px;
+  box-shadow: $sectionBoxShadow;
+  cursor: pointer;
+  margin-top: 24px;
+  padding: 16px 0;
+  transition: all 0.3s ease-in-out;
+  width: 95%;
+  @include flexLayout(center, center, column);
+  &:hover {
+    box-shadow: $sectionHoverBoxShadowOne;
+    cursor: pointer;
+  }
+  .section-two-header {
+    margin-bottom: 7px;
+    width: 95%;
+    @include flexLayout(flex-start, space-between, row);
+    p {
+      @include styleTag($tableBlack, Poppins-Medium, 0.9375rem, 0.01em);
+    }
+    span {
+      @include styleTag($grayColor, Poppins-Medium, 0.75rem, 0.01em);
+    }
+  }
+  .due-date {
+    margin-bottom: 20px;
+    width: 95%;
+    @include flexLayout(center, flex-start, row);
+    span {
+      opacity: 0.5;
+      @include styleTag($dateColor, Poppins-Regular, 0.8125rem, 0.01em);
+    }
+    p {
+      padding-left: 5px;
+      @include styleTag($dateColor, Poppins-Regular, 0.8125rem, 0.01em);
+    }
+  }
+  .completed {
+    width: 95%;
+    @include flexLayout(center, space-between, row);
+    .person {
+      @include flexLayout(center, center, row);
+      p {
+        padding-left: 12px;
+        @include styleTag($tableGray, Poppins-Regular, 0.8125rem, 0.01em);
+      }
+    }
+    button {
+      background: $greenColor;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      height: 22px;
+      outline: none;
+      text-align: center;
+      transition: background 0.3s ease-in-out;
+      width: 84px;
+      @include styleTag($whiteColor, Poppins-Medium, 0.6875rem, 0.02em);
+      &:hover {
+        background-color: $greenColor2;
+      }
+    }
+  }
 }

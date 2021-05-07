@@ -1,42 +1,30 @@
 @import "fonts.scss";
 @import "colors.scss";
+@import "mixins.scss";
 
-@mixin flex-layout($alignItems, $justify, $direction) {
-  align-items: $alignItems;
-  display: flex;
-  flex-direction: $direction;
-  justify-content: $justify;
-}
-
-@mixin fontStyle($color, $fontFamily, $fontSize, $letterSpace) {
-  color: $color;
-  font-family: $fontFamily;
-  font-size: $fontSize;
-  letter-spacing: $letterSpace;
-}
 .side-bar {
   background-color: $whiteColor;
-  box-shadow:$sidebarBoxShadow;
+  box-shadow: $sidebarBoxShadow;
   height: 100vh;
   position: sticky;
   top: 0;
   z-index: 10;
   width: 256px;
   .nav-link {
-    @include flex-layout(center, center, row);
+    @include flexLayout(center, center, row);
   }
   .heading {
     border-bottom: 1px solid $rowColor;
     height: 60px;
     padding: 0 24px;
-    @include flex-layout(center, flex-start, row);
+    @include flexLayout(center, flex-start, row);
     p {
-      @include fontStyle($primaryColor, Open-Sans-SemiBold, 18px, none);
+      @include styleTag($primaryColor, Open-Sans-SemiBold, 1.125rem, none);
     }
   }
   .profile {
     padding: 24px 24px 0;
-    @include flex-layout(center, none, row);
+    @include flexLayout(center, none, row);
     .profile-image {
       border-radius: 50%;
       height: 46px;
@@ -49,12 +37,12 @@
       }
     }
     .profile-info {
-      @include flex-layout(none, none, column);
+      @include flexLayout(initial, initial, column);
       .name {
-        @include fontStyle($blackColor, Poppins-Medium, 14px, none);
+        @include styleTag($blackColor, Poppins-Medium, 0.875rem, initial);
       }
       .gmail {
-        @include fontStyle($grayColor, Poppins-Medium, 11px, 0.01em);
+        @include styleTag($grayColor, Poppins-Medium, 0.6875rem, 0.01em);
       }
     }
   }
@@ -64,13 +52,13 @@
       cursor: pointer;
       margin-bottom: 20px;
       padding: 0 24px;
-      @include flex-layout(center, flex-start, row);
+      @include flexLayout(center, flex-start, row);
       .list-images {
         height: 25px;
         margin-right: 7px;
         position: relative;
         width: 30px;
-        @include flex-layout(center, center, row);
+        @include flexLayout(center, center, row);
         img {
           object-fit: contain;
           position: absolute;
@@ -85,7 +73,7 @@
       a {
         line-height: 19px;
         transition: color 0.2s ease-in-out;
-        @include fontStyle($greyColor2, Poppins-Medium, 13px, 0.01em);
+        @include styleTag($greyColor2, Poppins-Medium, 0.8125rem, 0.01em);
       }
       &:hover {
         a {
@@ -112,7 +100,7 @@
     padding: 0 24px;
     position: absolute;
     transition: all 0.2s ease-in-out;
-    @include fontStyle($grayColor, Poppins-Medium, 11px, 0.01em);
+    @include styleTag($grayColor, Poppins-Medium, 0.6875rem, 0.01em);
     svg {
       margin-right: 14px;
     }

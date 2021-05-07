@@ -1,86 +1,76 @@
-@import 'fonts.scss';
-@import 'colors.scss';
-@mixin flexLayOut($alignItems,$justify,$direction){
-	display: flex;
-	align-items: $alignItems;
-	justify-content: $justify;
-	flex-direction: $direction;
-}
-@mixin fontStyled($color,$fontFamily,$fontSize,$letterSpace){
-	color: $color;
-	font-family: $fontFamily;
-	font-size: $fontSize;
-	letter-spacing: $letterSpace;
-}
+@import "fonts.scss";
+@import "colors.scss";
+@import "mixins.scss";
+
 .section-three {
-	@include flexLayOut(center,center ,column);
-	border-radius: 4px;
-	box-shadow: $sectionThreeBoxShadow;
-	cursor: pointer;
-	margin-top: 24px;
-	padding: 16px 0;
-	transition: all 0.3s ease-in-out;
-	width: 95%;
-	&:hover {
-		box-shadow:$sectionTwoHoverBoxShadow;
-		cursor: pointer;
-	}
-	.section-three-header {
-		@include flexLayOut(flex-start,space-between ,row);
-		margin-bottom: 7px;
-		width: 95%;
-		p {
-			@include fontStyled($tableBlack,Poppins-Medium ,15px ,0.01em);
-		}
-		span {
-			@include fontStyled($grayColor,Poppins-Medium ,12px ,0.01em);
-		}
-	}
-	.due-date {
-		@include flexLayOut(center,flex-start ,row);
-		margin-bottom: 20px;
-		width: 95%;
-		span {
-			@include fontStyled($dateColor,Poppins-Regular ,13px ,0.01em);
-			opacity: 0.5;
-		}
-		p {
-			@include fontStyled($dateColor,Poppins-Regular ,13px ,0.01em);
-			padding-left: 5px;
-		}
-	}
-	.ended {
-		@include flexLayOut(center,space-between ,row );
-		width: 95%;
-		.person {
-			@include flexLayOut(center,center ,row);
-			p {
-				@include fontStyled($tableGray,Poppins-Regular ,13px ,0.01em);
-				padding-left: 12px;
-			}
-		}
-		.edit-delete-person {
-			@include flexLayOut(center,center ,row);
-			.edit-delete-icons {
-				margin-right: 10px;
-				img {
-					cursor: pointer;
-					margin-right: 10px;
-				}
-			}
-			button {
-				background: $redColor;
-				border: none;
-				border-radius: 4px;
-				@include fontStyled($whiteColor,Poppins-Medium ,11px ,none);
-				height: 22px;
-				outline: none;
-				transition: background 0.3s ease-in-out;
-				width: 84px;
-				&:hover {
-					background-color: $redColor2;
-				}
-			}
-		}
-	}
+  @include flexLayout(center, center, column);
+  border-radius: 4px;
+  box-shadow: $sectionBoxShadow;
+  cursor: pointer;
+  margin-top: 24px;
+  padding: 16px 0;
+  transition: all 0.3s ease-in-out;
+  width: 95%;
+  &:hover {
+    box-shadow:$sectionHoverBoxShadowOne;
+    cursor: pointer;
+  }
+  .section-three-header {
+    @include flexLayout(flex-start, space-between, row);
+    margin-bottom: 7px;
+    width: 95%;
+    p {
+      @include styleTag($tableBlack, Poppins-Medium, 0.9375rem, 0.01em);
+    }
+    span {
+      @include styleTag($grayColor, Poppins-Medium, 0.75rem, 0.01em);
+    }
+  }
+  .due-date {
+    @include flexLayout(center, flex-start, row);
+    margin-bottom: 20px;
+    width: 95%;
+    span {
+      @include styleTag($dateColor, Poppins-Regular, 0.8125rem, 0.01em);
+      opacity: 0.5;
+    }
+    p {
+      @include styleTag($dateColor, Poppins-Regular, 0.8125rem, 0.01em);
+      padding-left: 5px;
+    }
+  }
+  .ended {
+    @include flexLayout(center, space-between, row);
+    width: 95%;
+    .person {
+      @include flexLayout(center, center, row);
+      p {
+        @include styleTag($tableGray, Poppins-Regular, 0.8125rem, 0.01em);
+        padding-left: 12px;
+      }
+    }
+    .edit-delete-person {
+      @include flexLayout(center, center, row);
+      .edit-delete-icons {
+        margin-right: 10px;
+        img {
+          cursor: pointer;
+          margin-right: 10px;
+        }
+      }
+      button {
+        background: $redColor;
+        border: none;
+        border-radius: 4px;
+        @include styleTag($whiteColor, Poppins-Medium, 0.6875rem, none);
+        height: 22px;
+        outline: none;
+        transition: background 0.3s ease-in-out;
+        width: 84px;
+        &:hover {
+          background-color: $redColor2;
+        }
+      }
+    }
+  }
 }

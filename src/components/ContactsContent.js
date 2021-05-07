@@ -230,9 +230,8 @@ const ContactsContent = () => {
 											<TableRow
 												hover
 												role="checkbox"
-												key={key}
 												aria-checked={isItemSelected}
-												tabIndex={-1}
+												key={row.email}
 												selected={isItemSelected}
 												onClick={(event) => handleClick(event, row.email)}
 											>

@@ -18,7 +18,7 @@ import deals from '../images/deals-active.png';
 import contacts from '../images/contact.png';
 import settings from '../images/settings.png';
 import { NavLink } from 'react-router-dom';
-import "../styles/media-queries/SideBar-Media.scss";
+import '../styles/media-queries/SideBar-Media.scss';
 
 const SideBar = () => {
 	const dispatch = useDispatch();
@@ -70,6 +70,11 @@ const SideBar = () => {
 		myRef.current.classList.toggle('active');
 	};
 
+	const handlecloseHamburgerMenu = () => {
+      document.querySelector(".hamburger-button").classList.remove("active");
+	  document.querySelector(".side-bar").classList.remove("show");
+	};
+
 	return (
 		<div className="side-bar" ref={myRef}>
 			<div className="heading">
@@ -94,10 +99,10 @@ const SideBar = () => {
 						onClick={() => handleClickList(key)}
 					>
 						<NavLink
-							key={key}
 							to={key === 0 ? '/dashboard' : '/contacts'}
 							style={key === listKey.key ? { color: '#109CF1' } : {}}
 							className="nav-link"
+							onClick={handlecloseHamburgerMenu}
 						>
 							<div className="list-images">
 								<img
@@ -115,7 +120,6 @@ const SideBar = () => {
 							</div>
 							<p>{item.list}</p>
 						</NavLink>
-						
 					</li>
 				))}
 			</ul>

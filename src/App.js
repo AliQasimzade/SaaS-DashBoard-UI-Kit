@@ -16,13 +16,16 @@ import {
 
 const App = () => {
   const dispatch = useDispatch();
+  const route = useSelector((state => state.changeListReducer));
+
   useEffect(() => {
     axios
       .get("https://herokuhosting2.herokuapp.com/getData")
       .then((res) => dispatch(addData(res.data)))
       .catch((err) => console.log(err));
   }, [dispatch]);
-  const route = useSelector((state => state.changeListReducer))
+
+  
   return (
     <Router>
       <div className="App">

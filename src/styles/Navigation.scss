@@ -10,11 +10,14 @@
 	background-color: $whiteColor;
 	border-bottom: 1px solid #ebeff2;
 	height: 60px;
-	width: 100%;
 	position: sticky;
 	top: 0;
+	width: 100%;
 	z-index: 9;
 	@include flexLayout(space-between);
+	.hamburger-button {
+		display: none;
+	}
 	.MuiIconButton-root {
 		margin-right: 24px;
 	}

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { addData } from "./redux/actions/actions";
+import { addData, changeList } from "./redux/actions/actions";
 import "./styles/App.scss";
 import axios from "axios";
 import Sidebar from "./components/Sidebar/SideBar";
@@ -20,9 +20,14 @@ const App = () => {
   useEffect(() => {
     axios
       .get("https://herokuhosting2.herokuapp.com/getData")
-      .then((res) =>  dispatch(addData(res.data)))
+      .then((res) => dispatch(addData(res.data)))
       .catch((err) => console.log(err));
-      
+
+    if (window.location.href.includes("/dashboard")) {
+      dispatch(changeList(0));
+    } else {
+      dispatch(changeList(3));
+    }
   }, [dispatch]);
 
   return (

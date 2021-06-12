@@ -9,6 +9,7 @@ import ModalTable from "../Table/ModalTable";
 
 import axios from "axios";
 const ContactsContent = () => {
+
   let [open, setOpen] = useState(false);
   const [option, setOption] = useState("");
   let [isTrue, setIsTrue] = useState(false);
@@ -79,8 +80,7 @@ const ContactsContent = () => {
         </div>
         <button onClick={handleAddContact}>Add contact</button>
       </div>
-      <TableData />
-
+     <TableData /> 
       {isTrue ? (
         <ModalTable
           open={open}

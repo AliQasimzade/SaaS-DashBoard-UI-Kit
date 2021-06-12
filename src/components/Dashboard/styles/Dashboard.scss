@@ -1,0 +1,9 @@
+@import "../../../styles/mixins.scss";
+@import "../../../styles/colors.scss";
+
+.dashboard{
+    width: 100%;
+    @include flexLayout(center,initial,column);
+    background: $appBackgroundColor;
+
+}

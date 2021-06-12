@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addData } from "./redux/actions/actions";
 import "./styles/App.scss";
 import axios from "axios";
-import Sidebar from "./components/SideBar";
-import Dashboard from "./components/Dashboard";
-import Contacts from "./components/Contacts";
+import Sidebar from "./components/Sidebar/SideBar";
+import Dashboard from "./components/Dashboard/Dashboard";
+import Contacts from "./components/Contacts/Contacts";
 
 import {
   HashRouter as Router,
@@ -16,28 +16,27 @@ import {
 
 const App = () => {
   const dispatch = useDispatch();
-  const route = useSelector((state => state.changeListReducer));
 
   useEffect(() => {
     axios
       .get("https://herokuhosting2.herokuapp.com/getData")
-      .then((res) => dispatch(addData(res.data)))
+      .then((res) =>  dispatch(addData(res.data)))
       .catch((err) => console.log(err));
+      
   }, [dispatch]);
 
-  
   return (
     <Router>
       <div className="App">
         <Sidebar />
         <Switch>
-          <Route path="/dashboard">
+          <Route exact path="/dashboard">
             <Dashboard />
           </Route>
           <Route path="/contacts">
             <Contacts />
           </Route>
-          <Redirect push to={route.key === 0 ? "/dashboard" : "/contacts"} />
+          <Redirect push to="/dashboard" />
         </Switch>
       </div>
     </Router>

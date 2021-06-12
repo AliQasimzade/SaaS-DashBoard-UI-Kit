@@ -1,0 +1,40 @@
+@import "../../../styles/fonts.scss";
+@import "../../../styles/colors.scss";
+@import "../../../styles/mixins.scss";
+
+.navigation {
+  background-color: $whiteColor;
+  border-bottom: 1px solid $rowColor;
+  height: 60px;
+  position: sticky;
+  top: 0px;
+  width: 100%;
+  z-index: 9;
+  @include flexLayout(center, space-between, row);
+  .hamburger-button {
+    display: none;
+  }
+  .MuiIconButton-root {
+    margin-right: 24px;
+  }
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+  .search {
+    height: 100%;
+    padding-left: 36px;
+    @include flexLayout(initial, initial, row);
+    .search-button {
+      cursor: pointer;
+      margin-right: 12px;
+    }
+    input {
+      border: none;
+      @include styleTag($grayColor, Poppins-Regular, 0.75rem, 0.01em);
+      outline: none;
+    }
+  }
+}

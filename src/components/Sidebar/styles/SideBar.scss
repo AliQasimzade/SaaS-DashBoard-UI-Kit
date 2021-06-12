@@ -1,0 +1,161 @@
+@import "../../../styles/fonts.scss";
+@import "../../../styles/colors.scss";;
+@import "../../../styles/mixins.scss";
+
+.side-bar {
+  background-color: $whiteColor;
+  box-shadow: $sidebarBoxShadow;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  width: 256px;
+  .nav-link {
+    @include flexLayout(center, center, row);
+  }
+  .heading {
+    border-bottom: 1px solid $rowColor;
+    height: 60px;
+    padding: 0 24px;
+    @include flexLayout(center, flex-start, row);
+    p {
+      @include styleTag($primaryColor, Open-Sans-SemiBold, 1.125rem, none);
+    }
+  }
+  .profile {
+    padding: 24px 24px 0;
+    @include flexLayout(center, initial, row);
+    .profile-image {
+      border-radius: 50%;
+      height: 46px;
+      margin-right: 16px;
+      overflow: hidden;
+      width: 46px;
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+    .profile-info {
+      @include flexLayout(initial, initial, column);
+      .name {
+        @include styleTag($blackColor, Poppins-Medium, 0.875rem, initial);
+      }
+      .gmail {
+        @include styleTag($grayColor, Poppins-Medium, 0.6875rem, 0.01em);
+      }
+    }
+  }
+  .side-lists {
+    margin-top: 40px;
+    li {
+      cursor: pointer;
+      margin-bottom: 20px;
+      padding: 0 24px;
+      @include flexLayout(center, flex-start, row);
+      .list-images {
+        height: 25px;
+        margin-right: 7px;
+        position: relative;
+        width: 30px;
+        @include flexLayout(center, center, row);
+        img {
+          object-fit: contain;
+          position: absolute;
+        }
+        .able-image {
+          z-index: 9;
+        }
+        .disable-image {
+          opacity: 0;
+        }
+      }
+      a {
+        line-height: 19px;
+        transition: color 0.2s ease-in-out;
+        @include styleTag($greyColor2, Poppins-Medium, 0.8125rem, 0.01em);
+      }
+      &:hover {
+        a {
+          color: $primaryColor;
+        }
+        .able-image {
+          opacity: 0;
+        }
+        .disable-image {
+          opacity: 1;
+        }
+      }
+    }
+    .settings {
+      border-top: 1px solid $rowColor;
+      padding-top: 24px;
+    }
+  }
+
+  .toggle-side-bar {
+    bottom: 30px;
+    cursor: pointer;
+    display: flex;
+    padding: 0 24px;
+    position: absolute;
+    transition: all 0.2s ease-in-out;
+    @include styleTag($grayColor, Poppins-Medium, 0.6875rem, 0.01em);
+    svg {
+      margin-right: 14px;
+    }
+    &:hover {
+      color: $primaryColor;
+      svg {
+        path {
+          fill: $primaryColor;
+        }
+      }
+    }
+  }
+}
+
+.side-bar.active {
+  width: 68px;
+  .heading {
+    justify-content: center;
+    padding: 0;
+  }
+  .kit {
+    display: none;
+  }
+  .profile {
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+    .profile-image {
+      margin-right: 0px;
+    }
+    .profile-info {
+      display: none;
+    }
+  }
+
+  .toggle-side-bar {
+    p {
+      display: none;
+    }
+    svg {
+      margin-right: 0;
+    }
+  }
+  .side-lists {
+    li {
+      justify-content: center;
+      padding: 0;
+      a {
+        p {
+          display: none;
+        }
+      }
+      .list-images {
+        margin-right: 0;
+      }
+    }
+  }
+}

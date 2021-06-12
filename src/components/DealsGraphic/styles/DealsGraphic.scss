@@ -1,0 +1,105 @@
+@import "../../../styles/fonts.scss";
+@import "../../../styles/colors.scss";
+@import "../../../styles/mixins.scss";
+
+.deals-graphic {
+  background-color: $whiteColor;
+  border-radius: 4px;
+  box-shadow: $tasksBoxShadow;
+  height: 344px;
+  width: 445px;
+  @include flexLayout(flex-start, flex-start, column);
+  #SvgjsLine1048 {
+    stroke-dasharray: 7;
+  }
+  svg {
+    cursor: pointer !important;
+  }
+  .apexcharts-xaxistooltip {
+    display: none !important;
+  }
+  .apexcharts-tooltip.apexcharts-active {
+    background: $blackColor !important;
+    border-radius: 15px !important;
+    height: 24px !important;
+    opacity: 0.6 !important;
+    width: 46px !important;
+    .apexcharts-tooltip-y-group {
+      height: 100%;
+      padding: 0 !important;
+      width: 100%;
+      @include flexLayout(center, center, row);
+    }
+    .apexcharts-tooltip-series-group {
+      height: 100% !important;
+      justify-content: center !important;
+      padding: 0 !important;
+      width: 100% !important;
+      .apexcharts-tooltip-text-value {
+        margin: 0 !important;
+        @include styleTag(
+          $whiteColor,
+          Poppins-Medium,
+          0.6875rem !important,
+          0.01em !important
+        );
+      }
+      .apexcharts-tooltip-marker {
+        display: none !important;
+      }
+    }
+  }
+  .area-chart-tasks {
+    border-bottom: 1px solid $rowColor;
+    height: 50px;
+    margin-bottom: 16px;
+    padding: 0 13px;
+    width: 100%;
+    @include flexLayout(center, space-between, row);
+    p {
+      @include styleTag($blackColor, Poppins-Medium, 0.9375rem, 0.01em);
+    }
+    .show-chart {
+      @include flexLayout(flex-end, none, row);
+      .show {
+        @include styleTag($selectOptionColor, Poppins-Regular, 0.75rem, 0.01em);
+      }
+      span {
+        @include styleTag($primaryColor, Poppins-Regular, 0.75rem, 0.01em);
+      }
+    }
+  }
+  .MuiSelect-root {
+    padding: 0 !important;
+    span {
+      @include styleTag($primaryColor, Poppins-Regular, 0.75rem, 0.01em);
+    }
+  }
+  .MuiInputBase-root {
+    margin: 0 !important;
+  }
+  .jss6 {
+    min-width: 0 !important;
+    width: 90px !important;
+  }
+  .MuiFormControl-root {
+    margin: 0 !important;
+    min-width: 0 !important;
+    width: 90px !important;
+  }
+  .MuiInput-underline::after {
+    display: none;
+  }
+  .MuiInput-underline::before {
+    display: none;
+  }
+  .jss7 {
+    margin: 0 !important;
+  }
+  .MuiSvgIcon-root {
+    height: 12px;
+    left: 65px;
+    top: 5px;
+    width: 12px;
+  }
+}

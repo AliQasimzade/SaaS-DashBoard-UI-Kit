@@ -1,0 +1,35 @@
+@import "../../../styles/fonts.scss";
+@import "../../../styles/colors.scss";
+@import "../../../styles/mixins.scss";
+.section-1 {
+  border-bottom: 1px solid $rowColor;
+  padding-bottom: 27px;
+  padding-top: 16px;
+}
+.section-one {
+  width: 95%;
+  @include flexLayout(initial, initial, column);
+  .section-one-header {
+    padding-bottom: 16px;
+    @include flexLayout(center, space-between, row);
+    .remaining-tasks {
+      @include styleTag($greyColor2, Poppins-Medium, 0.8125rem, 0.01em);
+    }
+    .show-tasks {
+      @include flexLayout(flex-end, center, row);
+      .show {
+        @include styleTag($selectOptionColor, Poppins-Regular, 0.75rem, 0.01em);
+      }
+    }
+  }
+  .progress-bar {
+    background-color: $rowColor;
+    height: 4px;
+  }
+  .date {
+    padding-bottom: 47px;
+    padding-top: 20px;
+    @include styleTag($blackColor, Poppins-Medium, 0.9375rem, 0.01em);
+  }
+  
+}

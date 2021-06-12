@@ -1,0 +1,9 @@
+@import "../../../styles/mixins.scss";
+.content {
+  width: 100%;
+  height: fit-content;
+  overflow-y: auto;
+  @include flexLayout(center, center, row);
+  overflow: auto;
+  padding: 36px;
+}

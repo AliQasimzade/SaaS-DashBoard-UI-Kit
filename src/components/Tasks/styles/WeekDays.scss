@@ -1,0 +1,29 @@
+@import "../../../styles/fonts.scss";
+@import "../../../styles/colors.scss";
+@import "../../../styles/mixins.scss";
+
+.week-days {
+  @include flexLayout(center, space-between, row);
+  div {
+    @include flexLayout(center, center, column);
+    .short-day-name {
+      @include styleTag(greyColor2, Poppins-Medium, 0.8125rem, 0.01em);
+    }
+    .day {
+      border-radius: 50%;
+      height: 24px;
+      width: 24px;
+      @include styleTag($dateColor, Poppins-Regular, 0.75rem, 0.01em);
+      @include flexLayout(center, center, row);
+    }
+    .day-1 {
+      background-color: $primaryColor;
+      color: $whiteColor;
+    }
+  }
+  .monday {
+    p {
+      color: $primaryColor;
+    }
+  }
+}

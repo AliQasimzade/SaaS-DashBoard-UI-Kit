@@ -1,0 +1,82 @@
+@import "../../../styles/fonts.scss";
+@import "../../../styles/colors.scss";
+@import "../../../styles/mixins.scss";
+.modal {
+  margin: auto;
+  max-width: 1440px;
+  overflow: auto;
+  @include flexLayout(center, center, initial);
+  .fade {
+    background-color: $whiteColor;
+    border: none;
+    border-radius: 6px;
+    height: 80vh;
+    outline: none;
+    overflow: auto;
+    padding: 15px 0;
+    width: 80%;
+    @include flexLayout(center, center, column);
+    .form {
+      column-gap: 30px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      overflow: auto;
+      row-gap: 50px;
+      width: 90%;
+    }
+    .buttons {
+      margin-top: 50px;
+      width: 100%;
+      @include flexLayout(center, center, row);
+
+      button {
+        &:nth-child(1) {
+          background-color: $selectOptionColor;
+          border: none;
+          border-radius: 4px;
+          cursor: not-allowed;
+          height: 42px;
+          margin-right: 10px;
+
+          opacity: 0.2;
+          outline: none;
+          text-transform: capitalize;
+          transition: all 0.3s ease-in-out;
+          width: 160px;
+          @include styleTag($whiteColor, Poppins-SemiBold, 0.8125rem, 0.01em);
+
+          &:active {
+            background-color: $filled-button-active-background;
+            box-shadow: $filled-button-active-box-shadow;
+          }
+        }
+      }
+
+      button {
+        &:nth-child(2) {
+          background-color: $redColor;
+          border: none;
+          border-radius: 4px;
+          box-shadow: $contactsButtonBoxShadow;
+          cursor: pointer;
+          height: 42px;
+          margin-left: 10px;
+          outline: none;
+          text-transform: capitalize;
+          transition: all 0.3s ease-in-out;
+          width: 160px;
+          @include styleTag($whiteColor, Poppins-SemiBold, 0.8125rem, 0.01em);
+          &:hover {
+            background-color: $redColor2;
+            box-shadow: $filled-button-hover-box-shadow;
+          }
+          &:active {
+            background-color: $redColor;
+            box-shadow: $filled-button-active-box-shadow;
+          }
+        }
+      }
+    }
+  }
+}

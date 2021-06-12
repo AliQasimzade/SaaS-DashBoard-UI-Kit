@@ -1,0 +1,8 @@
+@import "../../../styles/mixins.scss";
+@import "../../../styles/colors.scss";
+
+.contacts{
+    width: 100%;
+    @include flexLayout(center,initial,column);
+    background: $appBackgroundColor;
+}

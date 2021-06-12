@@ -1,6 +1,7 @@
 @import 'colors.scss';
 .App {
-	background: $appBackgroundColor;
+
 	display: flex;
-	position: relative;
+	max-width:1440px;
+	margin: 0 auto;
 }

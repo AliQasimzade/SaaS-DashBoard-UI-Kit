@@ -6,16 +6,31 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import TableData from "../Table/TableData";
 import ModalTable from "../Table/ModalTable";
-
 import axios from "axios";
+import {useDispatch} from "react-redux";
+import { addData } from "../../redux/actions/actions";
 const ContactsContent = () => {
 
+  const dispatch = useDispatch();
   let [open, setOpen] = useState(false);
-  const [option, setOption] = useState("");
+  const [option, setOption] = useState(0);
   let [isTrue, setIsTrue] = useState(false);
 
   const handleChange = (event) => {
     setOption(event.target.value);
+    if(event.target.value === 0){
+      axios.get("https://herokuhosting2.herokuapp.com/getData")
+      .then(res => dispatch(addData(res.data.Lists)))
+      .catch(err => console.log(err))
+    }else if(event.target.value === 1){
+      axios.get("https://herokuhosting2.herokuapp.com/getData")
+      .then(res => dispatch(addData(res.data.Lists.slice(0,3))))
+      .catch(err => console.log(err))
+    }else if(event.target.value === 2){
+      axios.get("https://herokuhosting2.herokuapp.com/getData")
+      .then(res => dispatch(addData(res.data.Lists.slice(0,6))))
+      .catch(err => console.log(err))
+    }
   };
 
   const handleAddContact = () => {
@@ -46,9 +61,7 @@ const ContactsContent = () => {
      setTimeout(() =>{
       window.location.reload()
      },800)
-      alert( "You added new user")
-    
-   
+      alert( "You added new user") 
   };
   const handleClose = () => {
     setOpen((open = false));
@@ -66,7 +79,7 @@ const ContactsContent = () => {
               displayEmpty
               inputProps={{ "aria-label": "Without label" }}
             >
-              <MenuItem value="">
+              <MenuItem value={0}>
                 <span>All</span>
               </MenuItem>
               <MenuItem value={1}>

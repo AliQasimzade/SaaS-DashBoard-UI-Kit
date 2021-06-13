@@ -5,7 +5,7 @@ import "./styles/Contacts.scss";
 import { useSelector } from "react-redux";
 const Contacts = () => {
 
-  const data = useSelector((state) => state.productReducer.items.Lists);
+const data = useSelector((state) => state.productReducer.items)
 
   useEffect(() => {
     console.log(data)

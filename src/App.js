@@ -20,13 +20,12 @@ const App = () => {
   useEffect(() => {
     axios
       .get("https://herokuhosting2.herokuapp.com/getData")
-      .then((res) => dispatch(addData(res.data)))
+      .then((res) => dispatch(addData(res.data.Lists)))
       .catch((err) => console.log(err));
 
     if (window.location.href.includes("/dashboard")) {
       dispatch(changeList(0));
-      const url = window.location.href
-      console.log(url)
+      
     } else {
       dispatch(changeList(3));
     }

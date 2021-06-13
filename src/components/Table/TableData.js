@@ -11,7 +11,7 @@ import EnhancedTableHead from "./EnhancedTableHead";
 import { useSelector } from "react-redux";
 
 const TableData = () => {
-  const data = useSelector((state) => state.productReducer.items.Lists);
+  const data = useSelector((state) => state.productReducer.items);
   const [selected, setSelected] = useState([]);
 
   const handleSelectAllClick = (event) => {

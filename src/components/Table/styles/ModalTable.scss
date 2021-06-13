@@ -38,7 +38,6 @@
           cursor: not-allowed;
           height: 42px;
           margin-right: 10px;
-
           opacity: 0.2;
           outline: none;
           text-transform: capitalize;
@@ -50,6 +49,11 @@
             background-color: $filled-button-active-background;
             box-shadow: $filled-button-active-box-shadow;
           }
+        }
+        &:nth-child(1).active{
+          cursor: pointer;
+          background-color: $primaryColor;
+          opacity: 1;
         }
       }
 

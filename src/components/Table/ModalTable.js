@@ -16,15 +16,13 @@ const ModalTable = (props) => {
     let invalids = form.current.querySelectorAll(":invalid").length;
 
     if (invalids === 0) {
-      submitBtn.current.style.cursor = "pointer";
+     submitBtn.current.classList.add("active")
       submitBtn.current.removeAttribute("disabled");
-      submitBtn.current.style.backgroundColor = "#109CF1"
-      submitBtn.current.style.opacity = "1"
+     
     } else {
-      submitBtn.current.style.cursor = "not-allowed";
+      submitBtn.current.classList.remove("active")
       submitBtn.current.setAttribute("disabled", "disabled");
-      submitBtn.current.style.backgroundColor = "#6a707e"
-      submitBtn.current.style.opacity = "0.2"
+      
     }
   };
   useEffect(() => {

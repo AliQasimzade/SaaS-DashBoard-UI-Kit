@@ -25,6 +25,8 @@ const App = () => {
 
     if (window.location.href.includes("/dashboard")) {
       dispatch(changeList(0));
+      const url = window.location.href
+      console.log(url)
     } else {
       dispatch(changeList(3));
     }

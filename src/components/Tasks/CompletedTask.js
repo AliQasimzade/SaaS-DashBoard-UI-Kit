@@ -16,7 +16,9 @@ const CompletedTask = () => {
         </div>
         <div className="completed">
           <div className="person">
-            <img src={associatedImage} alt="associated_image" />
+            <div className="person-image">
+              <img src={associatedImage} alt="associated_image" />
+            </div>
             <p>George Fields</p>
           </div>
           <button>Completed</button>

@@ -20,7 +20,9 @@ const EndedTask = () => {
         </div>
         <div className="ended">
           <div className="person">
-            <img src={associatedImage1} alt="" />
+            <div className="person-image">
+              <img src={associatedImage1} alt="" />
+            </div>
             <p>Rebecca Moore</p>
           </div>
           <div className="edit-delete-person">

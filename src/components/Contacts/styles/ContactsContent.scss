@@ -107,9 +107,6 @@
     }
     .td {
       @include flexLayout(center, flex-start, row);
-      img {
-        margin-right: 12px;
-      }
     }
     .MuiToolbar-regular {
       height: fit-content;

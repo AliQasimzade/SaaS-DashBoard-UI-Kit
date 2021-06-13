@@ -44,6 +44,17 @@
     @include flexLayout(center, space-between, row);
     .person {
       @include flexLayout(center, center, row);
+      .person-image{
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        overflow: hidden;
+        img{
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
       p {
         padding-left: 12px;
         @include styleTag($tableGray, Poppins-Regular, 0.8125rem, 0.01em);

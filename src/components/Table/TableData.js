@@ -89,10 +89,31 @@ const TableData = () => {
                       </TableCell>
                       <TableCell component="th" scope="row" padding="none">
                         <span className="td">
-                          <img src={row.imageurl} alt="profile" />
+                          <div
+                            className="user-image"
+                            style={{
+                              width: "24px",
+                              height: "24px",
+                              borderRadius: "50%",
+                              overflow: "hidden",
+                              marginRight: "8px",
+                            }}
+                          >
+                            <img
+                              src={row.imageurl}
+                              alt="profile"
+                              style={{
+                                width: "100%",
+                                height: "100%",
+                                objectFit: "cover",
+                              }}
+                            />
+                          </div>
                           <p>
-                            <span style={{marginRight:'3px'}}>{row.name}</span>
-                           <span> {row.surname}</span>
+                            <span style={{ marginRight: "3px" }}>
+                              {row.name}
+                            </span>
+                            <span> {row.surname}</span>
                           </p>
                         </span>
                       </TableCell>

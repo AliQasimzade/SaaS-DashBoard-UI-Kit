@@ -16,7 +16,9 @@ const EventTask = () => {
         </div>
         <div className="completed">
           <div className="person">
-            <img src={associatedImage2} alt="associatedImage2" />
+            <div className="person-image">
+              <img src={associatedImage2} alt="associatedImage2" />
+            </div>
             <p>Lindsey Stroud</p>
           </div>
           <button>Completed</button>

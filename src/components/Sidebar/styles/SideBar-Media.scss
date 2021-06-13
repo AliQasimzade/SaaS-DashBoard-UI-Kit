@@ -22,14 +22,21 @@
         }
         .profile {
           padding: 36px 0 0 0;
+          .profile-image{
+            margin-right: 6px !important;
+          }
           .profile-info {
             display: block;
           }
         }
         .side-lists {
           @include flexLayout(center, center, column);
+          .list-images{
+            margin-right:6px !important;
+          }
           .settings {
             border: none;
+            
           }
           li {
             width: 150px;
@@ -60,7 +67,7 @@
       @include flexLayout(center, center, row);
       padding: 12px 0 0 0;
       .profile-image {
-        margin:0 4px 0 10px;
+        margin:0 !important;
       }
     }
     .profile-info {
@@ -88,7 +95,6 @@
     .profile {
       .profile-image {
         height: 38px;
-        margin-right: 8px;
         width: 38px;
       }
     }

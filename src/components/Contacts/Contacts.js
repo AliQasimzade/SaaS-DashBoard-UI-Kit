@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Navigation from "../Navigation/Navigation";
 import ContactsContent from "./ContactsContent";
 import "./styles/Contacts.scss";
+import "./styles/Contacts-Media.scss";
 import { useSelector } from "react-redux";
 const Contacts = () => {
 

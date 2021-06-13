@@ -9,6 +9,7 @@ const SideBar = () => {
 
   const handleToggleSideBar = () => {
     sidebar.current.classList.toggle("active");
+    document.querySelector(".contacts").classList.toggle("active")
   };
 
   return (

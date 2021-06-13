@@ -1,7 +1,14 @@
 @media only screen and (max-width:500px){
     .App {
         .contacts{
-            width: 100%;
+            width: 100% !important;
         }
     }
+}
+@media only screen and (max-width:1060px){
+   
+    .contacts{
+        width: calc(100% - 68px) !important;
+    }
+
 }

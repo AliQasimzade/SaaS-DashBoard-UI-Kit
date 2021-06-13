@@ -70,14 +70,14 @@ const TableData = () => {
             <Table aria-labelledby="tableTitle" aria-label="enhanced table">
               <EnhancedTableHead onSelectAllClick={handleSelectAllClick} />
               <TableBody>
-                {data.map((row) => {
+                {data.map((row,key) => {
                   const isItemSelected = isSelected(row.email);
                   return (
                     <TableRow
                       hover
                       role="checkbox"
                       aria-checked={isItemSelected}
-                      key={row.id}
+                      key={key}
                       selected={isItemSelected}
                       onClick={(event) => handleClick(event, row.email)}
                     >

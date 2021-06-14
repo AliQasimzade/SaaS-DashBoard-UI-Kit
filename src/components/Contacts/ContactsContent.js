@@ -7,10 +7,11 @@ import Select from "@material-ui/core/Select";
 import TableData from "../Table/TableData";
 import ModalTable from "../Table/ModalTable";
 import axios from "axios";
-import {useDispatch} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addData } from "../../redux/actions/actions";
-const ContactsContent = () => {
 
+const ContactsContent = () => {
+  const data = useSelector((state) => state.productReducer.items);
   const dispatch = useDispatch();
   let [open, setOpen] = useState(false);
   const [option, setOption] = useState(0);
@@ -18,18 +19,21 @@ const ContactsContent = () => {
 
   const handleChange = (event) => {
     setOption(event.target.value);
-    if(event.target.value === 0){
-      axios.get("https://herokuhosting2.herokuapp.com/getData")
-      .then(res => dispatch(addData(res.data.Lists)))
-      .catch(err => console.log(err))
-    }else if(event.target.value === 1){
-      axios.get("https://herokuhosting2.herokuapp.com/getData")
-      .then(res => dispatch(addData(res.data.Lists.slice(0,3))))
-      .catch(err => console.log(err))
-    }else if(event.target.value === 2){
-      axios.get("https://herokuhosting2.herokuapp.com/getData")
-      .then(res => dispatch(addData(res.data.Lists.slice(0,6))))
-      .catch(err => console.log(err))
+    if (event.target.value === 0) {
+      axios
+        .get("https://herokuhosting2.herokuapp.com/getData")
+        .then((res) => dispatch(addData(res.data.Lists)))
+        .catch((err) => console.log(err));
+    } else if (event.target.value === 1) {
+      axios
+        .get("https://herokuhosting2.herokuapp.com/getData")
+        .then((res) => dispatch(addData(res.data.Lists.slice(0, 3))))
+        .catch((err) => console.log(err));
+    } else if (event.target.value === 2) {
+      axios
+        .get("https://herokuhosting2.herokuapp.com/getData")
+        .then((res) => dispatch(addData(res.data.Lists.slice(0, 6))))
+        .catch((err) => console.log(err));
     }
   };
 
@@ -39,10 +43,8 @@ const ContactsContent = () => {
     console.log(open);
   };
   const addEmployee = () => {
-   
     let newUser = {
-      name:
-        document.querySelector(".input-name input").value +
+      name: document.querySelector(".input-name input").value +
         " " +
         document.querySelector(".input-surname input").value,
       email: document.querySelector(".input-email input").value,
@@ -57,11 +59,11 @@ const ContactsContent = () => {
       .post("https://herokuhosting2.herokuapp.com/users", newUser)
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
-      handleClose();
-     setTimeout(() =>{
-      window.location.reload()
-     },800)
-      alert( "You added new user") 
+    handleClose();
+    setTimeout(() => {
+      window.location.reload();
+    }, 100);
+    alert("You added new user");
   };
   const handleClose = () => {
     setOpen((open = false));
@@ -93,7 +95,7 @@ const ContactsContent = () => {
         </div>
         <button onClick={handleAddContact}>Add contact</button>
       </div>
-     <TableData /> 
+      {data ? <TableData /> : ""}
       {isTrue ? (
         <ModalTable
           open={open}

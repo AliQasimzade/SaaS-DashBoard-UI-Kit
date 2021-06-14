@@ -16,13 +16,11 @@ const ModalTable = (props) => {
     let invalids = form.current.querySelectorAll(":invalid").length;
 
     if (invalids === 0) {
-     submitBtn.current.classList.add("active")
+      submitBtn.current.classList.add("active");
       submitBtn.current.removeAttribute("disabled");
-     
     } else {
-      submitBtn.current.classList.remove("active")
+      submitBtn.current.classList.remove("active");
       submitBtn.current.setAttribute("disabled", "disabled");
-      
     }
   };
   useEffect(() => {
@@ -30,6 +28,7 @@ const ModalTable = (props) => {
       control();
     }, 100);
   }, []);
+
   return (
     <Modal
       aria-labelledby="transition-modal-title"
@@ -60,6 +59,7 @@ const ModalTable = (props) => {
               label="Recent activity"
               required
             />
+
           </div>
           <div className="buttons">
             <button onClick={onAddUser} ref={submitBtn}>

@@ -1,8 +1,5 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { addData, changeList } from "./redux/actions/actions";
+import React from "react";
 import "./styles/App.scss";
-import axios from "axios";
 import Sidebar from "./components/Sidebar/SideBar";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Contacts from "./components/Contacts/Contacts";
@@ -15,21 +12,7 @@ import {
 } from "react-router-dom";
 
 const App = () => {
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    axios
-      .get("https://herokuhosting2.herokuapp.com/getData")
-      .then((res) => dispatch(addData(res.data.Lists)))
-      .catch((err) => console.log(err));
-
-    if (window.location.href.includes("/dashboard")) {
-      dispatch(changeList(0));
-      
-    } else {
-      dispatch(changeList(3));
-    }
-  }, [dispatch]);
 
   return (
     <Router>

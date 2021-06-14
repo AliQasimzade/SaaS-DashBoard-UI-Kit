@@ -9,7 +9,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import EnhancedTableToolbar from "./EnhancedTableToolbar";
 import EnhancedTableHead from "./EnhancedTableHead";
 import { useSelector } from "react-redux";
-
+import George from "../../images/George.png";
 const TableData = () => {
   const data = useSelector((state) => state.productReducer.items);
   const [selected, setSelected] = useState([]);
@@ -100,7 +100,7 @@ const TableData = () => {
                             }}
                           >
                             <img
-                              src={row.imageurl}
+                              src={row.imageurl? row.imageurl : George}
                               alt="profile"
                               style={{
                                 width: "100%",

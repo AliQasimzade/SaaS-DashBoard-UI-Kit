@@ -9,7 +9,11 @@ const SideBar = () => {
 
   const handleToggleSideBar = () => {
     sidebar.current.classList.toggle("active");
-    document.querySelector(".contacts").classList.toggle("active")
+    if (window.location.href.includes("/dashboard")) {
+      document.querySelector(".dashboard").classList.toggle("active");
+    } else {
+      document.querySelector(".contacts").classList.toggle("active");
+    }
   };
 
   return (

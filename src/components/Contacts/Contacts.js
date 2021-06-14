@@ -3,18 +3,25 @@ import Navigation from "../Navigation/Navigation";
 import ContactsContent from "./ContactsContent";
 import "./styles/Contacts.scss";
 import "./styles/Contacts-Media.scss";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { changeList } from "../../redux/actions/actions";
+import { addData } from "../../redux/actions/actions";
+import axios from "axios";
 const Contacts = () => {
-
-  const data = useSelector((state) => state.productReducer.items.Lists);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(data)
-  },[data])
+    axios
+      .get("https://herokuhosting2.herokuapp.com/getData")
+      .then((res) => dispatch(addData(res.data.Lists)))
+      .catch((err) => console.log(err));
+
+    dispatch(changeList(3));
+  }, [dispatch]);
   return (
     <div className="contacts">
       <Navigation />
-     {data ? <ContactsContent /> : ''} 
+      <ContactsContent />
     </div>
   );
 };

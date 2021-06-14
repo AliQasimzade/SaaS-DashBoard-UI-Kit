@@ -9,9 +9,9 @@ import Checkbox from "@material-ui/core/Checkbox";
 import EnhancedTableToolbar from "./EnhancedTableToolbar";
 import EnhancedTableHead from "./EnhancedTableHead";
 import { useSelector } from "react-redux";
-
+import George from "../../images/George.png";
 const TableData = () => {
-  const data = useSelector((state) => state.productReducer.items.Lists);
+  const data = useSelector((state) => state.productReducer.items);
   const [selected, setSelected] = useState([]);
 
   const handleSelectAllClick = (event) => {
@@ -70,14 +70,14 @@ const TableData = () => {
             <Table aria-labelledby="tableTitle" aria-label="enhanced table">
               <EnhancedTableHead onSelectAllClick={handleSelectAllClick} />
               <TableBody>
-                {data.map((row) => {
+                {data.map((row,key) => {
                   const isItemSelected = isSelected(row.email);
                   return (
                     <TableRow
                       hover
                       role="checkbox"
                       aria-checked={isItemSelected}
-                      key={row.id}
+                      key={key}
                       selected={isItemSelected}
                       onClick={(event) => handleClick(event, row.email)}
                     >
@@ -100,7 +100,7 @@ const TableData = () => {
                             }}
                           >
                             <img
-                              src={row.imageurl}
+                              src={row.imageurl? row.imageurl : George}
                               alt="profile"
                               style={{
                                 width: "100%",

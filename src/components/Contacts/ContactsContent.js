@@ -8,7 +8,7 @@ import TableData from "../Table/TableData";
 import ModalTable from "../Table/ModalTable";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { addData } from "../../redux/actions/actions";
+import { addData,updateData } from "../../redux/actions/actions";
 
 const ContactsContent = () => {
   const data = useSelector((state) => state.productReducer.items);
@@ -42,7 +42,8 @@ const ContactsContent = () => {
     setIsTrue((isTrue = true));
     console.log(open);
   };
-  const addEmployee = () => {
+  const addEmployee = (e) => {
+    e.preventDefault();
     let newUser = {
       name: document.querySelector(".input-name input").value +
         " " +
@@ -60,9 +61,7 @@ const ContactsContent = () => {
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
     handleClose();
-    setTimeout(() => {
-      window.location.reload();
-    }, 100);
+    dispatch(updateData(newUser))
     alert("You added new user");
   };
   const handleClose = () => {

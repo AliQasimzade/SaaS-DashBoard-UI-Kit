@@ -5,6 +5,7 @@
 	margin: 0 auto;
 	.container{
 		width: calc(100% - 226px);
+		background: $appBackgroundColor;
 	}
 	.container.active{
 		width: calc(100% - 68px);

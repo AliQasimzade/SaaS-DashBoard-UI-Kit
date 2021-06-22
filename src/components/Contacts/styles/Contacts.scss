@@ -4,5 +4,4 @@
 .contacts{
     width:100%;
     @include flexLayout(center,initial,column);
-    background: $appBackgroundColor;
 }

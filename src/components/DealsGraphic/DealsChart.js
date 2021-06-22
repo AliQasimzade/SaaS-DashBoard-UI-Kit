@@ -1,12 +1,18 @@
-const DealsGraphicSetUp = () => {
-  return {
+import React from "react";
+import ReactApexChart from "react-apexcharts";
+import { useSelector } from "react-redux";
+const DealsChart = () => {
+  const chartData = useSelector((state) => state.chartDataReducer.items.data);
+  const chartDate = useSelector((state) => state.chartDataReducer.items.date);
+
+  const options = {
     series: [
       {
         name: "Closed deals",
-        data: [47, 100, 95, 170, 60, 160, 150],
+        data: chartData,
       },
       {
-        name: "",
+        name: " ",
         data: [0],
       },
     ],
@@ -73,7 +79,7 @@ const DealsGraphicSetUp = () => {
       },
       xaxis: {
         type: "category",
-        categories: ["1 Dec", "", "8 Dec", "", "16 Dec", "", "31 Dec"],
+        categories: chartDate,
         crosshairs: {
           show: true,
           width: 1,
@@ -101,8 +107,6 @@ const DealsGraphicSetUp = () => {
       },
       yaxis: {
         tickAmount: 4,
-        min: 0,
-        max: 200,
         labels: {
           style: {
             colors: "#4C5862",
@@ -138,6 +142,14 @@ const DealsGraphicSetUp = () => {
       },
     },
   };
+  return (
+    <ReactApexChart
+      options={options.options}
+      series={options.series}
+      type="area"
+      style={{ width: "100%", height: "222px" }}
+    />
+  );
 };
 
-export default DealsGraphicSetUp;
+export default DealsChart;

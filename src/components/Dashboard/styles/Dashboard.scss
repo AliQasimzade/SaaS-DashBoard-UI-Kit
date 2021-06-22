@@ -2,10 +2,7 @@
 @import "../../../styles/colors.scss";
 
 .dashboard{
-    width: calc(100% - 226px);
+    width: 100%;
     @include flexLayout(center,initial,column);
     background: $appBackgroundColor;
-}
-.dashboard.active{
-    width: calc(100% - 68px);
 }

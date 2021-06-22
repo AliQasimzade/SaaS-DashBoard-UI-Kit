@@ -1,30 +1,43 @@
-import React, { useState } from "react";
-import ReactApexChart from "react-apexcharts";
+import React, { useState, useEffect } from "react";
 import "./styles/TasksChart.scss";
-import { makeStyles } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import "./styles/TasksChart-Media.scss";
-import TaskChartSetUp from "./TaskChartSetUp";
-
-const useStyles = makeStyles((theme) => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
-}));
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { getChartTask } from "../../redux/actions/actions";
+import ChartTask from "./ChartTask";
 
 const TasksChart = () => {
-  const [options] = useState(TaskChartSetUp());
-  const classe = useStyles();
-  const [age, setAge] = useState("");
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    axios
+      .get("https://herokuhosting2.herokuapp.com/getTaskChart")
+      .then((res) => dispatch(getChartTask(res.data.TaskChart.thisWeek)))
+      .catch((err) => console.log(err));
+  }, [dispatch]);
+
+  const [age, setAge] = useState(0);
   const handleChange = (event) => {
     setAge(event.target.value);
+    if (event.target.value === 0) {
+      axios
+        .get("https://herokuhosting2.herokuapp.com/getTaskChart")
+        .then((res) => dispatch(getChartTask(res.data.TaskChart.thisWeek)))
+        .catch((err) => console.log(err));
+    }else if(event.target.value === 1 ){
+      axios
+      .get("https://herokuhosting2.herokuapp.com/getTaskChart")
+      .then((res) => dispatch(getChartTask(res.data.TaskChart.thisMonth)))
+      .catch((err) => console.log(err));
+    }else{
+      axios
+      .get("https://herokuhosting2.herokuapp.com/getTaskChart")
+      .then((res) => dispatch(getChartTask(res.data.TaskChart.thisYear)))
+      .catch((err) => console.log(err));
+    }
   };
   return (
     <div className="tasks-chart">
@@ -32,37 +45,27 @@ const TasksChart = () => {
         <p>Tasks</p>
         <div className="show-chart">
           <span className="show">Show:</span>
-          <FormControl
-            className={classe.formControl}
-            style={{ paddingLeft: "3px" }}
-          >
+          <FormControl style={{ paddingLeft: "3px" }}>
             <Select
               value={age}
               onChange={handleChange}
               displayEmpty
-              className={classe.selectEmpty}
               inputProps={{ "aria-label": "Without label" }}
             >
-              <MenuItem value="">
+              <MenuItem value={0}>
                 <span>This week</span>
               </MenuItem>
-              <MenuItem value={10}>
+              <MenuItem value={1}>
                 <span> This month</span>
               </MenuItem>
-              <MenuItem value={20}>
+              <MenuItem value={2}>
                 <span>This year</span>
               </MenuItem>
             </Select>
           </FormControl>
         </div>
       </div>
-      <ReactApexChart
-        options={options}
-        series={options.series}
-        type="donut"
-        style={{ width: "90%", height: "224px", marginLeft: "-25px" }}
-        className="donut"
-      />
+      <ChartTask /> 
     </div>
   );
 };

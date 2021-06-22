@@ -3,4 +3,12 @@
 	display: flex;
 	max-width:1440px;
 	margin: 0 auto;
+	.container{
+		width: calc(100% - 226px);
+	}
+	.container.active{
+		width: calc(100% - 68px);
+	}
 }
+
+

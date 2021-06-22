@@ -2,10 +2,7 @@
 @import "../../../styles/colors.scss";
 
 .contacts{
-    width: calc(100% - 226px);
+    width:100%;
     @include flexLayout(center,initial,column);
     background: $appBackgroundColor;
-}
-.contacts.active{
-    width: calc(100% - 68px);
 }

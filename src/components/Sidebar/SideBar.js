@@ -6,14 +6,9 @@ import "./styles/SideBar-Media.scss";
 
 const SideBar = () => {
   const sidebar = useRef(null);
-
   const handleToggleSideBar = () => {
     sidebar.current.classList.toggle("active");
-    if (window.location.href.includes("/dashboard")) {
-      document.querySelector(".dashboard").classList.toggle("active");
-    } else {
-      document.querySelector(".contacts").classList.toggle("active");
-    }
+    document.querySelector(".container").classList.toggle("active");
   };
 
   return (

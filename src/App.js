@@ -3,7 +3,7 @@ import "./styles/App.scss";
 import Sidebar from "./components/Sidebar/SideBar";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Contacts from "./components/Contacts/Contacts";
-
+import "./styles/App-Media.scss";
 import {
   HashRouter as Router,
   Route,
@@ -12,21 +12,21 @@ import {
 } from "react-router-dom";
 
 const App = () => {
-
-
   return (
     <Router>
       <div className="App">
         <Sidebar />
-        <Switch>
-          <Route exact path="/dashboard">
-            <Dashboard />
-          </Route>
-          <Route path="/contacts">
-            <Contacts />
-          </Route>
-          <Redirect push to="/dashboard" />
+        <div className="container">
+        <Switch>   
+            <Route exact path="/dashboard">
+              <Dashboard />
+            </Route>
+            <Route path="/contacts">
+              <Contacts />
+            </Route>
+            <Redirect push to="/dashboard" />  
         </Switch>
+        </div>
       </div>
     </Router>
   );

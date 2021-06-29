@@ -5,7 +5,7 @@ import Fade from "@material-ui/core/Fade";
 import "./styles/ModalTable.scss";
 import "./styles/ModalTable-Media.scss";
 
-const EditAdminModal = (props) => {
+const DeleteUser = (props) => {
   
 
   return (
@@ -34,4 +34,4 @@ const EditAdminModal = (props) => {
   );
 };
 
-export default EditAdminModal;
+export default DeleteUser;

@@ -6,7 +6,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import EnhancedTableHead from "./EnhancedTableHead";
-import EditAdminModal from "./EditAdminModal";
+import DeleteUser from "./DeleteUser";
 import { useSelector,useDispatch } from "react-redux";
 import George from "../../images/George.png";
 import Delete from "../../images/DeleteAdmin.png";
@@ -15,7 +15,6 @@ import axios from "axios";
 import {deleteData} from "../../redux/actions/actions"
 
 const TableData = () => {
-  const data = useSelector((state) => state.productReducer.items);
   const [open, setOpen] = useState(false);
   const [id, setID] = useState(0);
   const [index,setIndex] = useState(0);
@@ -42,7 +41,7 @@ const TableData = () => {
       forecast: indexData.forecast,
       recentActivity: indexData.recentActivity,
       id:id,
-      imageurl:data[index].imageurl
+      imageurl:indexData.imageurl
     };
   
     axios
@@ -57,11 +56,10 @@ const TableData = () => {
   return (
     <div className="table">
       {open ? (
-        <EditAdminModal
+        <DeleteUser
           open={open}
           deleteEmployee={deleteEmployee}
           close={handleCloseModal}
-          index={index}
         />
       ) : (
         ""

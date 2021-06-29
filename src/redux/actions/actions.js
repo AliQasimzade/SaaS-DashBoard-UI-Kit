@@ -4,7 +4,8 @@ import {
   UPDATE_DATA,
   GET_CHART_DATA,
   CHANGE_CHART_DATA,
-  TASK_CHART_DATA
+  TASK_CHART_DATA,
+  DELETE_DATA
 } from "./actionTypes";
 
 export const addData = (data) => {
@@ -28,4 +29,8 @@ export const changeChartData = (data) => {
 
 export const getChartTask = (data) => {
   return {type: TASK_CHART_DATA, data}
+}
+
+export const deleteData = (key) => {
+  return {type:DELETE_DATA, key}
 }

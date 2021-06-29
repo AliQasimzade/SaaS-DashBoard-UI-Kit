@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeList } from "../../redux/actions/actions";
 import { NavLink } from "react-router-dom";
 import allList from "./AllList";
-const SideLinks = () => {
+const SideLinks = (props) => {
     const dispatch = useDispatch();
     const listKey = useSelector((state) => state.changeListReducer);
     const handleClickList = (key) => {
         dispatch(changeList(key));
-        document.querySelector(".hamburger-button").classList.remove("active");
-        document.querySelector(".side-bar").classList.remove("show");
+        props.hamburgerBtn.current.classList.remove("active")
+        props.sideBar.current.classList.remove("show")
       };
     return (
         <ul className="side-lists">

@@ -1,4 +1,4 @@
-import { ADD_DATA, UPDATE_DATA } from "../actions/actionTypes";
+import { ADD_DATA, UPDATE_DATA, DELETE_DATA } from "../actions/actionTypes";
 
 const initialState = { items: [] };
 
@@ -10,6 +10,11 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         items: [...state.items, action.newData],
+      };
+    case DELETE_DATA:
+      return {
+        ...state,
+        items: state.items.filter((item) => action.key !== item.id),
       };
     default:
       return state;

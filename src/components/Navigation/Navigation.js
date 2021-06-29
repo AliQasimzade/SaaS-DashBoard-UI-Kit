@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import "./styles/Navigation.scss";
 import NotificationButton from "../../images/notifications.png";
 import SearchButton from "../../images/search-button.png";
@@ -7,12 +7,13 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import "./styles/Navigation-Media.scss";
 
-const Navigation = () => {
+const Navigation = (props) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const isMenuOpen = Boolean(anchorEl);
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
@@ -31,16 +32,16 @@ const Navigation = () => {
       <MenuItem onClick={handleMenuClose}>Completed: 29</MenuItem>
     </Menu>
   );
-  const hamburgerButton = useRef(null);
+ 
   const handleShowMenu = () => {
-    hamburgerButton.current.classList.toggle("active");
-    document.querySelector(".side-bar").classList.toggle("show");
+    props.hamburgerBtn.current.classList.toggle("active");
+    props.sidebar.current.classList.toggle("show")
   };
   return (
     <div className="navigation">
       <div
         className="hamburger-button"
-        ref={hamburgerButton}
+        ref={props.hamburgerBtn}
         onClick={handleShowMenu}
       >
         <div className="line"></div>

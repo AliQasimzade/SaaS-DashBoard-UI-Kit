@@ -11,7 +11,7 @@ import ChartTask from "./ChartTask";
 
 const TasksChart = () => {
   const dispatch = useDispatch();
-
+ 
   useEffect(() => {
     axios
       .get("https://herokuhosting2.herokuapp.com/getTaskChart")

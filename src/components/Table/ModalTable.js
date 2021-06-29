@@ -10,7 +10,18 @@ const ModalTable = (props) => {
   const submitBtn = useRef(null);
   const form = useRef(null);
 
-  let { open, onHandleClose, onAddUser } = props;
+  let {
+    open,
+    onHandleClose,
+    onAddUser,
+    nameRef,
+    surnameRef,
+    emailRef,
+    roleRef,
+    forecastRef,
+    recentActivityRef,
+    companyNameRef,
+  } = props;
 
   const control = () => {
     let invalids = form.current.querySelectorAll(":invalid").length;
@@ -44,25 +55,60 @@ const ModalTable = (props) => {
       <Fade in={open} className="fade">
         <form autoComplete="off" ref={form} onKeyUp={control}>
           <div className="form">
-            <TextField className="input-name" required label="Name" />
-            <TextField className="input-surname" required label="Surname" />
-            <TextField className="input-email" required label="E-mail" />
+            <TextField
+              className="input-name"
+              ref={nameRef}
+              onChange={(e) => (nameRef.current.value = e.target.value)}
+              required
+              label="Name"
+            />
+            <TextField
+              className="input-surname"
+              ref={surnameRef}
+              onChange={(e) => (surnameRef.current.value = e.target.value)}
+              required
+              label="Surname"
+            />
+            <TextField
+              className="input-email"
+              ref={emailRef}
+              onChange={(e) => (emailRef.current.value = e.target.value)}
+              required
+              label="E-mail"
+            />
             <TextField
               className="input-company-name"
               required
               label="Company Name"
+              ref={companyNameRef}
+              onChange={(e) => (companyNameRef.current.value = e.target.value)}
             />
-            <TextField className="input-role" required label="Role" />
-            <TextField className="input-forecast" required label="Forecast" />
+            <TextField
+              className="input-role"
+              ref={roleRef}
+              onChange={(e) => (roleRef.current.value = e.target.value)}
+              required
+              label="Role"
+            />
+            <TextField
+              className="input-forecast"
+              ref={forecastRef}
+              onChange={(e) => (forecastRef.current.value = e.target.value)}
+              required
+              label="Forecast"
+            />
             <TextField
               className="input-recent-activity"
               label="Recent activity"
+              ref={recentActivityRef}
+              onChange={(e) =>
+                (recentActivityRef.current.value = e.target.value)
+              }
               required
             />
-
           </div>
           <div className="buttons">
-            <button onClick={onAddUser} ref={submitBtn}>
+            <button onClick={onAddUser} ref={submitBtn} className="submit-btn">
               Add
             </button>
             <button onClick={onHandleClose}>Close</button>

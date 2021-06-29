@@ -6,20 +6,20 @@ import { useDispatch } from "react-redux";
 import { changeList } from "../../redux/actions/actions";
 import { addData } from "../../redux/actions/actions";
 import axios from "axios";
-const Contacts = () => {
+const Contacts = (props) => {
   const dispatch = useDispatch();
 
-  useEffect(() => {   
+  useEffect(() => {
     axios
-    .get("https://herokuhosting2.herokuapp.com/getData")
-    .then((res) => dispatch(addData(res.data.Lists)))
-    .catch((err) => console.log(err))  
+      .get("https://herokuhosting2.herokuapp.com/getData")
+      .then((res) => dispatch(addData(res.data.Lists)))
+      .catch((err) => console.log(err));
     dispatch(changeList(3));
   }, [dispatch]);
 
   return (
     <div className="contacts">
-      <Navigation />
+      <Navigation hamburgerBtn={props.hamburgerBtn} sidebar={props.sidebar} />
       <ContactsContent />
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./styles/ContactsContent.scss";
 import "./styles/ContactsContent-Media.scss";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -8,14 +8,21 @@ import TableData from "../Table/TableData";
 import ModalTable from "../Table/ModalTable";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { addData,updateData } from "../../redux/actions/actions";
+import { addData, updateData } from "../../redux/actions/actions";
 
 const ContactsContent = () => {
   const data = useSelector((state) => state.productReducer.items);
+  const nameRef = useRef(null);
+  const surnameRef = useRef(null);
+  const emailRef = useRef(null);
+  const companyNameRef = useRef(null);
+  const roleRef = useRef(null);
+  const forecastRef = useRef(null);
+  const recentActivityRef = useRef(null);
   const dispatch = useDispatch();
-  let [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const [option, setOption] = useState(0);
-  let [isTrue, setIsTrue] = useState(false);
+  const [isTrue, setIsTrue] = useState(false);
 
   const handleChange = (event) => {
     setOption(event.target.value);
@@ -38,35 +45,31 @@ const ContactsContent = () => {
   };
 
   const handleAddContact = () => {
-    setOpen((open = true));
-    setIsTrue((isTrue = true));
-    console.log(open);
+    setOpen(true);
+    setIsTrue(true);
   };
   const addEmployee = (e) => {
     e.preventDefault();
     let newUser = {
-      name: document.querySelector(".input-name input").value +
-        " " +
-        document.querySelector(".input-surname input").value,
-      email: document.querySelector(".input-email input").value,
-      companyName: document.querySelector(".input-company-name input").value,
-      role: document.querySelector(".input-role input").value,
-      forecast: document.querySelector(".input-forecast input").value,
-      recentActivity: document.querySelector(".input-recent-activity input")
-        .value,
+      name: nameRef.current.value + " " + surnameRef.current.value,
+      email: emailRef.current.value,
+      companyName: companyNameRef.current.value,
+      role: roleRef.current.value,
+      forecast: forecastRef.current.value,
+      recentActivity: recentActivityRef.current.value,
     };
 
     axios
       .post("https://herokuhosting2.herokuapp.com/users", newUser)
-      .then((res) => console.log(res.data))
+      .then((res) => dispatch(updateData(newUser)))
       .catch((err) => console.log(err));
     handleClose();
-    dispatch(updateData(newUser))
+
     alert("You added new user");
   };
   const handleClose = () => {
-    setOpen((open = false));
-    console.log(open);
+    setOpen(false);
+    setIsTrue(false);
   };
   return (
     <div className="contacts-content">
@@ -100,6 +103,13 @@ const ContactsContent = () => {
           open={open}
           onHandleClose={handleClose}
           onAddUser={addEmployee}
+          nameRef={nameRef}
+          surnameRef={surnameRef}
+          emailRef={emailRef}
+          roleRef={roleRef}
+          forecastRef={forecastRef}
+          recentActivityRef={recentActivityRef}
+          companyNameRef={companyNameRef}
         />
       ) : (
         ""

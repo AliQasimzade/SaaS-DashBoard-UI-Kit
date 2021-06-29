@@ -44,13 +44,11 @@
           transition: all 0.3s ease-in-out;
           width: 160px;
           @include styleTag($whiteColor, Poppins-SemiBold, 0.8125rem, 0.01em);
-
-          &:active {
-            background-color: $filled-button-active-background;
-            box-shadow: $filled-button-active-box-shadow;
-          }
         }
-        &:nth-child(1).active{
+      }
+
+      button {
+        &:nth-child(1).active {
           cursor: pointer;
           background-color: $primaryColor;
           opacity: 1;

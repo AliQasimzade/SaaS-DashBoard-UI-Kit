@@ -5,88 +5,80 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import Checkbox from "@material-ui/core/Checkbox";
-import EnhancedTableToolbar from "./EnhancedTableToolbar";
 import EnhancedTableHead from "./EnhancedTableHead";
-import { useSelector } from "react-redux";
+import EditAdminModal from "./EditAdminModal";
+import { useSelector,useDispatch } from "react-redux";
 import George from "../../images/George.png";
+import Delete from "../../images/DeleteAdmin.png";
+import Edit from "../../images/EditAdmin.png";
+import axios from "axios";
+import {deleteData} from "../../redux/actions/actions"
+
 const TableData = () => {
   const data = useSelector((state) => state.productReducer.items);
-  const [selected, setSelected] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [id, setID] = useState(0);
+  const [index,setIndex] = useState(0);
+  const indexData = useSelector((state) => state.productReducer.items[index]);
+ 
+  const dispatch = useDispatch();
 
-  const handleSelectAllClick = (event) => {
-    if (event.target.checked) {
-      const newSelecteds = data.map((n) => n.email);
-      setSelected(newSelecteds);
-      return;
-    }
-    setSelected([]);
+  const hadleEditAdmin = (id,index) => {
+    setOpen(true);
+    setID(id)
+    setIndex(index);
   };
-
-  const handleDeleteAllClick = (event) => {
-    document.querySelector("body thead").classList.remove("active");
-    if (event.target.checked) {
-      const newSelecteds = 0;
-      setSelected(newSelecteds);
-
-      return;
-    }
-    setSelected([]);
+  const handleCloseModal = () => {
+    setOpen(false);
   };
-  const handleClick = (event, email) => {
-    const selectedIndex = selected.indexOf(email);
-
-    let newSelected = [];
-    if (selectedIndex <= -1) {
-      document.querySelector("body thead").classList.add("active");
-    } else if (selectedIndex === 0) {
-      document.querySelector("body thead").classList.remove("active");
-    }
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, email);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1)
-      );
-    }
-
-    setSelected(newSelected);
+  const deleteEmployee = (e) => {
+    e.preventDefault();
+    let user = {
+      name: indexData.name,
+      surname: indexData.surname,
+      email: indexData.email,
+      companyName: indexData.companyName,
+      role: indexData.role,
+      forecast: indexData.forecast,
+      recentActivity: indexData.recentActivity,
+      id:id,
+      imageurl:data[index].imageurl
+    };
+  
+    axios
+      .post("https://herokuhosting2.herokuapp.com/deleteuser", user)
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
+    handleCloseModal();
+    alert(`You deleted ${user.name}`);
+    dispatch(deleteData(id))
+    
   };
-  const isSelected = (name) => selected.indexOf(name) !== -1;
   return (
     <div className="table">
+      {open ? (
+        <EditAdminModal
+          open={open}
+          deleteEmployee={deleteEmployee}
+          close={handleCloseModal}
+          index={index}
+        />
+      ) : (
+        ""
+      )}
       <div className="table-wrapper">
         <Paper>
-          <EnhancedTableToolbar
-            numSelected={selected.length}
-            onDeleteAllClick={handleDeleteAllClick}
-          />
           <TableContainer>
             <Table aria-labelledby="tableTitle" aria-label="enhanced table">
-              <EnhancedTableHead onSelectAllClick={handleSelectAllClick} />
+              <EnhancedTableHead />
               <TableBody>
-                {data.map((row,key) => {
-                  const isItemSelected = isSelected(row.email);
+                {data.map((row,key) => {          
                   return (
                     <TableRow
                       hover
-                      role="checkbox"
-                      aria-checked={isItemSelected}
+                      role="checkbox"         
                       key={key}
-                      selected={isItemSelected}
-                      onClick={(event) => handleClick(event, row.email)}
                     >
-                      <TableCell padding="checkbox">
-                        <Checkbox
-                          className="check-list"
-                          checked={isItemSelected}
-                        />
-                      </TableCell>
                       <TableCell component="th" scope="row" padding="none">
                         <span className="td">
                           <div
@@ -100,7 +92,7 @@ const TableData = () => {
                             }}
                           >
                             <img
-                              src={row.imageurl? row.imageurl : George}
+                              src={row.imageurl ? row.imageurl : George}
                               alt="profile"
                               style={{
                                 width: "100%",
@@ -132,6 +124,22 @@ const TableData = () => {
                       <TableCell>
                         <span className="td">{row.recentActivity}</span>
                       </TableCell>
+                      <TableCell>
+                        <span className="td">
+                          <img
+                          src={Edit}
+                          alt="Edit"
+                          style={{ padding: "4px" }}                  
+                        />
+                        <img
+                          src={Delete}
+                          alt="Delete"
+                          style={{ padding: "4px" }}
+                          onClick={() =>hadleEditAdmin(row.id,key)}
+                        />
+                        </span>
+                        
+                      </TableCell>                  
                     </TableRow>
                   );
                 })}

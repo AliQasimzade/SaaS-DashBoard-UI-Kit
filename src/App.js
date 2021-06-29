@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./styles/App.scss";
 import Sidebar from "./components/Sidebar/SideBar";
 import Dashboard from "./components/Dashboard/Dashboard";
@@ -12,20 +12,27 @@ import {
 } from "react-router-dom";
 
 const App = () => {
+  const containerEl = useRef(null);
+  const hamburgerBtn = useRef(null);
+  const sidebar = useRef(null);
   return (
     <Router>
       <div className="App">
-        <Sidebar />
-        <div className="container">
-        <Switch>   
+        <Sidebar
+          sidebar={sidebar}
+          containerEl={containerEl}
+          hamburgerBtn={hamburgerBtn}
+        />
+        <div className="container" ref={containerEl}>
+          <Switch>
             <Route exact path="/dashboard">
-              <Dashboard />
+              <Dashboard hamburgerBtn={hamburgerBtn} sidebar={sidebar} />
             </Route>
             <Route path="/contacts">
-              <Contacts />
+              <Contacts hamburgerBtn={hamburgerBtn} sidebar={sidebar} />
             </Route>
-            <Redirect push to="/dashboard" />  
-        </Switch>
+            <Redirect push to="/dashboard" />
+          </Switch>
         </div>
       </div>
     </Router>

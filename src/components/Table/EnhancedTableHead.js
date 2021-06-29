@@ -2,7 +2,7 @@ import React from "react";
 import TableHead from "@material-ui/core/TableHead";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
-import Checkbox from "@material-ui/core/Checkbox";
+
 const headCells = [
   { id: "name", label: "Name" },
   { id: "Email", label: "Email" },
@@ -10,17 +10,19 @@ const headCells = [
   { id: "Role", label: "Role" },
   { id: "Forecast", label: "Forecast" },
   { id: "Recent activity", label: "Recent activity" },
+  { id: "Edit-Delete", label: "Delete/Edit" },
 ];
-const EnhancedTableHead = (props) => {
-  const { onSelectAllClick } = props;
+const EnhancedTableHead = () => {
   return (
     <TableHead>
       <TableRow>
-        <TableCell padding="checkbox">
-          <Checkbox onChange={onSelectAllClick} />
-        </TableCell>
         {headCells.map((headCell) => (
-          <TableCell key={headCell.id}>{headCell.label}</TableCell>
+          <TableCell
+            key={headCell.id}
+            style={headCell.id === "name" ? { paddingLeft: "10px" } : {}}
+          >
+            {headCell.label}
+          </TableCell>
         ))}
       </TableRow>
     </TableHead>

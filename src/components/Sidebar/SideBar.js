@@ -1,18 +1,18 @@
-import React, { useRef } from "react";
+import React from "react";
 import "./styles/SideBar.scss";
 import Profile from "../../images/profile.png";
 import SideLinks from "./SideLinks";
 import "./styles/SideBar-Media.scss";
 
-const SideBar = () => {
-  const sidebar = useRef(null);
+const SideBar = (props) => {
+
   const handleToggleSideBar = () => {
-    sidebar.current.classList.toggle("active");
-    document.querySelector(".container").classList.toggle("active");
+    props.sidebar.current.classList.toggle("active");
+    props.containerEl.current.classList.toggle("active")
   };
 
   return (
-    <div className="side-bar" ref={sidebar}>
+    <div className="side-bar" ref={props.sidebar}>
       <div className="heading">
         <p>
           SaaS <span className="kit">Kit</span>
@@ -27,7 +27,7 @@ const SideBar = () => {
           <p className="gmail">s.ferguson@gmail.com</p>
         </div>
       </div>
-      <SideLinks />
+      <SideLinks sideBar={props.sidebar} hamburgerBtn={props.hamburgerBtn}/>
       <div className="toggle-side-bar" onClick={handleToggleSideBar}>
         <svg
           width="14"

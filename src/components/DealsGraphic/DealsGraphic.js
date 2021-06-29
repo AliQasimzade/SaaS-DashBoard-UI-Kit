@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./styles/DealsGraphic.scss";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
@@ -8,10 +8,21 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { changeChartData } from "../../redux/actions/actions";
 import DealsChart from "./DealsChart";
+import {getChartData} from "../../redux/actions/actions";
 
 const DealsGraphic = () => {
- 
   const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    axios.get("https://herokuhosting2.herokuapp.com/getChart")
+    .then(res => {
+      dispatch(getChartData(res.data.Chart));  
+    }) 
+    .catch(err => console.log(err))
+  },[dispatch])
+ 
+  
   const [option, setOption] = useState(0);
 
   const handleChange = (event) => {

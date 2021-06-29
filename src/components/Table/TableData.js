@@ -15,6 +15,7 @@ import axios from "axios";
 import {deleteData} from "../../redux/actions/actions"
 
 const TableData = () => {
+  const data = useSelector((state) => state.productReducer.items);
   const [open, setOpen] = useState(false);
   const [id, setID] = useState(0);
   const [index,setIndex] = useState(0);

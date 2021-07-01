@@ -18,7 +18,6 @@ const ContactsContent = () => {
   const companyNameRef = useRef(null);
   const roleRef = useRef(null);
   const forecastRef = useRef(null);
-  const recentActivityRef = useRef(null);
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [option, setOption] = useState(0);
@@ -55,8 +54,9 @@ const ContactsContent = () => {
       email: emailRef.current.value,
       companyName: companyNameRef.current.value,
       role: roleRef.current.value,
-      forecast: forecastRef.current.value,
-      recentActivity: recentActivityRef.current.value,
+      forecast: forecastRef.current.value + "%",
+      recentActivity: Date.now(),
+      id:Math.floor(Math.random() * 1000) + 1
     };
 
     axios
@@ -108,7 +108,6 @@ const ContactsContent = () => {
           emailRef={emailRef}
           roleRef={roleRef}
           forecastRef={forecastRef}
-          recentActivityRef={recentActivityRef}
           companyNameRef={companyNameRef}
         />
       ) : (

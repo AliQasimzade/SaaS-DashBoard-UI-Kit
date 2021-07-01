@@ -5,37 +5,36 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import "./styles/TasksChart-Media.scss";
 import axios from "axios";
-import { useDispatch } from "react-redux";
-import { getChartTask } from "../../redux/actions/actions";
 import ChartTask from "./ChartTask";
 
 const TasksChart = () => {
-  const dispatch = useDispatch();
+  const [age, setAge] = useState(0);
+  const [tasks,setTasks] = useState([])
  
   useEffect(() => {
     axios
       .get("https://herokuhosting2.herokuapp.com/getTaskChart")
-      .then((res) => dispatch(getChartTask(res.data.TaskChart.thisWeek)))
+      .then((res) => setTasks(res.data.TaskChart.thisWeek))
       .catch((err) => console.log(err));
-  }, [dispatch]);
+  }, []);
 
-  const [age, setAge] = useState(0);
+ 
   const handleChange = (event) => {
     setAge(event.target.value);
     if (event.target.value === 0) {
       axios
         .get("https://herokuhosting2.herokuapp.com/getTaskChart")
-        .then((res) => dispatch(getChartTask(res.data.TaskChart.thisWeek)))
+        .then((res) => setTasks(res.data.TaskChart.thisWeek))
         .catch((err) => console.log(err));
     }else if(event.target.value === 1 ){
       axios
       .get("https://herokuhosting2.herokuapp.com/getTaskChart")
-      .then((res) => dispatch(getChartTask(res.data.TaskChart.thisMonth)))
+      .then((res) => setTasks(res.data.TaskChart.thisMonth))
       .catch((err) => console.log(err));
     }else{
       axios
       .get("https://herokuhosting2.herokuapp.com/getTaskChart")
-      .then((res) => dispatch(getChartTask(res.data.TaskChart.thisYear)))
+      .then((res) => setTasks(res.data.TaskChart.thisYear))
       .catch((err) => console.log(err));
     }
   };
@@ -65,7 +64,7 @@ const TasksChart = () => {
           </FormControl>
         </div>
       </div>
-      <ChartTask /> 
+      <ChartTask tasks={tasks}/> 
     </div>
   );
 };

@@ -20,7 +20,7 @@ const DeleteUser = (props) => {
         timeout: 500,
       }}
     >
-      <Fade in={props.open} className="fade">
+      <Fade in={props.open} className="fade" style={{height:"fit-content",width:"fit-content", padding:"10px"}}>
         <form autoComplete="off">      
           <div className="buttons">
             <button className="active" onClick={props.deleteEmployee}>

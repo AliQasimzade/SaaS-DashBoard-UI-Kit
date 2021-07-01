@@ -1,12 +1,9 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
-import { useSelector } from "react-redux";
 
-const ChartTask = () => {
-  const chartData = useSelector((state) => state.taskChartReducer.data);
-
+const ChartTask = (props) => {
   const options = {
-    series: chartData,
+    series: props.tasks,
     labels: ["Active", "Completed", "Ended"],
 
     plotOptions: {
@@ -33,7 +30,7 @@ const ChartTask = () => {
               show: true,
               color: "blue",
               formatter: (val) => {
-                return Math.max(...val.config.series)+ "%";
+                return Math.max(...val.config.series) + "%";
               },
             },
           },

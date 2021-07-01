@@ -1,44 +1,37 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles/DealsGraphic.scss";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import "./styles/DealsGraphic-Media.scss";
 import axios from "axios";
-import { useDispatch } from "react-redux";
-import { changeChartData } from "../../redux/actions/actions";
 import DealsChart from "./DealsChart";
-import {getChartData} from "../../redux/actions/actions";
 
 const DealsGraphic = () => {
-  const dispatch = useDispatch();
-
+  const [option, setOption] = useState(0);
+  const [chart, setChart] = useState([]);
 
   useEffect(() => {
-    axios.get("https://herokuhosting2.herokuapp.com/getChart")
-    .then(res => {
-      dispatch(getChartData(res.data.Chart));  
-    }) 
-    .catch(err => console.log(err))
-  },[dispatch])
- 
-  
-  const [option, setOption] = useState(0);
+    axios
+      .get("https://herokuhosting2.herokuapp.com/getChart")
+      .then((res) => setChart(res.data.Chart))
+      .catch((err) => console.log(err));
+  }, []);
 
   const handleChange = (event) => {
     setOption(event.target.value);
     if (event.target.value === 0) {
       axios
         .get("https://herokuhosting2.herokuapp.com/getChart")
-        .then((res) => dispatch(changeChartData(res.data.Chart)));
+        .then((res) => setChart(res.data.Chart));
     } else if (event.target.value === 1) {
       axios
         .get("https://herokuhosting2.herokuapp.com/getChart")
-        .then((res) => dispatch(changeChartData(res.data.Chart2)));
+        .then((res) => setChart(res.data.Chart2));
     } else if (event.target.value === 2) {
       axios
         .get("https://herokuhosting2.herokuapp.com/getChart")
-        .then((res) => dispatch(changeChartData(res.data.Chart3)));
+        .then((res) => setChart(res.data.Chart3));
     }
   };
   return (
@@ -67,7 +60,7 @@ const DealsGraphic = () => {
           </FormControl>
         </div>
       </div>
-      <DealsChart />
+      <DealsChart chart={chart} />
     </div>
   );
 };

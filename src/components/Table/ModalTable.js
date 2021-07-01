@@ -19,25 +19,21 @@ const ModalTable = (props) => {
     emailRef,
     roleRef,
     forecastRef,
-    recentActivityRef,
     companyNameRef,
   } = props;
-
-  const control = () => {
-    let invalids = form.current.querySelectorAll(":invalid").length;
-
-    if (invalids === 0) {
-      submitBtn.current.classList.add("active");
-      submitBtn.current.removeAttribute("disabled");
-    } else {
-      submitBtn.current.classList.remove("active");
-      submitBtn.current.setAttribute("disabled", "disabled");
-    }
-  };
+const control = () => {
+  if (form.current.querySelectorAll(":invalid").length === 0) {
+    submitBtn.current.classList.add("active");
+    submitBtn.current.removeAttribute("disabled");
+  } else {
+    submitBtn.current.classList.remove("active");
+    submitBtn.current.setAttribute("disabled", "disabled");
+  }
+}
   useEffect(() => {
     setTimeout(() => {
-      control();
-    }, 100);
+      control()
+    },100)  
   }, []);
 
   return (
@@ -90,21 +86,14 @@ const ModalTable = (props) => {
               required
               label="Role"
             />
+            
             <TextField
               className="input-forecast"
               ref={forecastRef}
               onChange={(e) => (forecastRef.current.value = e.target.value)}
+              type="number"
               required
               label="Forecast"
-            />
-            <TextField
-              className="input-recent-activity"
-              label="Recent activity"
-              ref={recentActivityRef}
-              onChange={(e) =>
-                (recentActivityRef.current.value = e.target.value)
-              }
-              required
             />
           </div>
           <div className="buttons">
@@ -114,6 +103,7 @@ const ModalTable = (props) => {
             <button onClick={onHandleClose}>Close</button>
           </div>
         </form>
+        
       </Fade>
     </Modal>
   );

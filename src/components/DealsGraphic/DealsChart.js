@@ -1,15 +1,13 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
-import { useSelector } from "react-redux";
-const DealsChart = () => {
-  const chartData = useSelector((state) => state.chartDataReducer.items.data);
-  const chartDate = useSelector((state) => state.chartDataReducer.items.date);
+
+const DealsChart = (props) => {
 
   const options = {
     series: [
       {
         name: "Closed deals",
-        data: chartData,
+        data: props.chart.data,
       },
       {
         name: " ",
@@ -79,7 +77,7 @@ const DealsChart = () => {
       },
       xaxis: {
         type: "category",
-        categories: chartDate,
+        categories: props.chart.date,
         crosshairs: {
           show: true,
           width: 1,

@@ -1,19 +1,27 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { changeList } from "../../redux/actions/actions";
 import { NavLink } from "react-router-dom";
-import allList from "./AllList";
+import axios from "axios"
 const SideLinks = (props) => {
     const dispatch = useDispatch();
+    const [lists, setLists] = useState([]);
     const listKey = useSelector((state) => state.changeListReducer);
     const handleClickList = (key) => {
         dispatch(changeList(key));
         props.hamburgerBtn.current.classList.remove("active")
         props.sideBar.current.classList.remove("show")
       };
+
+      useEffect(() => {
+        axios
+        .get("https://herokuhosting2.herokuapp.com/getData")
+        .then((res) =>setLists(res.data.Sidebar))
+        .catch((err) => console.log(err));
+      },[])
     return (
         <ul className="side-lists">
-        {allList.map((item, key) => (
+        {lists.map((item, key) => (
           <li
             key={key}
             className={key === 6 ? "settings" : ""}

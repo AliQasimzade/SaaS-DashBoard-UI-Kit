@@ -8,7 +8,6 @@ import { addData } from "../../redux/actions/actions";
 import axios from "axios";
 const Contacts = (props) => {
   const dispatch = useDispatch();
-
   useEffect(() => {
     axios
       .get("https://herokuhosting2.herokuapp.com/getData")

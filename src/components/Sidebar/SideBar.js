@@ -3,13 +3,13 @@ import "./styles/SideBar.scss";
 import Profile from "../../images/profile.png";
 import SideLinks from "./SideLinks";
 import "./styles/SideBar-Media.scss";
-
 const SideBar = (props) => {
 
   const handleToggleSideBar = () => {
     props.sidebar.current.classList.toggle("active");
     props.containerEl.current.classList.toggle("active")
   };
+
 
   return (
     <div className="side-bar" ref={props.sidebar}>

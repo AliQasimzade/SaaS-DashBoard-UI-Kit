@@ -13,6 +13,7 @@ import Delete from "../../images/DeleteAdmin.png";
 import Edit from "../../images/EditAdmin.png";
 import axios from "axios";
 import {deleteData} from "../../redux/actions/actions"
+import moment from "moment";
 
 const TableData = () => {
   const data = useSelector((state) => state.productReducer.items);
@@ -52,7 +53,6 @@ const TableData = () => {
     handleCloseModal();
     alert(`You deleted ${user.name}`);
     dispatch(deleteData(id))
-    
   };
   return (
     <div className="table">
@@ -121,7 +121,7 @@ const TableData = () => {
                         <span className="td">{row.forecast}</span>
                       </TableCell>
                       <TableCell>
-                        <span className="td">{row.recentActivity}</span>
+                        <span className="td">{moment.unix(row.recentActivity/1000).format("MMM DD, YYYY")}</span>                                  
                       </TableCell>
                       <TableCell>
                         <span className="td">

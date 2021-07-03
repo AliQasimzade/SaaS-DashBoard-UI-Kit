@@ -22,11 +22,12 @@ const DeleteUser = (props) => {
     >
       <Fade in={props.open} className="fade" style={{height:"fit-content",width:"fit-content", padding:"10px"}}>
         <form autoComplete="off">      
+        <h2>Are you sure ?</h2>
           <div className="buttons">
             <button className="active" onClick={props.deleteEmployee}>
-              Delete
+              Yes
             </button>
-            <button onClick={props.close}>Close</button>
+            <button onClick={props.close}>No</button>
           </div>
         </form>
       </Fade>

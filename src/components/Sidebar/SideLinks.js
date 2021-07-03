@@ -15,8 +15,8 @@ const SideLinks = (props) => {
 
       useEffect(() => {
         axios
-        .get("https://herokuhosting2.herokuapp.com/getData")
-        .then((res) =>setLists(res.data.Sidebar))
+        .get("https://dashboard-database-af1ec-default-rtdb.firebaseio.com/Sidebar.json")
+        .then((res) =>setLists(res.data))
         .catch((err) => console.log(err));
       },[])
     return (

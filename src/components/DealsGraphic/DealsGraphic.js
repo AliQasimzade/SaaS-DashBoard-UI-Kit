@@ -9,30 +9,23 @@ import DealsChart from "./DealsChart";
 
 const DealsGraphic = () => {
   const [option, setOption] = useState(0);
-  const [chart, setChart] = useState([]);
+  const [chart, setChart] = useState({});
 
   useEffect(() => {
     axios
-      .get("https://herokuhosting2.herokuapp.com/getChart")
-      .then((res) => setChart(res.data.Chart))
+      .get("https://dashboard-database-af1ec-default-rtdb.firebaseio.com/DealsChart/" + 0 + ".json")
+      .then((res) => setChart(res.data))
       .catch((err) => console.log(err));
+
   }, []);
 
   const handleChange = (event) => {
     setOption(event.target.value);
-    if (event.target.value === 0) {
-      axios
-        .get("https://herokuhosting2.herokuapp.com/getChart")
-        .then((res) => setChart(res.data.Chart));
-    } else if (event.target.value === 1) {
-      axios
-        .get("https://herokuhosting2.herokuapp.com/getChart")
-        .then((res) => setChart(res.data.Chart2));
-    } else if (event.target.value === 2) {
-      axios
-        .get("https://herokuhosting2.herokuapp.com/getChart")
-        .then((res) => setChart(res.data.Chart3));
-    }
+    axios
+    .get("https://dashboard-database-af1ec-default-rtdb.firebaseio.com/DealsChart/" + event.target.value + ".json")
+    .then((res) => setChart(res.data))
+    .catch((err) => console.log(err));
+    console.log(chart)
   };
   return (
     <div className="deals-graphic">

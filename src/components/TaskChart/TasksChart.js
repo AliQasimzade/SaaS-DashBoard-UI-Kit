@@ -13,30 +13,18 @@ const TasksChart = () => {
  
   useEffect(() => {
     axios
-      .get("https://herokuhosting2.herokuapp.com/getTaskChart")
-      .then((res) => setTasks(res.data.TaskChart.thisWeek))
+      .get("https://dashboard-database-af1ec-default-rtdb.firebaseio.com/TaskChart/" + 0 + ".json")
+      .then((res) => setTasks(res.data))
       .catch((err) => console.log(err));
   }, []);
 
  
   const handleChange = (event) => {
     setAge(event.target.value);
-    if (event.target.value === 0) {
-      axios
-        .get("https://herokuhosting2.herokuapp.com/getTaskChart")
-        .then((res) => setTasks(res.data.TaskChart.thisWeek))
-        .catch((err) => console.log(err));
-    }else if(event.target.value === 1 ){
-      axios
-      .get("https://herokuhosting2.herokuapp.com/getTaskChart")
-      .then((res) => setTasks(res.data.TaskChart.thisMonth))
+    axios
+      .get("https://dashboard-database-af1ec-default-rtdb.firebaseio.com/TaskChart/" + event.target.value + ".json")
+      .then((res) => setTasks(res.data))
       .catch((err) => console.log(err));
-    }else{
-      axios
-      .get("https://herokuhosting2.herokuapp.com/getTaskChart")
-      .then((res) => setTasks(res.data.TaskChart.thisYear))
-      .catch((err) => console.log(err));
-    }
   };
   return (
     <div className="tasks-chart">

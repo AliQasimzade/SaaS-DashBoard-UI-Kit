@@ -136,8 +136,7 @@ const TableData = () => {
                           style={{ padding: "4px" }}
                           onClick={() =>hadleEditAdmin(row.id,key)}
                         />
-                        </span>
-                        
+                        </span>     
                       </TableCell>                  
                     </TableRow>
                   );

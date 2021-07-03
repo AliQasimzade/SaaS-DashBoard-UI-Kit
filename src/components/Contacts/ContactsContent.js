@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./styles/ContactsContent.scss";
 import "./styles/ContactsContent-Media.scss";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -10,8 +10,9 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addData, updateData } from "../../redux/actions/actions";
 
-const ContactsContent = () => {
+const ContactsContent = (props) => {
   const data = useSelector((state) => state.productReducer.items);
+
   const nameRef = useRef(null);
   const surnameRef = useRef(null);
   const emailRef = useRef(null);
@@ -20,27 +21,21 @@ const ContactsContent = () => {
   const forecastRef = useRef(null);
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
-  const [option, setOption] = useState(0);
+  const [option, setOption] = useState(props.size);
   const [isTrue, setIsTrue] = useState(false);
+  useEffect(() => {
+    console.log(option);
+  });
 
   const handleChange = (event) => {
     setOption(event.target.value);
-    if (event.target.value === 0) {
-      axios
-        .get("https://herokuhosting2.herokuapp.com/getData")
-        .then((res) => dispatch(addData(res.data.Lists)))
-        .catch((err) => console.log(err));
-    } else if (event.target.value === 1) {
-      axios
-        .get("https://herokuhosting2.herokuapp.com/getData")
-        .then((res) => dispatch(addData(res.data.Lists.slice(0, 3))))
-        .catch((err) => console.log(err));
-    } else if (event.target.value === 2) {
-      axios
-        .get("https://herokuhosting2.herokuapp.com/getData")
-        .then((res) => dispatch(addData(res.data.Lists.slice(0, 6))))
-        .catch((err) => console.log(err));
-    }
+
+    axios
+      .post("https://herokuhosting2.herokuapp.com/chart", {
+        index: event.target.value,
+      })
+      .then((res) => dispatch(addData(res.data)))
+      .catch((err) => console.log(err));
   };
 
   const handleAddContact = () => {
@@ -56,7 +51,6 @@ const ContactsContent = () => {
       role: roleRef.current.value,
       forecast: forecastRef.current.value + "%",
       recentActivity: Date.now(),
-      id:Math.floor(Math.random() * 1000) + 1
     };
 
     axios
@@ -83,14 +77,14 @@ const ContactsContent = () => {
               displayEmpty
               inputProps={{ "aria-label": "Without label" }}
             >
-              <MenuItem value={0}>
+              <MenuItem value={props.size}>
                 <span>All</span>
               </MenuItem>
-              <MenuItem value={1}>
+              <MenuItem value={3}>
                 <span>3</span>
               </MenuItem>
-              <MenuItem value={2}>
-                <span>6</span>
+              <MenuItem value={1}>
+                <span>1</span>
               </MenuItem>
             </Select>
           </FormControl>

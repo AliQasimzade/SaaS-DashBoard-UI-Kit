@@ -21,7 +21,7 @@ const Contacts = (props) => {
       })
       .catch((err) => console.log(err));  
     dispatch(changeList(3));
-  }, []);
+  }, [dispatch]);
 
 
 

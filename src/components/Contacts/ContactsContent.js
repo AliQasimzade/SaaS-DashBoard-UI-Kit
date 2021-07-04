@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import "./styles/ContactsContent.scss";
 import "./styles/ContactsContent-Media.scss";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -12,7 +12,6 @@ import { addData, updateData } from "../../redux/actions/actions";
 
 const ContactsContent = (props) => {
   const data = useSelector((state) => state.productReducer.items);
-
   const nameRef = useRef(null);
   const surnameRef = useRef(null);
   const emailRef = useRef(null);
@@ -23,9 +22,7 @@ const ContactsContent = (props) => {
   const [open, setOpen] = useState(false);
   const [option, setOption] = useState(props.size);
   const [isTrue, setIsTrue] = useState(false);
-  useEffect(() => {
-    console.log(option);
-  });
+ 
 
   const handleChange = (event) => {
     setOption(event.target.value);

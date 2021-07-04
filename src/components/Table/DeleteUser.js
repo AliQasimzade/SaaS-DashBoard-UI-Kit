@@ -6,7 +6,6 @@ import "./styles/ModalTable.scss";
 import "./styles/ModalTable-Media.scss";
 
 const DeleteUser = (props) => {
-  
 
   return (
     <Modal

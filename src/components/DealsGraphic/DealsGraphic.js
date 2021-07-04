@@ -9,23 +9,30 @@ import DealsChart from "./DealsChart";
 
 const DealsGraphic = () => {
   const [option, setOption] = useState(0);
-  const [chart, setChart] = useState({});
+  const [chart, setChart] = useState();
 
   useEffect(() => {
     axios
-      .get("https://dashboard-database-af1ec-default-rtdb.firebaseio.com/DealsChart/" + 0 + ".json")
+      .get(
+        "https://dashboard-database-af1ec-default-rtdb.firebaseio.com/DealsChart/" +
+          0 +
+          ".json"
+      )
       .then((res) => setChart(res.data))
       .catch((err) => console.log(err));
-
   }, []);
 
   const handleChange = (event) => {
     setOption(event.target.value);
     axios
-    .get("https://dashboard-database-af1ec-default-rtdb.firebaseio.com/DealsChart/" + event.target.value + ".json")
-    .then((res) => setChart(res.data))
-    .catch((err) => console.log(err));
-    console.log(chart)
+      .get(
+        "https://dashboard-database-af1ec-default-rtdb.firebaseio.com/DealsChart/" +
+          event.target.value +
+          ".json"
+      )
+      .then((res) => setChart(res.data))
+      .catch((err) => console.log(err));
+
   };
   return (
     <div className="deals-graphic">
@@ -53,7 +60,7 @@ const DealsGraphic = () => {
           </FormControl>
         </div>
       </div>
-      <DealsChart chart={chart} />
+      {chart? <DealsChart chart={chart} />:""}
     </div>
   );
 };

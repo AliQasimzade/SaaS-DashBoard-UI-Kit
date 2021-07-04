@@ -9,20 +9,27 @@ import ChartTask from "./ChartTask";
 
 const TasksChart = () => {
   const [age, setAge] = useState(0);
-  const [tasks,setTasks] = useState([])
- 
+  const [tasks, setTasks] = useState([]);
+
   useEffect(() => {
     axios
-      .get("https://dashboard-database-af1ec-default-rtdb.firebaseio.com/TaskChart/" + 0 + ".json")
+      .get(
+        "https://dashboard-database-af1ec-default-rtdb.firebaseio.com/TaskChart/" +
+          0 +
+          ".json"
+      )
       .then((res) => setTasks(res.data))
       .catch((err) => console.log(err));
   }, []);
 
- 
   const handleChange = (event) => {
     setAge(event.target.value);
     axios
-      .get("https://dashboard-database-af1ec-default-rtdb.firebaseio.com/TaskChart/" + event.target.value + ".json")
+      .get(
+        "https://dashboard-database-af1ec-default-rtdb.firebaseio.com/TaskChart/" +
+          event.target.value +
+          ".json"
+      )
       .then((res) => setTasks(res.data))
       .catch((err) => console.log(err));
   };
@@ -52,7 +59,7 @@ const TasksChart = () => {
           </FormControl>
         </div>
       </div>
-      <ChartTask tasks={tasks}/> 
+      <ChartTask tasks={tasks} />
     </div>
   );
 };

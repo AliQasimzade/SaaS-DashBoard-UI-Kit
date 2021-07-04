@@ -31,9 +31,13 @@ const control = () => {
   }
 }
   useEffect(() => {
-    setTimeout(() => {
-      control()
-    },100)  
+    if (form.current.querySelectorAll(":invalid").length === 0) {
+      submitBtn.current.classList.add("active");
+      submitBtn.current.removeAttribute("disabled");
+    } else {
+      submitBtn.current.classList.remove("active");
+      submitBtn.current.setAttribute("disabled", "disabled");
+    } 
   }, []);
 
   return (

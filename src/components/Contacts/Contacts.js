@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useLayoutEffect,useState } from "react";
 import Navigation from "../Navigation/Navigation";
 import ContactsContent from "./ContactsContent";
 import "./styles/Contacts.scss";
@@ -10,7 +10,7 @@ const Contacts = (props) => {
   const dispatch = useDispatch();
   const [size, setSize] = useState();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     axios
       .get(
         "https://dashboard-database-af1ec-default-rtdb.firebaseio.com/Table.json"
@@ -23,12 +23,10 @@ const Contacts = (props) => {
     dispatch(changeList(3));
   }, [dispatch]);
 
-
-
   return (
     <div className="contacts">
       <Navigation hamburgerBtn={props.hamburgerBtn} sidebar={props.sidebar} />
-      {typeof size === "number"? <ContactsContent size={size}/>:""}
+      {size? <ContactsContent size={size}/>:""}
     </div>
   );
 };

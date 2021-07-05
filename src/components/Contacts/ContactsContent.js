@@ -12,17 +12,16 @@ import { addData, updateData } from "../../redux/actions/actions";
 
 const ContactsContent = (props) => {
   const data = useSelector((state) => state.productReducer.items);
+  const dispatch = useDispatch();
   const nameRef = useRef(null);
   const surnameRef = useRef(null);
   const emailRef = useRef(null);
   const companyNameRef = useRef(null);
   const roleRef = useRef(null);
   const forecastRef = useRef(null);
-  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [option, setOption] = useState(props.size);
   const [isTrue, setIsTrue] = useState(false);
- 
 
   const handleChange = (event) => {
     setOption(event.target.value);

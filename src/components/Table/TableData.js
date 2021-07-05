@@ -7,30 +7,35 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import EnhancedTableHead from "./EnhancedTableHead";
 import DeleteUser from "./DeleteUser";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import George from "../../images/George.png";
 import Delete from "../../images/DeleteAdmin.png";
 import Edit from "../../images/EditAdmin.png";
 import axios from "axios";
-import {deleteData} from "../../redux/actions/actions"
+import { deleteData } from "../../redux/actions/actions";
 import moment from "moment";
+import DeleteSnackbar from "./DeleteSnackbar";
 
 const TableData = () => {
   const data = useSelector((state) => state.productReducer.items);
   const [open, setOpen] = useState(false);
   const [id, setID] = useState(0);
-  const [index,setIndex] = useState(0);
+  const [index, setIndex] = useState(0);
+  const [show, setShow] = useState(false);
   const indexData = useSelector((state) => state.productReducer.items[index]);
- 
+
   const dispatch = useDispatch();
 
-  const hadleEditAdmin = (id,index) => {
+  const handleDeleteAdmin = (id, index) => {
     setOpen(true);
-    setID(id)
+    setID(id);
     setIndex(index);
   };
   const handleCloseModal = () => {
     setOpen(false);
+  };
+  const closeSnackbar = () => {
+    setShow(false);
   };
   const deleteEmployee = (e) => {
     e.preventDefault();
@@ -42,20 +47,24 @@ const TableData = () => {
       role: indexData.role,
       forecast: indexData.forecast,
       recentActivity: indexData.recentActivity,
-      id:id,
-      imageurl:indexData.imageurl
+      id: id,
+      imageurl: indexData.imageurl,
     };
-  
+
     axios
       .post("https://herokuhosting2.herokuapp.com/deleteuser", user)
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
     handleCloseModal();
-    alert(`You deleted ${user.name}`);
-    dispatch(deleteData(id))
+    setShow(true);
+    setTimeout(() => {
+      closeSnackbar();
+    }, 800);
+    dispatch(deleteData(id));
   };
   return (
     <div className="table">
+      {show ? <DeleteSnackbar show={show}/> : ""}
       {open ? (
         <DeleteUser
           open={open}
@@ -71,13 +80,9 @@ const TableData = () => {
             <Table aria-labelledby="tableTitle" aria-label="enhanced table">
               <EnhancedTableHead />
               <TableBody>
-                {data.map((row,key) => {          
+                {data.map((row, key) => {
                   return (
-                    <TableRow
-                      hover
-                      role="checkbox"         
-                      key={key}
-                    >
+                    <TableRow hover role="checkbox" key={key}>
                       <TableCell component="th" scope="row" padding="none">
                         <span className="td">
                           <div
@@ -121,23 +126,27 @@ const TableData = () => {
                         <span className="td">{row.forecast}</span>
                       </TableCell>
                       <TableCell>
-                        <span className="td">{moment.unix(row.recentActivity/1000).format("MMM DD, YYYY")}</span>                                  
+                        <span className="td">
+                          {moment
+                            .unix(row.recentActivity / 1000)
+                            .format("MMM DD, YYYY")}
+                        </span>
                       </TableCell>
                       <TableCell>
                         <span className="td">
                           <img
-                          src={Edit}
-                          alt="Edit"
-                          style={{ padding: "4px" }}                  
-                        />
-                        <img
-                          src={Delete}
-                          alt="Delete"
-                          style={{ padding: "4px" }}
-                          onClick={() =>hadleEditAdmin(row.id,key)}
-                        />
-                        </span>     
-                      </TableCell>                  
+                            src={Edit}
+                            alt="Edit"
+                            style={{ padding: "4px" }}
+                          />
+                          <img
+                            src={Delete}
+                            alt="Delete"
+                            style={{ padding: "4px" }}
+                            onClick={() => handleDeleteAdmin(row.id, key)}
+                          />
+                        </span>
+                      </TableCell>
                     </TableRow>
                   );
                 })}

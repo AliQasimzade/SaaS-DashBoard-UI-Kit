@@ -51,7 +51,7 @@ const ModalTable = (props) => {
       }}
     >
       <Fade in={open} className="fade">
-        <form autoComplete="off" ref={form} onKeyUp={control}>
+        <form ref={form} onKeyUp={control}>
           <div className="form">
             <div className="text-field">
               <TextField

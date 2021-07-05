@@ -28,8 +28,9 @@
     .text-field{
       @include flexLayout(flex-start,center,column);
       p{
-        color: $redColor2;
+
         display: none;
+        @include styleTag($redColor2,Poppins-SemiBold,14px,0.01em)
       }
     }
     .buttons {
@@ -45,10 +46,19 @@
           height: 42px;
           margin-right: 10px;
           outline: none;
+          cursor: pointer;
           text-transform: capitalize;
           transition: all 0.3s ease-in-out;
           width: 160px;
-          @include styleTag($whiteColor, Poppins-SemiBold, 0.8125rem, 0.01em);
+          @include styleTag($whiteColor, Poppins-Medium, 0.8125rem, 0.01em);
+          &:hover {
+            background-color: $filled-button-hover-background;
+            box-shadow: $filled-button-hover-box-shadow;
+          }
+          &:active {
+            background-color: $primaryColor;
+            box-shadow: $filled-button-active-box-shadow;
+          }
         }
       }
 

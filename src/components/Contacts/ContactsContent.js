@@ -9,7 +9,7 @@ import ModalTable from "../Table/ModalTable";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addData, updateData } from "../../redux/actions/actions";
-
+import AddOrWrongSnack from "../Table/AddOrWrongSnack";
 const ContactsContent = (props) => {
   const data = useSelector((state) => state.productReducer.items);
   const dispatch = useDispatch();
@@ -22,7 +22,11 @@ const ContactsContent = (props) => {
   const [open, setOpen] = useState(false);
   const [option, setOption] = useState(props.size);
   const [isTrue, setIsTrue] = useState(false);
-
+  const [show, setShow] = useState(false);
+  const [severity, setSeverity] = useState("error");
+  const closeSnackbar = () => {
+    setShow(false);
+  };
   const handleChange = (event) => {
     setOption(event.target.value);
 
@@ -38,24 +42,31 @@ const ContactsContent = (props) => {
     setOpen(true);
     setIsTrue(true);
   };
+
   const addEmployee = (e) => {
     e.preventDefault();
-    let newUser = {
-      name: nameRef.current.value + " " + surnameRef.current.value,
-      email: emailRef.current.value,
-      companyName: companyNameRef.current.value,
-      role: roleRef.current.value,
-      forecast: forecastRef.current.value + "%",
-      recentActivity: Date.now(),
-    };
-
-    axios
-      .post("https://herokuhosting2.herokuapp.com/users", newUser)
-      .then((res) => dispatch(updateData(newUser)))
-      .catch((err) => console.log(err));
-    handleClose();
-
-    alert("You added new user");
+    let pattern = /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/;
+    let result = pattern.test(emailRef.current.value);
+    if (result === true) {
+      let newUser = {
+        name: nameRef.current.value + " " + surnameRef.current.value,
+        email: emailRef.current.value,
+        companyName: companyNameRef.current.value,
+        role: roleRef.current.value,
+        forecast: forecastRef.current.value + "%",
+        recentActivity: Date.now(),
+      };
+      axios
+        .post("https://herokuhosting2.herokuapp.com/users", newUser)
+        .then((res) => dispatch(updateData(newUser)))
+        .catch((err) => console.log(err));
+      handleClose();
+      setShow(true);
+      setSeverity("success");
+    } else {
+      setShow(true);
+      setSeverity("error");
+    }
   };
   const handleClose = () => {
     setOpen(false);
@@ -63,6 +74,15 @@ const ContactsContent = (props) => {
   };
   return (
     <div className="contacts-content">
+      {show ? (
+        <AddOrWrongSnack
+          show={show}
+          closeSnackbar={closeSnackbar}
+          severity={severity}
+        />
+      ) : (
+        ""
+      )}
       <div className="add-contact">
         <div className="company-select">
           <span>Company: </span>

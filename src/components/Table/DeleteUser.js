@@ -6,7 +6,6 @@ import "./styles/ModalTable.scss";
 import "./styles/ModalTable-Media.scss";
 
 const DeleteUser = (props) => {
-
   return (
     <Modal
       aria-labelledby="transition-modal-title"
@@ -19,11 +18,18 @@ const DeleteUser = (props) => {
         timeout: 500,
       }}
     >
-      <Fade in={props.open} className="fade" style={{height:"fit-content",width:"fit-content", padding:"10px"}}>
-        <form autoComplete="off">      
-        <h2>Are you sure ?</h2>
+      <Fade
+        in={props.open}
+        className="fade"
+        style={{ height: "fit-content", width: "fit-content", padding: "10px" }}
+      >
+        <form autoComplete="off">
+          <h2 style={{ fontFamily: " Poppins-Medium" }}>Are you sure ?</h2>
           <div className="buttons">
-            <button className="active" onClick={props.deleteEmployee}>
+            <button
+              className="active"
+              onClick={props.deleteEmployee}
+            >
               Yes
             </button>
             <button onClick={props.close}>No</button>

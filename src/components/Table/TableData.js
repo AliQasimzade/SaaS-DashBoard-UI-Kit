@@ -53,7 +53,7 @@ const TableData = () => {
 
     axios
       .post("https://herokuhosting2.herokuapp.com/deleteuser", user)
-      .then((res) => console.log(res.data))
+      .then()
       .catch((err) => console.log(err));
     handleCloseModal();
     setShow(true);

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
@@ -6,42 +6,41 @@ import TextField from "@material-ui/core/TextField";
 import "./styles/ModalTable.scss";
 import "./styles/ModalTable-Media.scss";
 
-const ModalTable = (props) => {
- 
+const ModalTable = ({
+  open,
+  onHandleClose,
+  onAddUser,
+  nameRef,
+  surnameRef,
+  emailRef,
+  roleRef,
+  forecastRef,
+  companyNameRef,
+}) => {
   const form = useRef(null);
-  const [valid, setValid] = useState();
+  const [count, setCount] = useState(0);
+  
+  const NotifEmptyInputs = (e) => {
+    document.querySelectorAll(".text-field").forEach((item) => {
+      if (item.firstChild.querySelector("input").value === "") {
+        item.lastChild.style.opacity = "1";
+        e = "no";
+      }
+    });
 
-  let {
-    open,
-    onHandleClose,
-    onAddUser,
-    nameRef,
-    surnameRef,
-    emailRef,
-    roleRef,
-    forecastRef,
-    companyNameRef,
-  } = props;
-  const control = () => {
-    setValid(form.current.querySelectorAll(":invalid").length);
-  };
-
-  const completed = () => {
-   form.current.querySelectorAll(".p").forEach(item => {
-     item.style.display = "block"
-   })
+    if (e === "ok") {
+      onAddUser();
+    }
   };
 
   const handleHidden = () => {
-    form.current.querySelectorAll(".p").forEach(item => {
-      item.style.display = "none"
-    })
-  }
+    form.current.querySelectorAll(".p").forEach((item) => {
+      item.style.opacity = "0";
+    });
+  };
 
   return (
     <Modal
-      aria-labelledby="transition-modal-title"
-      aria-describedby="transition-modal-description"
       open={open}
       closeAfterTransition
       BackdropComponent={Backdrop}
@@ -51,14 +50,13 @@ const ModalTable = (props) => {
       }}
     >
       <Fade in={open} className="fade">
-        <form ref={form} onKeyUp={control}>
+        <form ref={form}>
           <div className="form">
             <div className="text-field">
               <TextField
                 className="input-name"
                 ref={nameRef}
                 onChange={(e) => (nameRef.current.value = e.target.value)}
-                required
                 label="Name"
                 onBlur={handleHidden}
               />
@@ -69,7 +67,6 @@ const ModalTable = (props) => {
                 className="input-surname"
                 ref={surnameRef}
                 onChange={(e) => (surnameRef.current.value = e.target.value)}
-                required
                 label="Surname"
                 onBlur={handleHidden}
               />
@@ -80,7 +77,6 @@ const ModalTable = (props) => {
                 className="input-email"
                 ref={emailRef}
                 onChange={(e) => (emailRef.current.value = e.target.value)}
-                required
                 label="E-mail"
                 onBlur={handleHidden}
               />
@@ -89,7 +85,6 @@ const ModalTable = (props) => {
             <div className="text-field">
               <TextField
                 className="input-company-name"
-                required
                 label="Company Name"
                 ref={companyNameRef}
                 onChange={(e) =>
@@ -104,7 +99,6 @@ const ModalTable = (props) => {
                 className="input-role"
                 ref={roleRef}
                 onChange={(e) => (roleRef.current.value = e.target.value)}
-                required
                 label="Role"
                 onBlur={handleHidden}
               />
@@ -114,9 +108,15 @@ const ModalTable = (props) => {
               <TextField
                 className="input-forecast"
                 ref={forecastRef}
-                onChange={(e) => (forecastRef.current.value = e.target.value)}
+                onChange={(e) => {
+                  forecastRef.current.value = e.target.value;
+                  setCount(e.target.value.length);
+                  if (count === 2) {
+                    e.target.value = "";
+                    setCount(0);
+                  }
+                }}
                 type="number"
-                required
                 label="Forecast"
                 onBlur={handleHidden}
               />
@@ -125,7 +125,7 @@ const ModalTable = (props) => {
           </div>
           <div className="buttons">
             <button
-              onClick={valid === 0 ? onAddUser : completed}
+              onClick={() => NotifEmptyInputs("ok")}
               className="submit-btn"
             >
               Add

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useLayoutEffect } from "react";
 import "./styles/ContactsContent.scss";
 import "./styles/ContactsContent-Media.scss";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -20,10 +20,14 @@ const ContactsContent = (props) => {
   const roleRef = useRef(null);
   const forecastRef = useRef(null);
   const [open, setOpen] = useState(false);
-  const [option, setOption] = useState(props.size);
+  const [option, setOption] = useState(0);
   const [isTrue, setIsTrue] = useState(false);
   const [show, setShow] = useState(false);
   const [severity, setSeverity] = useState("error");
+
+  useLayoutEffect(() => {
+    setOption(props.size);
+  }, [props]);
   const closeSnackbar = () => {
     setShow(false);
   };
@@ -44,10 +48,12 @@ const ContactsContent = (props) => {
   };
 
   const addEmployee = (e) => {
-    e.preventDefault();
-    let pattern = /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/;
-    let result = pattern.test(emailRef.current.value);
-    if (result === true) {
+    let pattern =
+      /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/.test(
+        emailRef.current.value
+      );
+
+    if (pattern === true) {
       let newUser = {
         name: nameRef.current.value + " " + surnameRef.current.value,
         email: emailRef.current.value,
@@ -90,7 +96,6 @@ const ContactsContent = (props) => {
             <Select
               value={option}
               onChange={handleChange}
-              displayEmpty
               inputProps={{ "aria-label": "Without label" }}
             >
               <MenuItem value={props.size}>

@@ -123,7 +123,7 @@ const TableData = () => {
                         <span className="td">{row.role}</span>
                       </TableCell>
                       <TableCell>
-                        <span className="td">{row.forecast}</span>
+                        <span className="td">{row.forecast}%</span>
                       </TableCell>
                       <TableCell>
                         <span className="td">

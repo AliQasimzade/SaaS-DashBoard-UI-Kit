@@ -20,13 +20,13 @@ const ContactsContent = (props) => {
   const roleRef = useRef(null);
   const forecastRef = useRef(null);
   const [open, setOpen] = useState(false);
-  const [option, setOption] = useState(0);
-  const [isTrue, setIsTrue] = useState(false);
+  const [option, setOption] = useState(props.size);
   const [show, setShow] = useState(false);
   const [severity, setSeverity] = useState("error");
 
   useLayoutEffect(() => {
     setOption(props.size);
+    console.log(props.size)
   }, [props]);
   const closeSnackbar = () => {
     setShow(false);
@@ -44,10 +44,9 @@ const ContactsContent = (props) => {
 
   const handleAddContact = () => {
     setOpen(true);
-    setIsTrue(true);
   };
 
-  const addEmployee = (e) => {
+  const addEmployee = () => {
     let pattern =
       /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/.test(
         emailRef.current.value
@@ -55,20 +54,22 @@ const ContactsContent = (props) => {
 
     if (pattern === true) {
       let newUser = {
-        name: nameRef.current.value + " " + surnameRef.current.value,
+        name: nameRef.current.value,
+        surname: surnameRef.current.value,
         email: emailRef.current.value,
         companyName: companyNameRef.current.value,
         role: roleRef.current.value,
-        forecast: forecastRef.current.value + "%",
+        forecast: forecastRef.current.value,
         recentActivity: Date.now(),
       };
       axios
-        .post("https://herokuhosting2.herokuapp.com/users", newUser)
+        .post("https://herokuhosting2.herokuapp.com/update", newUser)
         .then((res) => dispatch(updateData(newUser)))
         .catch((err) => console.log(err));
       handleClose();
       setShow(true);
       setSeverity("success");
+      props.newSize();
     } else {
       setShow(true);
       setSeverity("error");
@@ -76,7 +77,6 @@ const ContactsContent = (props) => {
   };
   const handleClose = () => {
     setOpen(false);
-    setIsTrue(false);
   };
   return (
     <div className="contacts-content">
@@ -113,7 +113,7 @@ const ContactsContent = (props) => {
         <button onClick={handleAddContact}>Add contact</button>
       </div>
       {data ? <TableData /> : ""}
-      {isTrue ? (
+      {open ? (
         <ModalTable
           open={open}
           onHandleClose={handleClose}

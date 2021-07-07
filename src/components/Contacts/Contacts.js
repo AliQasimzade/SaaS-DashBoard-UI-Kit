@@ -9,22 +9,33 @@ import axios from "axios";
 const Contacts = (props) => {
   const dispatch = useDispatch();
   const [size, setSize] = useState(0);
-
+  const newSize = () => {
+    setTimeout(() => {
+      axios
+        .get("https://herokuhosting2.herokuapp.com/getData")
+        .then((res) => {
+          setSize(res.data.length);
+          console.log(res.data.length);
+        })
+        .catch((err) => console.log(err));
+    }, 300);
+  };
   useEffect(() => {
     axios
       .get("https://herokuhosting2.herokuapp.com/getData")
       .then((res) => {
-        dispatch(addData(res.data.Lists));
-        setSize(res.data.Lists.length);
+        dispatch(addData(res.data));
+        setSize(res.data.length);
+        console.log(res.data.length);
       })
       .catch((err) => console.log(err));
     dispatch(changeList(3));
-  }, [dispatch, size]);
+  }, [dispatch]);
 
   return (
     <div className="contacts">
       <Navigation hamburgerBtn={props.hamburgerBtn} sidebar={props.sidebar} />
-      <ContactsContent size={size} />
+      <ContactsContent size={size} newSize={newSize} />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
@@ -19,16 +19,17 @@ const ModalTable = ({
 }) => {
   const form = useRef(null);
   const [count, setCount] = useState(0);
-  
-  const NotifEmptyInputs = (e) => {
+
+  const NotifEmptyInputs = (e, ok) => {
+    e.preventDefault()
     document.querySelectorAll(".text-field").forEach((item) => {
       if (item.firstChild.querySelector("input").value === "") {
         item.lastChild.style.opacity = "1";
-        e = "no";
+        ok = "no";
       }
     });
 
-    if (e === "ok") {
+    if (ok === "ok") {
       onAddUser();
     }
   };
@@ -125,7 +126,7 @@ const ModalTable = ({
           </div>
           <div className="buttons">
             <button
-              onClick={() => NotifEmptyInputs("ok")}
+              onClick={(e) => NotifEmptyInputs(e, "ok")}
               className="submit-btn"
             >
               Add

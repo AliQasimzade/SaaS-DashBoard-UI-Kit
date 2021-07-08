@@ -14,7 +14,7 @@ const productReducer = (state = initialState, action) => {
     case DELETE_DATA:
       return {
         ...state,
-        items: state.items.filter((item) => action.key !== item.id),
+        items: state.items.filter((item, index) => action.key !== index),
       };
     default:
       return state;

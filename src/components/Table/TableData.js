@@ -19,17 +19,18 @@ import DeleteSnackbar from "./DeleteSnackbar";
 const TableData = () => {
   const data = useSelector((state) => state.productReducer.items);
   const [open, setOpen] = useState(false);
-  const [id, setID] = useState(0);
+  const [id, setId] = useState(0);
   const [index, setIndex] = useState(0);
   const [show, setShow] = useState(false);
   const indexData = useSelector((state) => state.productReducer.items[index]);
 
   const dispatch = useDispatch();
 
-  const handleDeleteAdmin = (id, index) => {
+  const handleDeleteAdmin = (id,index) => {
     setOpen(true);
-    setID(id);
     setIndex(index);
+    setId(id)
+    console.log(id)
   };
   const handleCloseModal = () => {
     setOpen(false);
@@ -39,32 +40,21 @@ const TableData = () => {
   };
   const deleteEmployee = (e) => {
     e.preventDefault();
-    let user = {
-      name: indexData.name,
-      surname: indexData.surname,
-      email: indexData.email,
-      companyName: indexData.companyName,
-      role: indexData.role,
-      forecast: indexData.forecast,
-      recentActivity: indexData.recentActivity,
-      id: id,
-      imageurl: indexData.imageurl,
-    };
 
     axios
-      .post("https://herokuhosting2.herokuapp.com/deleteuser", user)
-      .then()
+      .delete(`https://dashboard-database-af1ec-default-rtdb.firebaseio.com/Table/${id}.json`)
+      .then((res) => console.log(res))
       .catch((err) => console.log(err));
     handleCloseModal();
     setShow(true);
     setTimeout(() => {
       closeSnackbar();
     }, 800);
-    dispatch(deleteData(id));
+    dispatch(deleteData(index));
   };
   return (
     <div className="table">
-      {show ? <DeleteSnackbar show={show}/> : ""}
+      {show ? <DeleteSnackbar show={show} /> : ""}
       {open ? (
         <DeleteUser
           open={open}
@@ -143,7 +133,7 @@ const TableData = () => {
                             src={Delete}
                             alt="Delete"
                             style={{ padding: "4px" }}
-                            onClick={() => handleDeleteAdmin(row.id, key)}
+                            onClick={() => handleDeleteAdmin(row.id,key)}
                           />
                         </span>
                       </TableCell>

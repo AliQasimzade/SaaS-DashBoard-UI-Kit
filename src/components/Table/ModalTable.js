@@ -21,14 +21,14 @@ const ModalTable = ({
   const [count, setCount] = useState(0);
 
   const NotifEmptyInputs = (e, ok) => {
-    e.preventDefault()
+    e.preventDefault();
+
     document.querySelectorAll(".text-field").forEach((item) => {
       if (item.firstChild.querySelector("input").value === "") {
         item.lastChild.style.opacity = "1";
         ok = "no";
       }
     });
-
     if (ok === "ok") {
       onAddUser();
     }
@@ -131,7 +131,7 @@ const ModalTable = ({
             >
               Add
             </button>
-            <button onClick={onHandleClose}>Close</button>
+            <button type="submit" onClick={onHandleClose}>Close</button>
           </div>
         </form>
       </Fade>

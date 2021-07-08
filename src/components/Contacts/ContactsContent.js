@@ -26,7 +26,6 @@ const ContactsContent = (props) => {
 
   useLayoutEffect(() => {
     setOption(props.size);
-    console.log(props.size)
   }, [props]);
   const closeSnackbar = () => {
     setShow(false);
@@ -48,7 +47,7 @@ const ContactsContent = (props) => {
 
   const addEmployee = () => {
     let pattern =
-      /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/.test(
+      /([a-zA-Z0-9]+)([\.{1}])?([a-zA-Z0-9]+)(\@gmail.com|@mail.ru|@list.ru|@yahoo.com|@box.az)/g.test(
         emailRef.current.value
       );
 
@@ -59,8 +58,9 @@ const ContactsContent = (props) => {
         email: emailRef.current.value,
         companyName: companyNameRef.current.value,
         role: roleRef.current.value,
-        forecast: forecastRef.current.value,
+        forecast: Number(forecastRef.current.value),
         recentActivity: Date.now(),
+        id:(props.size - 1) + 1
       };
       axios
         .post("https://herokuhosting2.herokuapp.com/update", newUser)
@@ -112,7 +112,7 @@ const ContactsContent = (props) => {
         </div>
         <button onClick={handleAddContact}>Add contact</button>
       </div>
-      {data ? <TableData /> : ""}
+      {data ? <TableData size={props.size}/> : ""}
       {open ? (
         <ModalTable
           open={open}

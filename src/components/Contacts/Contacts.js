@@ -8,17 +8,9 @@ import { addData } from "../../redux/actions/actions";
 import axios from "axios";
 const Contacts = (props) => {
   const dispatch = useDispatch();
-  const [size, setSize] = useState(0);
+  let [size, setSize] = useState(0);
   const newSize = () => {
-    setTimeout(() => {
-      axios
-        .get("https://herokuhosting2.herokuapp.com/getData")
-        .then((res) => {
-          setSize(res.data.length);
-          console.log(res.data.length);
-        })
-        .catch((err) => console.log(err));
-    }, 300);
+    setSize(size + 1)
   };
   useEffect(() => {
     axios
@@ -26,7 +18,6 @@ const Contacts = (props) => {
       .then((res) => {
         dispatch(addData(res.data));
         setSize(res.data.length);
-        console.log(res.data.length);
       })
       .catch((err) => console.log(err));
     dispatch(changeList(3));

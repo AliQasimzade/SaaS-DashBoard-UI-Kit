@@ -7,12 +7,13 @@ import Select from "@material-ui/core/Select";
 import TableData from "../Table/TableData";
 import ModalTable from "../Table/ModalTable";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { addData, updateData } from "../../redux/actions/actions";
 import AddOrWrongSnack from "../Table/AddOrWrongSnack";
+
 const ContactsContent = (props) => {
-  const data = useSelector((state) => state.productReducer.items);
   const dispatch = useDispatch();
+  const data = useSelector(state => state.productReducer.items)
   const nameRef = useRef(null);
   const surnameRef = useRef(null);
   const emailRef = useRef(null);
@@ -20,13 +21,10 @@ const ContactsContent = (props) => {
   const roleRef = useRef(null);
   const forecastRef = useRef(null);
   const [open, setOpen] = useState(false);
-  const [option, setOption] = useState(props.size);
   const [show, setShow] = useState(false);
   const [severity, setSeverity] = useState("error");
+  const [option, setOption] = useState(props.size);
 
-  useLayoutEffect(() => {
-    setOption(props.size);
-  }, [props]);
   const closeSnackbar = () => {
     setShow(false);
   };
@@ -60,7 +58,7 @@ const ContactsContent = (props) => {
         role: roleRef.current.value,
         forecast: Number(forecastRef.current.value),
         recentActivity: Date.now(),
-        id:(props.size - 1) + 1
+        id: props.size - 1 + 1,
       };
       axios
         .post("https://herokuhosting2.herokuapp.com/update", newUser)
@@ -69,7 +67,6 @@ const ContactsContent = (props) => {
       handleClose();
       setShow(true);
       setSeverity("success");
-      props.newSize();
     } else {
       setShow(true);
       setSeverity("error");
@@ -94,9 +91,10 @@ const ContactsContent = (props) => {
           <span>Company: </span>
           <FormControl style={{ paddingLeft: "3px" }}>
             <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
               value={option}
               onChange={handleChange}
-              inputProps={{ "aria-label": "Without label" }}
             >
               <MenuItem value={props.size}>
                 <span>All</span>
@@ -112,7 +110,7 @@ const ContactsContent = (props) => {
         </div>
         <button onClick={handleAddContact}>Add contact</button>
       </div>
-      {data ? <TableData size={props.size}/> : ""}
+      {data ? <TableData data={data} /> : ""}
       {open ? (
         <ModalTable
           open={open}

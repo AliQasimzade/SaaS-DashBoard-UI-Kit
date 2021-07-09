@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -7,7 +7,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import EnhancedTableHead from "./EnhancedTableHead";
 import DeleteUser from "./DeleteUser";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import George from "../../images/George.png";
 import Delete from "../../images/DeleteAdmin.png";
 import Edit from "../../images/EditAdmin.png";
@@ -15,25 +15,33 @@ import axios from "axios";
 import { deleteData } from "../../redux/actions/actions";
 import moment from "moment";
 import DeleteSnackbar from "./DeleteSnackbar";
+import EditUser from "./EditUser";
+import { changeUser } from "../../redux/actions/actions";
 
-const TableData = () => {
-  const data = useSelector((state) => state.productReducer.items);
+const TableData = (props) => {
   const [open, setOpen] = useState(false);
   const [id, setId] = useState(0);
   const [index, setIndex] = useState(0);
   const [show, setShow] = useState(false);
-  const indexData = useSelector((state) => state.productReducer.items[index]);
-
+  const [edit, setEdit] = useState(false);
+  const nameRef = useRef(null);
+  const surnameRef = useRef(null);
+  const emailRef = useRef(null);
+  const roleRef = useRef(null);
+  const forecastRef = useRef(null);
+  const companyNameRef = useRef(null);
   const dispatch = useDispatch();
 
-  const handleDeleteAdmin = (id,index) => {
+  const handleDeleteAdmin = (id, index) => {
     setOpen(true);
     setIndex(index);
-    setId(id)
-    console.log(id)
+    setId(id);
   };
   const handleCloseModal = () => {
     setOpen(false);
+  };
+  const closeEdit = () => {
+    setEdit(false);
   };
   const closeSnackbar = () => {
     setShow(false);
@@ -42,7 +50,9 @@ const TableData = () => {
     e.preventDefault();
 
     axios
-      .delete(`https://dashboard-database-af1ec-default-rtdb.firebaseio.com/Table/${id}.json`)
+      .delete(
+        `https://dashboard-database-af1ec-default-rtdb.firebaseio.com/Table/${id}.json`
+      )
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
     handleCloseModal();
@@ -51,6 +61,30 @@ const TableData = () => {
       closeSnackbar();
     }, 800);
     dispatch(deleteData(index));
+  };
+
+  const editUser = (index) => {
+    setEdit(true);
+    setIndex(index);
+  };
+
+  const editEmployee = () => {
+    let editUser = {
+      name: nameRef.current.value,
+      surname: surnameRef.current.value,
+      email: emailRef.current.value,
+      role: roleRef.current.value,
+      forecast: forecastRef.current.value,
+      companyName: companyNameRef.current.value,
+      index: index,
+      recentActivity: Date.now(),
+    };
+
+    axios
+      .post("https://herokuhosting2.herokuapp.com/edituser", editUser)
+      .then((res) => dispatch(changeUser(index, editUser)))
+      .catch((err) => console.log(err));
+    closeEdit();
   };
   return (
     <div className="table">
@@ -64,13 +98,29 @@ const TableData = () => {
       ) : (
         ""
       )}
+      {edit ? (
+        <EditUser
+          edit={edit}
+          index={index}
+          nameRef={nameRef}
+          surnameRef={surnameRef}
+          emailRef={emailRef}
+          roleRef={roleRef}
+          forecastRef={forecastRef}
+          companyNameRef={companyNameRef}
+          close={closeEdit}
+          editEmployee={editEmployee}
+        />
+      ) : (
+        ""
+      )}
       <div className="table-wrapper">
         <Paper>
           <TableContainer>
             <Table aria-labelledby="tableTitle" aria-label="enhanced table">
               <EnhancedTableHead />
               <TableBody>
-                {data.map((row, key) => {
+                {props.data.map((row, key) => {
                   return (
                     <TableRow hover role="checkbox" key={key}>
                       <TableCell component="th" scope="row" padding="none">
@@ -128,12 +178,13 @@ const TableData = () => {
                             src={Edit}
                             alt="Edit"
                             style={{ padding: "4px" }}
+                            onClick={() => editUser(key)}
                           />
                           <img
                             src={Delete}
                             alt="Delete"
                             style={{ padding: "4px" }}
-                            onClick={() => handleDeleteAdmin(row.id,key)}
+                            onClick={() => handleDeleteAdmin(row.id, key)}
                           />
                         </span>
                       </TableCell>

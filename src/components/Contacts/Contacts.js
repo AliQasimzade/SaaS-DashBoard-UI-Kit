@@ -8,26 +8,31 @@ import { addData } from "../../redux/actions/actions";
 import axios from "axios";
 const Contacts = (props) => {
   const dispatch = useDispatch();
-  let [size, setSize] = useState(0);
+  let [count, setCount] = useState("");
 
-  const newSize = () => {
-    setSize(size + 1);
-  };
   useLayoutEffect(() => {
     axios
       .get("https://herokuhosting2.herokuapp.com/getData")
       .then((res) => {
         dispatch(addData(res.data));
-        setSize(res.data.length);
+        setCount(res.data.length);
       })
       .catch((err) => console.log(err));
     dispatch(changeList(3));
   }, [dispatch]);
 
+  const newSize = () => {
+    setCount(count + 1);
+  };
+
+  const delSize = () => {
+    setCount(count - 1);
+  };
+
   return (
     <div className="contacts">
       <Navigation hamburgerBtn={props.hamburgerBtn} sidebar={props.sidebar} />
-      {size? <ContactsContent size={size} newSize={newSize} />:""}
+      <ContactsContent count={count} newSize={newSize} delSize={delSize} />
     </div>
   );
 };

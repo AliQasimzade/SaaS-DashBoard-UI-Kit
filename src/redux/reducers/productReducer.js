@@ -22,8 +22,11 @@ const productReducer = (state = initialState, action) => {
         items: state.items.filter((item, index) => action.key !== index),
       };
     case CHANGE_USER:
-      state.items[action.index] = action.data
-      return state
+      state.items[action.index] = action.data;
+
+      return {
+        items: [...state.items],
+      };
 
     default:
       return state;

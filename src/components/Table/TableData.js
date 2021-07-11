@@ -50,22 +50,24 @@ const TableData = (props) => {
     e.preventDefault();
 
     axios
-      .delete(
-        `https://dashboard-database-af1ec-default-rtdb.firebaseio.com/Table/${id}.json`
-      )
+      .post("https://herokuhosting2.herokuapp.com/deleteuser", { id: id })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
+
     handleCloseModal();
     setShow(true);
+
+    props.delSize();
     setTimeout(() => {
       closeSnackbar();
     }, 800);
     dispatch(deleteData(index));
   };
 
-  const editUser = (index) => {
+  const editUser = (id, index) => {
     setEdit(true);
     setIndex(index);
+    setId(id);
   };
 
   const editEmployee = () => {
@@ -76,13 +78,15 @@ const TableData = (props) => {
       role: roleRef.current.value,
       forecast: forecastRef.current.value,
       companyName: companyNameRef.current.value,
-      index: index,
+      index: id,
       recentActivity: Date.now(),
     };
 
     axios
       .post("https://herokuhosting2.herokuapp.com/edituser", editUser)
-      .then((res) => dispatch(changeUser(index, editUser)))
+      .then((res) => {
+        dispatch(changeUser(index, res.data));
+      })
       .catch((err) => console.log(err));
     closeEdit();
   };
@@ -178,7 +182,7 @@ const TableData = (props) => {
                             src={Edit}
                             alt="Edit"
                             style={{ padding: "4px" }}
-                            onClick={() => editUser(key)}
+                            onClick={() => editUser(row.id, key)}
                           />
                           <img
                             src={Delete}

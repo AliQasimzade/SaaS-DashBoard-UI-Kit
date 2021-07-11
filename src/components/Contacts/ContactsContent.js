@@ -1,4 +1,4 @@
-import React, { useState, useRef, useLayoutEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./styles/ContactsContent.scss";
 import "./styles/ContactsContent-Media.scss";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -7,13 +7,13 @@ import Select from "@material-ui/core/Select";
 import TableData from "../Table/TableData";
 import ModalTable from "../Table/ModalTable";
 import axios from "axios";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addData, updateData } from "../../redux/actions/actions";
 import AddOrWrongSnack from "../Table/AddOrWrongSnack";
 
 const ContactsContent = (props) => {
   const dispatch = useDispatch();
-  const data = useSelector(state => state.productReducer.items)
+  const data = useSelector((state) => state.productReducer.items);
   const nameRef = useRef(null);
   const surnameRef = useRef(null);
   const emailRef = useRef(null);
@@ -23,8 +23,10 @@ const ContactsContent = (props) => {
   const [open, setOpen] = useState(false);
   const [show, setShow] = useState(false);
   const [severity, setSeverity] = useState("error");
-  const [option, setOption] = useState(props.size);
-
+  const [option, setOption] = useState("");
+  useEffect(() => {
+    setOption(props.count);
+  }, [props]);
   const closeSnackbar = () => {
     setShow(false);
   };
@@ -58,7 +60,7 @@ const ContactsContent = (props) => {
         role: roleRef.current.value,
         forecast: Number(forecastRef.current.value),
         recentActivity: Date.now(),
-        id: props.size - 1 + 1,
+        id: props.count,
       };
       axios
         .post("https://herokuhosting2.herokuapp.com/update", newUser)
@@ -67,6 +69,7 @@ const ContactsContent = (props) => {
       handleClose();
       setShow(true);
       setSeverity("success");
+      props.newSize();
     } else {
       setShow(true);
       setSeverity("error");
@@ -96,7 +99,7 @@ const ContactsContent = (props) => {
               value={option}
               onChange={handleChange}
             >
-              <MenuItem value={props.size}>
+              <MenuItem value={props.count}>
                 <span>All</span>
               </MenuItem>
               <MenuItem value={3}>
@@ -110,7 +113,7 @@ const ContactsContent = (props) => {
         </div>
         <button onClick={handleAddContact}>Add contact</button>
       </div>
-      {data ? <TableData data={data} /> : ""}
+      {data ? <TableData data={data} delSize={props.delSize} /> : ""}
       {open ? (
         <ModalTable
           open={open}

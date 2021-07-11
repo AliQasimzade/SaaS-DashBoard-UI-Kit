@@ -36,6 +36,7 @@ const TableData = (props) => {
     setOpen(true);
     setIndex(index);
     setId(id);
+    console.log(id)
   };
   const handleCloseModal = () => {
     setOpen(false);
@@ -48,6 +49,7 @@ const TableData = (props) => {
   };
   const deleteEmployee = (e) => {
     e.preventDefault();
+ 
 
     axios
       .post("https://herokuhosting2.herokuapp.com/deleteuser", { id: id })
@@ -76,9 +78,9 @@ const TableData = (props) => {
       surname: surnameRef.current.value,
       email: emailRef.current.value,
       role: roleRef.current.value,
-      forecast: forecastRef.current.value,
+      forecast: Number(forecastRef.current.value),
       companyName: companyNameRef.current.value,
-      index: id,
+      id: id,
       recentActivity: Date.now(),
     };
 
@@ -86,6 +88,7 @@ const TableData = (props) => {
       .post("https://herokuhosting2.herokuapp.com/edituser", editUser)
       .then((res) => {
         dispatch(changeUser(index, res.data));
+        console.log(res.data)
       })
       .catch((err) => console.log(err));
     closeEdit();

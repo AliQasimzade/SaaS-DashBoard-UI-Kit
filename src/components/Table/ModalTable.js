@@ -52,7 +52,6 @@ const ModalTable = ({
     >
       <Fade in={open} className="fade">
         <form ref={form}>
-          <h3>Fill following inputs</h3>
           <div className="form">
             <div className="text-field">
               <TextField

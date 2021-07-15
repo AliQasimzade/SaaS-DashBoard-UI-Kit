@@ -20,10 +20,10 @@ const ContactsContent = (props) => {
   const companyNameRef = useRef(null);
   const roleRef = useRef(null);
   const forecastRef = useRef(null);
+  const imageRef = useRef(null);
   const [open, setOpen] = useState(false);
   const [show, setShow] = useState(false);
-  const [severity, setSeverity] = useState("error");
-  const [option, setOption] = useState("");
+  const [option, setOption] = useState(props.count);
   useEffect(() => {
     setOption(props.count);
   }, [props]);
@@ -46,35 +46,28 @@ const ContactsContent = (props) => {
   };
 
   const addEmployee = () => {
-    let pattern =
-      /([a-zA-Z0-9]+)([\.{1}])?([a-zA-Z0-9]+)(\@gmail.com|@mail.ru|@list.ru|@yahoo.com|@box.az)/g.test(
-        emailRef.current.value
-      );
+    let newUser = {
+      name: nameRef.current.value,
+      surname: surnameRef.current.value,
+      email: emailRef.current.value,
+      companyName: companyNameRef.current.value,
+      role: roleRef.current.value,
+      forecast: Number(forecastRef.current.value),
+      recentActivity: Date.now(),
+      imageurl: imageRef.current,
+      id: props.count,
+    };
 
-    if (pattern === true) {
-      let newUser = {
-        name: nameRef.current.value,
-        surname: surnameRef.current.value,
-        email: emailRef.current.value,
-        companyName: companyNameRef.current.value,
-        role: roleRef.current.value,
-        forecast: Number(forecastRef.current.value),
-        recentActivity: Date.now(),
-        id: props.count,
-      };
-      axios
-        .post("https://herokuhosting2.herokuapp.com/update", newUser)
-        .then((res) => dispatch(updateData(newUser)))
-        .catch((err) => console.log(err));
-      handleClose();
-      setShow(true);
-      setSeverity("success");
-      props.newSize();
-    } else {
-      setShow(true);
-      setSeverity("error");
-    }
+    axios
+      .post("https://herokuhosting2.herokuapp.com/update", newUser)
+      .then((res) => dispatch(updateData(newUser)))
+      .catch((err) => console.log(err));
+    handleClose();
+    setShow(true);
+    console.log(newUser.imageurl)
+    props.newSize();
   };
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -83,8 +76,8 @@ const ContactsContent = (props) => {
       {show ? (
         <AddOrWrongSnack
           show={show}
+          name={nameRef}
           closeSnackbar={closeSnackbar}
-          severity={severity}
         />
       ) : (
         ""
@@ -125,6 +118,7 @@ const ContactsContent = (props) => {
           roleRef={roleRef}
           forecastRef={forecastRef}
           companyNameRef={companyNameRef}
+          imageRef={imageRef}
         />
       ) : (
         ""

@@ -14,8 +14,8 @@ const Contacts = (props) => {
     axios
       .get("https://herokuhosting2.herokuapp.com/getData")
       .then((res) => {
-        dispatch(addData(res.data));
-        setCount(res.data.length);
+        dispatch(addData(res.data[0]));
+        setCount(res.data[0].length);
       })
       .catch((err) => console.log(err));
     dispatch(changeList(3));

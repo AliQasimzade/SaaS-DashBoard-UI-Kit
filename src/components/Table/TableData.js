@@ -30,13 +30,14 @@ const TableData = (props) => {
   const roleRef = useRef(null);
   const forecastRef = useRef(null);
   const companyNameRef = useRef(null);
+  const imageRef = useRef(null);
   const dispatch = useDispatch();
 
   const handleDeleteAdmin = (id, index) => {
     setOpen(true);
     setIndex(index);
     setId(id);
-    console.log(id)
+    console.log(id);
   };
   const handleCloseModal = () => {
     setOpen(false);
@@ -49,7 +50,6 @@ const TableData = (props) => {
   };
   const deleteEmployee = (e) => {
     e.preventDefault();
- 
 
     axios
       .post("https://herokuhosting2.herokuapp.com/deleteuser", { id: id })
@@ -81,14 +81,15 @@ const TableData = (props) => {
       forecast: Number(forecastRef.current.value),
       companyName: companyNameRef.current.value,
       id: id,
+      imageurl: imageRef.current,
       recentActivity: Date.now(),
     };
 
+    console.log(editUser.imageurl);
     axios
       .post("https://herokuhosting2.herokuapp.com/edituser", editUser)
       .then((res) => {
-        dispatch(changeUser(index, res.data));
-        console.log(res.data)
+        dispatch(changeUser(index, editUser));
       })
       .catch((err) => console.log(err));
     closeEdit();
@@ -117,6 +118,7 @@ const TableData = (props) => {
           companyNameRef={companyNameRef}
           close={closeEdit}
           editEmployee={editEmployee}
+          imageRef={imageRef}
         />
       ) : (
         ""

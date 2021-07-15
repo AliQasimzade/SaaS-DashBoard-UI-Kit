@@ -1,10 +1,13 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import TextField from "@material-ui/core/TextField";
 import "./styles/ModalTable.scss";
 import "./styles/ModalTable-Media.scss";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { storage } from "../firebase";
 
 const ModalTable = ({
   open,
@@ -16,30 +19,58 @@ const ModalTable = ({
   roleRef,
   forecastRef,
   companyNameRef,
+  imageRef
 }) => {
-  const form = useRef(null);
-  const [count, setCount] = useState(0);
-
-  const NotifEmptyInputs = (e, ok) => {
-    e.preventDefault();
-
-    document.querySelectorAll(".text-field").forEach((item) => {
-      if (item.firstChild.querySelector("input").value === "") {
-        item.lastChild.style.opacity = "1";
-        ok = "no";
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      surname: "",
+      email: "",
+      companyName: "",
+      role: "",
+      forecast: "",
+    },
+    validationSchema: Yup.object({
+      name: Yup.string()
+        .max(15, "Must be 15 characters or less")
+        .required("Required"),
+      surname: Yup.string()
+        .max(20, "Must be 20 characters or less")
+        .required("Required"),
+      email: Yup.string()
+        .email("Invalid email address")
+        .max(23, "Must be 23 characters or less")
+        .required("Required"),
+      companyName: Yup.string()
+        .max(23, "Must be 23 characters or less")
+        .required("Required"),
+      role: Yup.string()
+        .max(20, "Must be 20 characters or less")
+        .required("Required"),
+      forecast: Yup.string()
+        .max(2, "Must be 2 characters or less")
+        .required("Required"),
+    }),
+    onSubmit: (values) => {
+      if (
+        /([a-zA-Z0-9]+)([\.{1}])?([a-zA-Z0-9]+)(\@gmail.com|@mail.ru|@list.ru|@yahoo.com|@box.az)/g.test(
+          values.email
+        ) === true
+      ) {
+        onAddUser();
       }
-    });
-    if (ok === "ok") {
-      onAddUser();
-    }
-  };
+    },
+  });
 
-  const handleHidden = () => {
-    form.current.querySelectorAll(".p").forEach((item) => {
-      item.style.opacity = "0";
-    });
+  const handleChangeImage = (e) => {
+    storage
+      .ref()
+      .child(e.target.files[0].name)
+      .put(e.target.files[0])
+      .then((snap) =>
+        snap.ref.getDownloadURL().then((url) => imageRef.current = url)
+      );
   };
-
   return (
     <Modal
       open={open}
@@ -51,85 +82,117 @@ const ModalTable = ({
       }}
     >
       <Fade in={open} className="fade">
-        <form ref={form}>
+        <form onSubmit={formik.handleSubmit}>
           <div className="form">
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => handleChangeImage(e)}
+            />
             <div className="text-field">
               <TextField
                 className="input-name"
                 ref={nameRef}
-                onChange={(e) => (nameRef.current.value = e.target.value)}
+                onKeyUp={(e) => (nameRef.current.value = e.target.value)}
                 label="Name"
-                onBlur={handleHidden}
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                value={formik.values.name}
+                type="text"
+                name="name"
+                id="name"
               />
-              <p className="p">Please, fill in this field</p>
+              {formik.touched.name && formik.errors.name ? (
+                <p>{formik.errors.name}</p>
+              ) : null}
             </div>
             <div className="text-field">
               <TextField
                 className="input-surname"
                 ref={surnameRef}
-                onChange={(e) => (surnameRef.current.value = e.target.value)}
+                onKeyUp={(e) => (surnameRef.current.value = e.target.value)}
                 label="Surname"
-                onBlur={handleHidden}
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                value={formik.values.surname}
+                type="text"
+                name="surname"
+                id="surname"
               />
-              <p className="p">Please, fill in this field</p>
+              {formik.touched.surname && formik.errors.surname ? (
+                <p>{formik.errors.surname}</p>
+              ) : null}
             </div>
             <div className="text-field">
               <TextField
                 className="input-email"
                 ref={emailRef}
-                onChange={(e) => (emailRef.current.value = e.target.value)}
+                onKeyUp={(e) => (emailRef.current.value = e.target.value)}
                 label="E-mail"
-                onBlur={handleHidden}
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                value={formik.values.email}
+                type="email"
+                name="email"
+                id="email"
               />
-              <p className="p">Please, fill in this field</p>
+              {formik.touched.email && formik.errors.email ? (
+                <p>{formik.errors.email}</p>
+              ) : null}
             </div>
             <div className="text-field">
               <TextField
                 className="input-company-name"
                 label="Company Name"
                 ref={companyNameRef}
-                onChange={(e) =>
-                  (companyNameRef.current.value = e.target.value)
-                }
-                onBlur={handleHidden}
+                onKeyUp={(e) => (companyNameRef.current.value = e.target.value)}
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                value={formik.values.companyName}
+                name="companyName"
+                id="companyName"
               />
-              <p className="p">Please, fill in this field</p>
+
+              {formik.touched.companyName && formik.errors.companyName ? (
+                <p>{formik.errors.companyName}</p>
+              ) : null}
             </div>
             <div className="text-field">
               <TextField
                 className="input-role"
                 ref={roleRef}
-                onChange={(e) => (roleRef.current.value = e.target.value)}
+                onKeyUp={(e) => (roleRef.current.value = e.target.value)}
                 label="Role"
-                onBlur={handleHidden}
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                value={formik.values.role}
+                name="role"
+                id="role"
               />
-              <p className="p">Please, fill in this field</p>
+              {formik.touched.role && formik.errors.role ? (
+                <p>{formik.errors.role}</p>
+              ) : null}
             </div>
             <div className="text-field">
               <TextField
                 className="input-forecast"
                 ref={forecastRef}
-                onChange={(e) => {
-                  forecastRef.current.value = e.target.value;
-                  setCount(e.target.value.length);
-                  if (count === 2) {
-                    e.target.value = "";
-                    setCount(0);
-                  }
-                }}
+                onKeyUp={(e) => (forecastRef.current.value = e.target.value)}
                 type="number"
                 label="Forecast"
-                onBlur={handleHidden}
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                value={formik.values.forecast}
+                name="forecast"
+                id="forecast"
               />
-              <p className="p">Please, fill in this field</p>
+              {formik.touched.forecast && formik.errors.forecast ? (
+                <p>{formik.errors.forecast}</p>
+              ) : null}
             </div>
           </div>
           <div className="buttons">
-            <button
-              type="submit"
-              onClick={(e) => NotifEmptyInputs(e, "ok")}
-              className="submit-btn"
-            >
+            <button type="submit" className="submit-btn">
               Add
             </button>
             <button onClick={onHandleClose}>Close</button>

@@ -15,10 +15,8 @@ const AddOrWrongSnack = (props) => {
         onClose={props.closeSnackbar}
         anchorOrigin={{ vertical, horizontal }}
       >
-        <Alert onClose={props.closeSnackbar} severity={props.severity}>
-          {props.severity === "error"
-            ? "Wrong email input"
-            : "You added new user"}
+        <Alert onClose={props.closeSnackbar} severity="success">
+          {`You added ${props.name}`}
         </Alert>
       </Snackbar>
     </div>

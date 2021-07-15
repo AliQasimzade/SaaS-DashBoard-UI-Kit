@@ -4,6 +4,7 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import TextField from "@material-ui/core/TextField";
 import { useSelector } from "react-redux";
+import { storage } from "../firebase";
 const EditUser = ({
   edit,
   index,
@@ -15,6 +16,7 @@ const EditUser = ({
   companyNameRef,
   close,
   editEmployee,
+  imageRef,
 }) => {
   const indexData = useSelector((state) => state.productReducer.items[index]);
   const [name, setName] = useState(indexData.name);
@@ -23,6 +25,7 @@ const EditUser = ({
   const [role, setRole] = useState(indexData.role);
   const [forecast, setForecast] = useState(indexData.forecast);
   const [companyName, setCompanyName] = useState(indexData.companyName);
+  const [image, setImage] = useState(indexData.imageurl)
   const [count, setCount] = useState(0);
   const form = useRef(null);
   useEffect(() => {
@@ -33,6 +36,7 @@ const EditUser = ({
       roleRef.current.value = role;
       forecastRef.current.value = forecast;
       companyNameRef.current.value = companyName;
+      imageRef.current = image
     }, 100);
   }, []);
   const NotifEmptyInputs = (e, ok) => {
@@ -54,7 +58,6 @@ const EditUser = ({
     ) {
       ok = "no";
       alert("Same inputs !");
-     
     }
     if (ok === "ok") {
       alert("Everything is Ok !");
@@ -79,6 +82,20 @@ const EditUser = ({
     >
       <Fade in={edit} className="fade">
         <form ref={form}>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => {
+              setImage(e.target.files[0].name)
+              storage
+                .ref()
+                .child(e.target.files[0].name)
+                .put(e.target.files[0])
+                .then((snap) =>
+                  snap.ref.getDownloadURL().then((url) => imageRef.current = url)
+                );
+            }}
+          />
           <h3>Fill following inputs</h3>
           <div className="form">
             <div className="text-field">

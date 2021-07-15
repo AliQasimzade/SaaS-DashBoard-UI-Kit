@@ -28,7 +28,6 @@
     .text-field{
       @include flexLayout(flex-start,center,column);
       p{
-       opacity: 0;
        
         @include styleTag($redColor2,Poppins-SemiBold,12px,0.01em)
       }
